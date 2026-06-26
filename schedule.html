@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>HYROX SUB 1:10 — 自适应日程(跑速优先)+ 饮食 + 记录</title>
+<meta name="description" content="以跑速为首要目标的可编辑 12 周 Hyrox 计划：改动每周训练项或配速，全程自动重算。含饮食计划与体重/表现/饮食记录。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305060a'/%3E%3Cpath d='M14 40h36M14 40l8-16M50 40l-8-16' stroke='%23d4ff50' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#05060a;--ink-2:#0a0c12;--paper:#f4f1ea;--text:#f5f5f7;--muted:rgba(245,245,247,.55);
+  --volt:#d4ff50;--volt-rgb:212,255,80;--volt-on-light:#5c750e;--indigo:#583cff;--warn:#ff8a5d;
+  --line:rgba(255,255,255,.1);--ease:cubic-bezier(.16,1,.3,1);
+  --sans:"PingFang SC","SF Pro Display","Hiragino Sans GB","Microsoft YaHei",-apple-system,system-ui,sans-serif;
+  --serif:"Songti SC","Noto Serif CJK SC",Georgia,serif;--mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ink);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+section{position:relative;padding:clamp(3.2rem,6vw,5.5rem) 1.5rem;}
+.wrap{max-width:1080px;margin:0 auto;}
+h1,h2,h3{line-height:1.1;letter-spacing:-.02em;text-wrap:balance;}
+h2{font-size:clamp(1.7rem,4.4vw,2.8rem);font-weight:800;}
+.plus{color:var(--volt);}
+::selection{background:var(--volt);color:var(--ink);}
+:focus-visible{outline:2px solid var(--volt);outline-offset:2px;border-radius:4px;}
+.ed{font-family:var(--serif);font-style:italic;font-weight:400;}
+.credits{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.lead{color:var(--muted);max-width:64ch;font-size:clamp(.98rem,2.1vw,1.1rem);}
+.sec-no{display:flex;align-items:center;gap:1rem;margin-bottom:1.8rem;}
+.sec-no::after{content:"";flex:1;height:1px;background:var(--line);}
+body::after{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;}
+
+header.bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.5rem;border-bottom:1px solid transparent;transition:border-color .4s,background .4s;}
+header.bar.scrolled{border-color:var(--line);background:rgba(5,6,10,.7);}
+@supports (backdrop-filter:blur(1px)){header.bar.scrolled{background:rgba(5,6,10,.55);backdrop-filter:blur(20px) saturate(1.5);}}
+.bar-logo{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:1rem;}
+.bar-logo svg{width:24px;height:24px;}
+.bar-nav{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;}
+.bar-nav a{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.34rem .75rem;text-transform:uppercase;white-space:nowrap;transition:border-color .2s,color .2s,background .2s;}
+.bar-nav a:hover{border-color:var(--volt);color:var(--volt);}
+.bar-nav a.active{background:var(--volt);color:var(--ink);border-color:var(--volt);font-weight:700;}
+@media(max-width:600px){.bar-logo span{display:none;}}
+
+.intro{padding-top:6.5rem;text-align:center;}
+.intro .glow{position:absolute;inset:0;z-index:-1;overflow:hidden;}
+.intro .glow i{position:absolute;border-radius:50%;filter:blur(120px);width:50vw;aspect-ratio:1;left:50%;top:30%;translate:-50% -50%;background:rgba(var(--volt-rgb),.1);}
+.intro h1{font-size:clamp(2.1rem,6.5vw,4.4rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.95;}
+.intro h1 .plus{text-shadow:0 0 12px rgba(var(--volt-rgb),.5);}
+.intro p{color:var(--muted);margin-top:1.1rem;}
+
+/* primary objective banner */
+.obj{max-width:680px;margin:1.8rem auto 0;border:1px solid rgba(var(--volt-rgb),.45);border-radius:1.2rem;background:rgba(var(--volt-rgb),.06);padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:center;text-align:left;box-shadow:0 0 50px rgba(var(--volt-rgb),.08);}
+.obj .ic{width:46px;height:46px;border-radius:12px;flex:none;display:grid;place-items:center;background:var(--volt);color:var(--ink);font-weight:900;font-size:1.4rem;}
+.obj .tx b{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--volt);margin-bottom:.2rem;}
+.obj .tx span{font-size:.92rem;color:var(--text);}
+.obj.warn{border-color:var(--warn);background:rgba(255,138,93,.08);box-shadow:none;}
+.obj.warn .ic{background:var(--warn);}
+.obj.warn .tx b{color:var(--warn);}
+
+.datebar{max-width:680px;margin:1.4rem auto 0;display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;}
+.datebar .dchip{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.45rem .9rem;color:var(--muted);}
+.datebar .dchip b{color:var(--text);font-weight:700;}
+.datebar .dchip.hot{border-color:rgba(var(--volt-rgb),.5);color:var(--volt);}
+
+.tracker-hero{max-width:680px;margin:1.4rem auto 0;border:1px solid var(--line);border-radius:1.4rem;padding:1.6rem;background:rgba(255,255,255,.02);text-align:left;}
+.tracker-hero .row1{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1rem;justify-content:space-between;}
+.tracker-hero label{display:grid;gap:.3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.tracker-hero input[type=number]{font-family:var(--sans);font-size:1.5rem;font-weight:800;background:#0a0c12;border:1px solid var(--line);border-radius:.7rem;color:var(--text);padding:.45rem .8rem;width:120px;}
+.tracker-hero input:focus{outline:2px solid var(--volt);}
+.tracker-hero .goalbox{text-align:right;}
+.tracker-hero .goalbox b{font-size:1.5rem;color:var(--volt);font-weight:900;}
+.tracker-hero .goalbox span{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.bar-track{height:14px;border-radius:999px;background:#0a0c12;border:1px solid var(--line);margin-top:1.3rem;overflow:hidden;}
+.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--volt));border-radius:999px;transition:width .6s var(--ease);}
+.bar-stat{display:flex;justify-content:space-between;margin-top:.7rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--muted);}
+.bar-stat b{color:var(--volt);}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:1.1rem;margin-top:.4rem;}
+table{width:100%;border-collapse:collapse;font-size:.88rem;min-width:520px;}
+thead th{text-align:left;font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--volt);padding:.85rem 1rem;border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap;}
+tbody td{padding:.75rem 1rem;border-bottom:1px solid rgba(255,255,255,.06);color:var(--muted);vertical-align:top;}
+tbody tr:last-child td{border-bottom:0;}
+tbody td:first-child{color:var(--text);font-weight:600;white-space:nowrap;}
+tbody td b{color:var(--text);}
+.vt{color:var(--volt);font-weight:700;}
+
+/* controls */
+.panel{border:1px solid var(--line);border-radius:1.3rem;background:rgba(255,255,255,.02);padding:1.6rem 1.5rem;margin-top:.5rem;}
+.panel h3{font-size:1.05rem;margin-bottom:.3rem;}
+.panel .hint{font-size:.82rem;color:var(--muted);margin-bottom:1.2rem;}
+.daygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:.7rem;}
+.daygrid .dc{border:1px solid var(--line);border-radius:.8rem;padding:.7rem .8rem;background:#0a0c12;}
+.daygrid .dc .wd{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--volt);margin-bottom:.4rem;}
+.daygrid select,.paces select{width:100%;}
+select,.paces input{font-family:var(--sans);font-size:.85rem;background:#0a0c12;border:1px solid var(--line);border-radius:.5rem;color:var(--text);padding:.4rem .5rem;}
+select:focus,.paces input:focus{outline:2px solid var(--volt);}
+.paces{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-top:1.4rem;padding-top:1.4rem;border-top:1px solid var(--line);}
+.paces label{display:grid;gap:.35rem;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);}
+.paces input{width:100%;}
+.panel .actions{margin-top:1.3rem;display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;}
+.pbtn{font-family:var(--sans);font-weight:700;font-size:.82rem;border-radius:999px;padding:.55rem 1.2rem;cursor:pointer;border:1.5px solid var(--line);background:none;color:var(--text);transition:all .2s var(--ease);}
+.pbtn:hover{border-color:var(--volt);color:var(--volt);}
+.pbtn.primary{background:var(--volt);color:var(--ink);border-color:var(--volt);}
+.recalc{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;color:var(--volt);}
+
+/* pace curve */
+.pacecurve{display:flex;gap:.4rem;align-items:flex-end;overflow-x:auto;padding:1.2rem .3rem .6rem;border:1px solid var(--line);border-radius:1.1rem;background:rgba(255,255,255,.02);margin-top:.4rem;min-height:170px;}
+.pbar{flex:0 0 auto;width:46px;text-align:center;display:flex;flex-direction:column;justify-content:flex-end;}
+.pbar .bar{width:60%;margin:0 auto .4rem;background:linear-gradient(var(--volt),rgba(var(--volt-rgb),.25));border-radius:5px 5px 0 0;transition:height .5s var(--ease);}
+.pbar.peak .bar{background:linear-gradient(var(--indigo),rgba(88,60,255,.3));}
+.pbar .pl{font-family:var(--mono);font-size:.6rem;color:var(--text);font-weight:700;}
+.pbar .wl{font-family:var(--mono);font-size:.54rem;color:var(--muted);margin-top:.15rem;}
+
+/* weeks */
+.weeks{display:grid;gap:.8rem;margin-top:.5rem;}
+details.week{border:1px solid var(--line);border-radius:1.2rem;background:rgba(255,255,255,.02);overflow:hidden;}
+details.week[open]{border-color:rgba(var(--volt-rgb),.3);}
+details.week.peak{border-color:rgba(var(--volt-rgb),.35);background:rgba(var(--volt-rgb),.035);}
+summary{list-style:none;cursor:pointer;padding:1.1rem 1.4rem;display:grid;grid-template-columns:auto 1fr auto;gap:1.1rem;align-items:center;}
+summary::-webkit-details-marker{display:none;}
+summary .wk{font-family:var(--mono);font-size:.66rem;letter-spacing:.08em;color:var(--volt);text-align:center;border-right:1px solid var(--line);padding-right:1.1rem;white-space:nowrap;}
+summary .wk b{display:block;font-size:1.3rem;color:var(--text);letter-spacing:-.02em;}
+summary .wk .wk-dates{display:block;font-size:.56rem;color:var(--muted);font-weight:400;letter-spacing:.04em;margin-top:.25rem;}
+summary .ttl{font-size:1rem;font-weight:700;}
+summary .ttl small{display:block;font-weight:400;font-size:.8rem;color:var(--muted);margin-top:.15rem;}
+summary .meta{text-align:right;font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;color:var(--muted);white-space:nowrap;}
+summary .meta b{color:var(--volt);}
+summary .chev{display:inline-block;transition:transform .3s var(--ease);color:var(--muted);margin-left:.4rem;}
+details[open] summary .chev{transform:rotate(90deg);}
+.days{padding:0 1.4rem 1.3rem;display:grid;gap:.1rem;}
+.day{display:grid;grid-template-columns:96px 84px 1fr;gap:.9rem;padding:.65rem .2rem;border-top:1px solid rgba(255,255,255,.06);align-items:baseline;font-size:.88rem;}
+.day .d{font-weight:700;color:var(--text);}
+.day .d .dt{display:block;font-family:var(--mono);font-size:.6rem;color:var(--muted);font-weight:400;letter-spacing:.04em;margin-top:.15rem;}
+.day .ty{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .5rem;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-align:center;height:fit-content;}
+.day.train .ty{border-color:rgba(var(--volt-rgb),.4);color:var(--volt);}
+.day.run .ty{background:rgba(var(--volt-rgb),.12);}
+.day .c{color:var(--muted);}
+.day .c b{color:var(--text);}
+.day .c .vt{color:var(--volt);}
+.day .c i{font-style:normal;color:var(--volt);font-weight:700;font-size:.8rem;}
+@media(max-width:560px){
+  .day{grid-template-columns:1fr;gap:.2rem;}
+  .day .d .dt{display:inline;margin-left:.5rem;}
+  .day .ty{justify-self:start;}
+  summary{grid-template-columns:auto 1fr;}
+  summary .meta{display:none;}
+  summary .wk{border-right:0;padding-right:0;}
+}
+
+/* meal */
+.mealgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:.5rem;}
+.mealcard{border:1px solid var(--line);border-radius:1.3rem;background:rgba(255,255,255,.02);padding:1.5rem 1.4rem;}
+.mealcard.train{border-color:rgba(var(--volt-rgb),.35);background:rgba(var(--volt-rgb),.04);}
+.mealcard .hd{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:1rem;}
+.mealcard .hd h3{font-size:1.12rem;}
+.mealcard .hd .kc{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;color:var(--volt);}
+.mealcard .ml{display:grid;grid-template-columns:60px 1fr auto;gap:.7rem;padding:.5rem 0;border-top:1px solid rgba(255,255,255,.06);font-size:.84rem;align-items:baseline;}
+.mealcard .ml .w{font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--volt);}
+.mealcard .ml .f{color:var(--muted);}
+.mealcard .ml .p{font-family:var(--mono);font-size:.64rem;color:var(--muted);white-space:nowrap;}
+.mealnote{margin-top:1.3rem;font-size:.84rem;color:var(--muted);}
+.mealnote b{color:var(--text);}
+
+/* editorial log */
+.logsec{background:var(--paper);color:#111317;}
+.logsec .credits{color:rgba(17,19,23,.6);}
+.logsec h2{color:#0a0a0c;}
+.logsec h3.subh{color:#0a0a0c;font-size:1.12rem;margin:2.2rem 0 .8rem;display:flex;align-items:center;gap:.6rem;}
+.logsec h3.subh .n{font-family:var(--mono);font-size:.7rem;background:#0a0a0c;color:var(--volt);border-radius:7px;padding:.2rem .5rem;font-weight:700;}
+.logsec .lead{color:rgba(17,19,23,.7);}
+.logsec .sec-no::after{background:rgba(17,19,23,.14);}
+.logtools{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.3rem 0 .5rem;}
+.lbtn{font-family:var(--sans);font-weight:700;font-size:.85rem;border-radius:999px;padding:.6rem 1.3rem;cursor:pointer;border:1.5px solid #0a0a0c;background:none;color:#0a0a0c;transition:all .2s var(--ease);}
+.lbtn:hover{background:#0a0a0c;color:var(--volt);}
+.lbtn.primary{background:#0a0a0c;color:var(--volt);}
+.savehint{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--volt-on-light);align-self:center;}
+.logtbl-wrap{overflow-x:auto;border:1px solid rgba(17,19,23,.16);border-radius:1.1rem;background:#fff;}
+table.log{width:100%;border-collapse:collapse;font-size:.84rem;min-width:740px;}
+table.log thead th{text-align:left;font-family:var(--mono);font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(17,19,23,.6);padding:.8rem .7rem;border-bottom:1px solid rgba(17,19,23,.14);font-weight:600;white-space:nowrap;}
+table.log tbody td{padding:.5rem .7rem;border-bottom:1px solid rgba(17,19,23,.08);vertical-align:middle;}
+table.log tbody tr:last-child td{border-bottom:0;}
+table.log .wkc{font-weight:800;color:#0a0a0c;white-space:nowrap;}
+table.log .dtc{font-family:var(--mono);font-size:.72rem;color:rgba(17,19,23,.55);white-space:nowrap;}
+table.log .tgt{font-family:var(--mono);font-size:.74rem;color:var(--volt-on-light);font-weight:700;white-space:nowrap;}
+table.log input[type=text],table.log input[type=number]{font-family:var(--sans);font-size:.84rem;border:1px solid rgba(17,19,23,.18);border-radius:.45rem;padding:.35rem .5rem;width:100%;min-width:58px;background:#fff;color:#111317;}
+table.log input:focus{outline:2px solid var(--volt-on-light);border-color:transparent;}
+table.log .sess{display:flex;gap:.35rem;}
+table.log .sess input{width:18px;height:18px;accent-color:var(--volt-on-light);cursor:pointer;}
+.logsec .disclaimer{margin-top:1.8rem;border-left:3px solid var(--volt-on-light);background:rgba(92,117,14,.06);padding:.9rem 1.2rem;border-radius:0 .7rem .7rem 0;font-size:.84rem;color:rgba(17,19,23,.78);}
+.bench{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1.4rem;}
+.bench .bc{border:1px solid rgba(17,19,23,.16);border-radius:1rem;background:#fff;padding:1.1rem 1.2rem;}
+.bench .bc .credits{color:rgba(17,19,23,.55);margin-bottom:.6rem;display:block;}
+.bench .bc h4{font-size:.96rem;color:#0a0a0c;margin-bottom:.7rem;}
+.bench .bc input{width:100%;font-family:var(--sans);font-size:.9rem;border:1px solid rgba(17,19,23,.18);border-radius:.5rem;padding:.45rem .6rem;background:#fff;color:#111317;}
+.bench .bc input:focus{outline:2px solid var(--volt-on-light);}
+
+footer{border-top:1px solid var(--line);padding:2.6rem 1.5rem 3.6rem;text-align:center;}
+footer .credits{line-height:2.2;}
+footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch;margin-inline:auto;}
+.toast{position:fixed;bottom:24px;left:50%;translate:-50% 16px;z-index:95;background:#14171f;border:1px solid var(--line);color:var(--text);
+  padding:.7rem 1.2rem;border-radius:999px;font-size:.86rem;box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0;transition:opacity .3s,translate .35s var(--ease);pointer-events:none;}
+.toast.show{opacity:1;translate:-50% 0;}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+
+/* records: export/import + feedback journal */
+.logtools input[type=file]{display:none;}
+.jbox{margin-top:1rem;}
+.jbox textarea{width:100%;min-height:72px;font-family:var(--sans);font-size:.88rem;border:1px solid rgba(17,19,23,.2);border-radius:.7rem;padding:.7rem .8rem;background:#fff;color:#111317;resize:vertical;}
+.jbox textarea:focus{outline:2px solid var(--volt-on-light);border-color:transparent;}
+.jlist{margin-top:1rem;display:grid;gap:.6rem;}
+.jempty{font-size:.84rem;color:rgba(17,19,23,.55);}
+.jitem{border:1px solid rgba(17,19,23,.14);border-radius:.7rem;background:#fff;padding:.7rem .9rem;}
+.jd{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--volt-on-light);font-weight:700;display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem;}
+.jdel{border:0;background:none;color:rgba(17,19,23,.4);font-size:1.05rem;cursor:pointer;line-height:1;padding:0 .25rem;}
+.jdel:hover{color:#c0392b;}
+.jt{font-size:.86rem;color:#111317;line-height:1.55;white-space:pre-wrap;}
+.dnote{margin-top:1.4rem;font-size:.8rem;color:rgba(17,19,23,.72);border-left:3px solid var(--volt-on-light);background:rgba(92,117,14,.06);padding:.7rem 1rem;border-radius:0 .6rem .6rem 0;line-height:1.6;}
+.dnote b{color:#0a0a0c;}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="bar-logo" href="index.html">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0a0c12"/><path d="M14 42h36M14 42l8-18M50 42l-8-18" stroke="#d4ff50" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>HYROX <span class="plus">SUB 1:10</span></span>
+  </a>
+  <nav class="bar-nav">
+    <a href="index.html" title="计划总览 Overview">总览</a>
+    <a href="schedule.html" class="active" title="12 周逐日日程 + 状态记录">HYROX 日程</a>
+    <a href="phase2.html" title="赛后 65→52kg 多项目">Phase 2</a>
+  </nav>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="glow" aria-hidden="true"><i></i></div>
+  <div class="wrap">
+    <p class="credits" style="margin-bottom:1.2rem;">Adaptive Plan · Run-Speed First · 北京站 9/12–13</p>
+    <h1>跑速优先<br><span class="plus">自适应日程</span></h1>
+    <p>改动「每周训练项」或「配速」——下方 12 周日程、配速、日期会<b style="color:var(--text)">立即自动重算</b>。</p>
+
+    <div class="obj" id="objBanner">
+      <div class="ic">★</div>
+      <div class="tx"><b>Primary Objective · 首要目标</b><span>跑速 = 全场最大变量。每周至少 1 次间歇课为不可删的硬课，目标把 1km 配速从 5:40 压到 <b style="color:var(--volt)">5:00/km</b>。</span></div>
+    </div>
+
+    <div class="datebar">
+      <span class="dchip">W1 起 <b>6/22 周一</b></span>
+      <span class="dchip hot">北京站 <b>9/12–13(W12)</b></span>
+      <span class="dchip">今天 6/26 = <b>W1 周五</b></span>
+    </div>
+
+    <div class="tracker-hero">
+      <div class="row1">
+        <label>当前晨重 (kg)
+          <input type="number" id="curWeight" data-log step="0.1" placeholder="74" inputmode="decimal">
+        </label>
+        <div class="goalbox"><span>起点 74kg · 目标</span><b>65 kg</b></div>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="barFill"></div></div>
+      <div class="bar-stat"><span id="lostTxt">已减 — kg</span><span id="leftTxt">还差 <b>9.0</b> kg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- A 计划设置 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">A / Plan Settings · 计划设置(改这里,全程自动重算)</span></div>
+    <div class="panel">
+      <h3>每周训练项 <span class="recalc" id="recalcTag">● 实时重算</span></h3>
+      <p class="hint">为每个星期几选一种内容。这是「主模板」——改一次，12 周都按它+阶段递进重新生成。跑速优先：建议保留 ≥1 个「间歇」。</p>
+      <div class="daygrid" id="dayGrid"></div>
+
+      <div class="paces">
+        <label>开始日期(W1 周一)<input type="date" id="p_start"></label>
+        <label>当前间歇配速 /km<input type="text" id="p_cur" placeholder="5:40" inputmode="numeric"></label>
+        <label>峰值目标配速 /km<input type="text" id="p_tgt" placeholder="5:00" inputmode="numeric"></label>
+        <label>比赛配速 /km<input type="text" id="p_race" placeholder="5:10" inputmode="numeric"></label>
+      </div>
+      <div class="actions">
+        <button class="pbtn primary" id="applyBtn">应用 / 重算</button>
+        <button class="pbtn" id="resetPlanBtn">恢复推荐设置</button>
+      </div>
+      <p class="hint" style="margin:1rem 0 0;"><span class="ed">说明 —</span> 这是规则化推演（配速线性逼近目标、量按阶段缩放、减载周自动变轻），帮你快速看到改动的连锁结果；它不替代真人教练的临场判断。</p>
+    </div>
+
+    <h3 style="font-size:1.05rem;margin:2.4rem 0 .8rem;display:flex;align-items:center;gap:.6rem;"><span style="font-family:var(--mono);font-size:.7rem;background:var(--volt);color:var(--ink);border-radius:7px;padding:.2rem .5rem;font-weight:700;">跑速</span>跑速进阶曲线(每周间歇目标配速)</h3>
+    <div class="pacecurve" id="paceCurve"></div>
+    <p class="hint" style="color:var(--muted);font-size:.8rem;margin-top:.6rem;">柱越高 = 配速越快(相对起点的提升)。改上面的配速,这条曲线和每周日程同步变。</p>
+  </div>
+</section>
+
+<!-- B 逐周日程(生成) -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">B / The Schedule · 逐周逐日(自动生成)</span></div>
+    <div class="weeks" id="weeks"></div>
+  </div>
+</section>
+
+<!-- C 站点目标 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">C / Station Targets · 站点目标 + 技术(护伤)</span></div>
+    <h2>8 个站点 · <span class="plus">省时优先级</span></h2>
+    <p class="lead" style="margin:1rem 0 1.6rem;">女子 Open 标准重量 + Sub-1:10 训练目标时间。<b>雪橇是最大时间黑洞</b>,握力是隐形短板,墙球/箭步/Burpee 是你膝伤的高危项——按优先级和护伤要点练。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>站点</th><th>女子 Open</th><th>目标</th><th>技术 / 护伤要点</th><th>优先级</th></tr></thead>
+        <tbody>
+          <tr><td>雪橇推</td><td>50m · 102kg</td><td><span class="vt">~2:00</span></td><td>低身位、手臂撑直、躯干成一条线、<b>小碎步不停</b>;护腰不塌不弓,腿主导。</td><td><b style="color:var(--volt)">最高</b></td></tr>
+          <tr><td>雪橇拉</td><td>50m · 78kg</td><td><span class="vt">~2:30</span></td><td>坐髋后拉、双脚蹬地、手交替快收;少弯腰。</td><td><b style="color:var(--volt)">最高</b></td></tr>
+          <tr><td>墙球</td><td>100 · 4kg · 2.75m</td><td>~5:00</td><td>护膝:下蹲到平行即可不追深;<b>分组 25-25-25-25</b> 防力竭、保节奏。</td><td>高</td></tr>
+          <tr><td>农夫行走</td><td>200m · 2×16kg</td><td>~1:40</td><td><b>握力关键</b>:挺胸收腹、快走不停;平时练农夫+握力。</td><td>高(握力)</td></tr>
+          <tr><td>SkiErg</td><td>1000m</td><td>~4:30</td><td>核心+背阔发力,髋铰链节奏,别只用手臂;护腰中立。</td><td>中</td></tr>
+          <tr><td>划船</td><td>1000m</td><td>~4:15</td><td>腿→髋→臂顺序,回程反向;<b>腰不主动发力</b>,功率靠腿。</td><td>中</td></tr>
+          <tr><td>沙袋箭步</td><td>100m · 10kg</td><td>~3:30</td><td>护膝高危:<b>小步幅、膝不过脚尖、躯干直立</b>;自重→8→10kg 渐进。</td><td>中(护膝)</td></tr>
+          <tr><td>Burpee 跳远</td><td>80m</td><td>~3:30</td><td>护膝:小跳幅、<b>屈膝软着陆</b>;前期用 step-back burpee。</td><td>中(护膝)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="margin-top:1.2rem;font-size:.86rem;"><span class="ed">教练提醒 —</span> 中段选手常在<b>雪橇</b>上丢 3–5 分钟。把雪橇力量(腿推/重雪橇)和握力当作仅次于跑速的第二重点;墙球/箭步/Burpee 在护膝前提下渐进,别为练它们牺牲膝盖。</p>
+  </div>
+</section>
+
+<!-- D 热身 prehab -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">D / Warm-up &amp; Prehab · 热身与护伤(膝/腰)</span></div>
+    <h2>每次开练前 <span class="plus">8 分钟</span></h2>
+    <p class="lead" style="margin:1rem 0 1.6rem;">膝、腰有伤,热身和 prehab 不是可选项。强壮的臀肌+核心+胫前肌是膝腰最好的护具——每次都做,比任何护具有用。</p>
+    <div class="mealgrid">
+      <div class="mealcard">
+        <div class="hd"><h3>跑前 · 动态热身</h3><span class="kc">5–6 min</span></div>
+        <div class="ml"><span class="w">激活</span><span class="f">臀桥 ×15 · 蚌式 ×12/侧 · 鸟狗 ×8/侧</span><span class="p">护腰臀</span></div>
+        <div class="ml"><span class="w">活动度</span><span class="f">髋 90-90 · 踝泵 · 腿摆前后/侧</span><span class="p">髋踝</span></div>
+        <div class="ml"><span class="w">渐进</span><span class="f">慢跑 3′ → 4× 加速跑(strides)</span><span class="p">升温</span></div>
+      </div>
+      <div class="mealcard">
+        <div class="hd"><h3>护膝 Prehab</h3><span class="kc">每周 2–3×</span></div>
+        <div class="ml"><span class="w">VMO</span><span class="f">西班牙深蹲 / 靠墙静蹲 3×30″</span><span class="p">稳髌</span></div>
+        <div class="ml"><span class="w">臀中</span><span class="f">侧向带行走 3×12 · 单腿臀桥</span><span class="p">控膝外翻</span></div>
+        <div class="ml"><span class="w">胫前/腓肠</span><span class="f">提踵 3×15 · 胫前抬 3×15</span><span class="p">缓冲落地</span></div>
+      </div>
+      <div class="mealcard">
+        <div class="hd"><h3>护腰 Prehab</h3><span class="kc">每周 2–3×</span></div>
+        <div class="ml"><span class="w">抗伸展</span><span class="f">死虫 3×8/侧 · 平板 3×40″</span><span class="p">稳脊柱</span></div>
+        <div class="ml"><span class="w">抗旋</span><span class="f">Pallof press 3×12/侧</span><span class="p">核心刚性</span></div>
+        <div class="ml"><span class="w">铰链</span><span class="f">猫驼 ×10 · 髋铰链模式</span><span class="p">用髋不用腰</span></div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1.2rem;font-size:.84rem;"><span class="ed">收操 —</span> 每次结束 5′ 泡沫轴(股四头/臀/胸椎)+ 静态拉伸髋屈肌、腘绳。出现锐痛/放射痛/关节肿胀即停,别忍。</p>
+  </div>
+</section>
+
+<!-- D+ 恢复:筋膜刀 + 拉伸 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">D+ / Recovery · 筋膜刀(IASTM)+ 拉伸课程</span></div>
+    <h2>软组织 <span class="plus">+</span> 柔韧</h2>
+    <p class="lead" style="margin:1rem 0 1.2rem;">先把定位说清:筋膜刀和拉伸是<b style="color:var(--text)">活动度 / 主观舒适度的辅助</b>,证据等级有限、效果短暂——<b style="color:var(--text)">不替代力量训练、不治结构性损伤、也不宣称预防受伤</b>(筋膜刀也并非"松解粘连/加速代谢")。降损主要靠规范热身、渐进加量与力量。在设置面板里可把任意一天设为「拉伸/筋膜」。</p>
+
+    <div style="border-left:3px solid var(--warn);background:rgba(255,138,93,.08);border-radius:0 .8rem .8rem 0;padding:.9rem 1.2rem;font-size:.88rem;margin-bottom:1.6rem;">⛔ <b style="color:var(--warn)">因膝/腰伤史(硬前置)</b>:开始前先取得医生 / 康复治疗师放行;<b>自我筋膜刀前至少跟物理治疗师面授 1 次</b>——学 30–45° 角度、压力分级,以及如何避让骨突 / 关节缝 / 血管 / 神经。临床医嘱与本页冲突时一律听医嘱。</div>
+
+    <div class="mealgrid">
+      <div class="mealcard">
+        <div class="hd"><h3>筋膜刀 / IASTM</h3><span class="kc">练后 / 恢复日</span></div>
+        <div class="ml"><span class="w">时机</span><span class="f">练后(轻–中)或恢复日(系统);练前仅 30–60s 轻刮唤醒,不深刮</span><span class="p">—</span></div>
+        <div class="ml"><span class="w">剂量</span><span class="f">单次 8–12′,单块 60–120s;同一块不连续两天深刮</span><span class="p">周 2–3</span></div>
+        <div class="ml"><span class="w">手法</span><span class="f">必用润滑介质禁干刮;工具 30–45°;顺纤维为主、横向处理热点</span><span class="p">中等力</span></div>
+        <div class="ml"><span class="w">终点</span><span class="f">轻微温热 + 可快速消退的淡红即停。<b>★ 不追求出痧/淤青</b>——痧点=皮下微出血=过度,出现即降力或停</span><span class="p">4–6/10</span></div>
+      </div>
+      <div class="mealcard">
+        <div class="hd"><h3>拉伸课程</h3><span class="kc">分时机</span></div>
+        <div class="ml"><span class="w">练前</span><span class="f">动态激活 5–8′;若做静态,单块 &lt;60s 或直接以动态替代</span><span class="p">动态</span></div>
+        <div class="ml"><span class="w">练后</span><span class="f">静态 30–45s ×3–5 部位,针对当天肌群,不弹震</span><span class="p">静态</span></div>
+        <div class="ml"><span class="w">每周课</span><span class="f">1 次专门活动度课 30–40′:CARs + 静态/PNF + 瑜伽/普拉提</span><span class="p">恢复日</span></div>
+        <div class="ml"><span class="w">护伤</span><span class="f">护膝:扶墙、骨盆中立,禁猛拉压膝;护腰:禁圆背强够脚尖、扭转来自胸椎;<b>松/不稳关节不强求端范围</b></span><span class="p">—</span></div>
+      </div>
+    </div>
+
+    <p class="credits" style="margin-top:2rem;">筋膜刀目标肌群(HYROX 受力 · 仅作活动度/舒适处理)</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>部位</th><th>触发</th><th>手法 / 注意</th></tr></thead>
+        <tbody>
+          <tr><td>前臂屈/伸肌</td><td>SkiErg / 划船 / 农夫 / 雪橇拉(握力)</td><td>顺纤维,肘部肌腱处轻横刮</td></tr>
+          <tr><td>股四头(含股内侧肌腹)</td><td>跑 / 雪橇推</td><td>仅肌腹;<b>真正护膝靠力量训练,刮拭不能强化或改髌骨追踪</b></td></tr>
+          <tr><td>TFL + 股外侧</td><td>跑</td><td>刮肌腹,<b>不在 IT 带条索上硬磨</b></td></tr>
+          <tr><td>小腿 + 足底</td><td>跑 / 弓步</td><td>顺纤维;足底用工具尖端点刮</td></tr>
+          <tr><td>腰段竖脊肌 + 臀</td><td>护腰 / 跑</td><td><b>只刮两侧肌腹,避开棘突与肾区</b>,力度轻–中</td></tr>
+          <tr><td>背阔 / 肩后</td><td>SkiErg / 划船 / 墙球</td><td>顺纤维长扫,改善肩胸活动度</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="border-left:3px solid var(--warn);background:rgba(255,138,93,.08);border-radius:0 .8rem .8rem 0;padding:.9rem 1.2rem;font-size:.86rem;margin-top:1.4rem;"><b style="color:var(--warn)">绝对禁刮</b> — 急性伤/拉伤 72h 内、肿胀发炎、开放伤/皮疹/感染、静脉曲张、凝血障碍或服抗凝药、骨突/脊柱棘突/关节缝/肾区/大血管区、孕腰腹。膝:不直刮髌骨与髌韧带止点;腰:避棘突肾区。出现<b>放射麻木/刺痛/关节锐痛立即停</b>。</div>
+
+    <p class="credits" style="margin-top:2rem;">嵌入 4 练 HYROX 周</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>时机</th><th>筋膜刀</th><th>拉伸</th></tr></thead>
+        <tbody>
+          <tr><td>每次课后</td><td>轻刮当天受力肌 ~60s/块</td><td>静态 5–8′</td></tr>
+          <tr><td>空闲日 ×1(非赛前 48h)</td><td><span class="vt">系统 8–10′</span></td><td><span class="vt">专门拉伸/活动度课 30–40′</span></td></tr>
+          <tr><td>赛前 48–72h</td><td>停深刮,只轻顺纤维引流</td><td>停高强度,只轻动态</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- E 比赛执行 + 计算器 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">E / Race Execution · 比赛执行 + 配速计算</span></div>
+    <h2>把 1:10 <span class="plus">拆成可执行的数字</span></h2>
+    <div class="panel" style="margin-top:.5rem;">
+      <h3>配速计算器 <span class="recalc">● 实时</span></h3>
+      <p class="hint">输入目标完赛时间 + 预估站点总耗时,算出 8 段跑必须达到的均速,并对照你当前的跑速计划做现实校验。</p>
+      <div class="paces" style="border-top:0;padding-top:0;margin-top:.4rem;">
+        <label>目标完赛 (mm:ss)<input type="text" id="c_finish" value="70:00" inputmode="numeric"></label>
+        <label>预估站点总耗时 (mm:ss)<input type="text" id="c_stations" value="26:00" inputmode="numeric"></label>
+        <label>转换区 Roxzone (mm:ss)<input type="text" id="c_rox" value="3:00" inputmode="numeric"></label>
+      </div>
+      <div id="c_out" style="margin-top:1.3rem;padding:1.1rem 1.3rem;border:1px solid rgba(var(--volt-rgb),.4);border-radius:1rem;background:rgba(var(--volt-rgb),.05);font-size:.95rem;"></div>
+    </div>
+    <div class="mealgrid" style="margin-top:1.6rem;">
+      <div class="mealcard"><div class="hd"><h3>开局 · 别上头</h3><span class="kc">控速</span></div>
+        <div class="ml"><span class="w">第1跑</span><span class="f">比目标配速慢 5–10″/km,留力给后半程</span><span class="p">关键</span></div>
+        <div class="ml"><span class="w">SkiErg</span><span class="f">中等强度进入,别一上来拉爆心率</span><span class="p">省力</span></div>
+      </div>
+      <div class="mealcard train"><div class="hd"><h3>中段 · 守雪橇</h3><span class="kc">最关键</span></div>
+        <div class="ml"><span class="w">雪橇</span><span class="f">小碎步不停,推不动也别站着歇</span><span class="p">省时</span></div>
+        <div class="ml"><span class="w">农夫</span><span class="f">握不住前先调整,掉地罚时更亏</span><span class="p">握力</span></div>
+      </div>
+      <div class="mealcard"><div class="hd"><h3>收尾 · 墙球分组</h3><span class="kc">节奏</span></div>
+        <div class="ml"><span class="w">墙球100</span><span class="f">预先定 25-25-25-25,绝不练到力竭再停</span><span class="p">稳定</span></div>
+        <div class="ml"><span class="w">末段跑</span><span class="f">这里靠的就是你练的跑速储备</span><span class="p">★ 跑速</span></div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:1.2rem;font-size:.84rem;"><span class="ed">转换区 —</span> Roxzone 每次小跑通过、不走;补给站快速喝一口电解质。全程心率别在前 1/3 就拉满。</p>
+  </div>
+</section>
+
+<!-- C 饮食 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">F / Nutrition · 饮食计划(无牛羊 · 周期化)</span></div>
+    <h2>训练日 <span class="plus">vs</span> 休息日</h2>
+    <p class="lead" style="margin:1rem 0 1.6rem;">两套模板换着吃：训练日多碳保跑步表现，休息日降碳加速减脂，蛋白都保持 ~135g。蛋白来源全部避开牛羊。</p>
+    <div class="mealgrid">
+      <div class="mealcard train">
+        <div class="hd"><h3>训练日</h3><span class="kc">≈ 1700 kcal · P135</span></div>
+        <div class="ml"><span class="w">早餐</span><span class="f">燕麦 40g + 鸡蛋 2 + 希腊酸奶 + 蓝莓</span><span class="p">420 · P30</span></div>
+        <div class="ml"><span class="w">午餐</span><span class="f">鸡胸/鱼 150g + 糙米 + 蔬菜 + 橄榄油</span><span class="p">560 · P40</span></div>
+        <div class="ml"><span class="w">练前</span><span class="f">香蕉 1 根(练前 60–90′)</span><span class="p">110</span></div>
+        <div class="ml"><span class="w">练后</span><span class="f">乳清蛋白 1 勺 + 少量快碳</span><span class="p">180 · P25</span></div>
+        <div class="ml"><span class="w">晚餐</span><span class="f">虾/豆腐 + 红薯 + 沙拉</span><span class="p">480 · P38</span></div>
+      </div>
+      <div class="mealcard">
+        <div class="hd"><h3>休息日</h3><span class="kc">≈ 1550 kcal · P135</span></div>
+        <div class="ml"><span class="w">早餐</span><span class="f">希腊酸奶 + 鸡蛋 2 + 牛油果 ¼ + 莓果</span><span class="p">380 · P32</span></div>
+        <div class="ml"><span class="w">午餐</span><span class="f">鸡胸/鱼 150g + 藜麦小份 + 大量蔬菜</span><span class="p">470 · P42</span></div>
+        <div class="ml"><span class="w">加餐</span><span class="f">乳清蛋白 + 坚果一小把</span><span class="p">220 · P28</span></div>
+        <div class="ml"><span class="w">晚餐</span><span class="f">豆腐/鱼 + 蔬菜 + 少量红薯</span><span class="p">480 · P38</span></div>
+      </div>
+    </div>
+    <p class="mealnote"><b>原则</b> — 蛋白每餐 30–40g；每天 2L+ 水；每周留 1 餐弹性餐。蛋白可选：鸡、鱼、虾、蛋、希腊酸奶、豆腐/毛豆、瘦猪肉、乳清。<b>避开</b>：牛肉、羊肉(忌口)、含糖饮料、油炸。<b>跑速课当天别限碳</b>。</p>
+
+    <h3 style="font-size:1.12rem;margin:2.6rem 0 .8rem;display:flex;align-items:center;gap:.6rem;"><span style="font-family:var(--mono);font-size:.66rem;background:var(--volt);color:var(--ink);border-radius:7px;padding:.2rem .5rem;font-weight:700;">周期化</span>热量随阶段走——别用一个赤字跑到底</h3>
+    <p class="lead" style="margin:0 0 1.2rem;font-size:.92rem;">越接近比赛,赤字越小,目的是<b style="color:var(--text)">保住跑速峰值和恢复</b>。「为训练量供能」(fuel for the work required),减脂的赤字主要从休息日来。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>阶段</th><th>周次</th><th>每日热量</th><th>赤字</th><th>重点</th></tr></thead>
+        <tbody>
+          <tr><td>基础期</td><td>W1–4</td><td><b>1600–1650</b></td><td>~600</td><td>体重基数大,减脂最快窗口</td></tr>
+          <tr><td>专项期</td><td>W5–8</td><td><b>1750</b></td><td>~450</td><td>跑量上升,给间歇/长课供能</td></tr>
+          <tr><td>特异期</td><td>W9–11</td><td><span class="vt">1850–1900</span></td><td>~300</td><td>保跑速峰值+模拟赛恢复</td></tr>
+          <tr class="total"><td>比赛周</td><td>W12</td><td>~2100 + 补碳</td><td>0(维持)</td><td>停止赤字,填满糖原</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:1.12rem;margin:2.4rem 0 .8rem;display:flex;align-items:center;gap:.6rem;"><span style="font-family:var(--mono);font-size:.66rem;background:var(--volt);color:var(--ink);border-radius:7px;padding:.2rem .5rem;font-weight:700;">比赛日</span>赛周 + 当天 + 赛中补给</h3>
+    <div class="mealgrid">
+      <div class="mealcard"><div class="hd"><h3>赛前 2–3 天</h3><span class="kc">填糖原</span></div>
+        <div class="ml"><span class="w">碳水</span><span class="f">提到 5–7g/kg(米饭/面/红薯),降油炸高纤</span><span class="p">糖原</span></div>
+        <div class="ml"><span class="w">水盐</span><span class="f">足量水 + 适量钠,睡眠优先</span><span class="p">水合</span></div>
+      </div>
+      <div class="mealcard train"><div class="hd"><h3>比赛当天晨</h3><span class="kc">赛前 3h</span></div>
+        <div class="ml"><span class="w">早餐</span><span class="f">燕麦/白吐司+蜂蜜+香蕉,低脂低纤,~80–120g 碳水</span><span class="p">P 适量</span></div>
+        <div class="ml"><span class="w">赛前 30′</span><span class="f">半根香蕉/能量胶 + 咖啡因 ~3mg/kg</span><span class="p">提神</span></div>
+      </div>
+      <div class="mealcard"><div class="hd"><h3>赛中 + 赛后</h3><span class="kc">~70 min</span></div>
+        <div class="ml"><span class="w">赛中</span><span class="f">以电解质水为主;易掉速可在中段补 1 个胶(W11 先演练)</span><span class="p">电解质</span></div>
+        <div class="ml"><span class="w">赛后</span><span class="f">30–40g 蛋白 + 快碳,尽快补</span><span class="p">恢复</span></div>
+      </div>
+    </div>
+
+    <p class="mealnote" style="margin-top:1.4rem;"><b>微量营养 / 补剂(女性耐力)</b> — <b>铁</b>:女性耐力易缺,建议查血清铁蛋白,缺则在医生指导下补;<b>肌酸</b> 3–5g/天(助力量/雪橇,女性安全,略增水重属正常);<b>电解质/钠</b> 大汗课补;<b>维 D + Omega-3</b> 日常。咖啡因当比赛日 ergogenic。<span class="ed">补剂均非必需且因人而异,有基础疾病请先咨询医生。</span></p>
+  </div>
+</section>
+
+<!-- D 记录 -->
+<section class="logsec">
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">G / Your Log · 状态记录(自动保存)</span></div>
+    <h2>每周填一次<br>看着数字下来</h2>
+    <p class="lead" style="margin-top:1rem;">三张表 + 模拟赛基准，直接填——<b>自动保存在你这台浏览器</b>。换设备前用「复制全部记录」备份。</p>
+    <div class="logtools">
+      <button class="lbtn primary" id="exportBtn">复制全部记录</button>
+      <button class="lbtn" id="csvBtn">导出 CSV</button>
+      <button class="lbtn" id="jsonBtn">备份 JSON</button>
+      <label class="lbtn" for="importFile">导入 JSON</label><input type="file" id="importFile" accept="application/json,.json">
+      <button class="lbtn" id="resetBtn">清空记录</button>
+      <span class="savehint" id="saveHint">✓ 已自动保存</span>
+    </div>
+
+    <h3 class="subh"><span class="n">1</span>体重与训练完成</h3>
+    <div class="logtbl-wrap"><table class="log"><thead><tr><th>周</th><th>日期</th><th>目标晨重</th><th>实际晨重 kg</th><th>腰围 cm</th><th>完成训练</th><th>备注</th></tr></thead><tbody id="weightBody"></tbody></table></div>
+
+    <h3 class="subh"><span class="n">2</span>训练表现记录(跑速优先)</h3>
+    <div class="logtbl-wrap"><table class="log"><thead><tr><th>周</th><th>日期</th><th>间歇 实际(组@配速)</th><th>专项(轮·RPE)</th><th>长课(km@配速)</th><th>亮点 / RPE</th></tr></thead><tbody id="perfBody"></tbody></table></div>
+
+    <h3 class="subh"><span class="n">3</span>饮食记录</h3>
+    <div class="logtbl-wrap"><table class="log"><thead><tr><th>周</th><th>日期</th><th>蛋白达标(天/7)</th><th>热量达标(天/7)</th><th>弹性餐(次)</th><th>精力/饥饿</th><th>备注</th></tr></thead><tbody id="mealBody"></tbody></table></div>
+
+    <h3 class="subh"><span class="n">4</span>模拟赛 / 基准</h3>
+    <div class="bench">
+      <div class="bc"><span class="credits">起点 · W1 6/22 周</span><h4>第 0 周基线</h4><input type="text" id="b_base" data-log placeholder="1km TT 配速 / 体重 / 腰围"></div>
+      <div class="bc"><span class="credits">半程 · W9 8/21(周五)</span><h4>半程模拟成绩</h4><input type="text" id="b_half" data-log placeholder="半程总时间 + 感受"></div>
+      <div class="bc"><span class="credits">全程 · W11 9/4(周五)</span><h4>全程模拟成绩</h4><input type="text" id="b_full" data-log placeholder="全程总时间 → 对照 1:10"></div>
+      <div class="bc"><span class="credits">弱项</span><h4>最需要补的站点</h4><input type="text" id="b_weak" data-log placeholder="如：墙球后段掉速"></div>
+    </div>
+
+        <h3 style="color:#0a0a0c;font-size:1.12rem;font-weight:800;margin:2.2rem 0 .6rem;">★ 训练反馈日志(按日期累积)</h3>
+    <p class="lead" style="margin:0 0 .4rem;color:rgba(17,19,23,.7);">每次训练/复盘后写一条——RPE、睡眠、月经、伤痛、当天感受。<b>自动盖日期、累积保存</b>,日后可逐条对比分析。</p>
+    <div class="jbox">
+      <textarea id="jText" placeholder="例:间歇 5×1km@5:20 完成,RPE8;膝无痛;睡 7.5h;饮食达标。"></textarea>
+      <div style="margin-top:.6rem;"><button class="lbtn primary" id="addJBtn">+ 添加记录(盖日期)</button></div>
+      <div class="jlist" id="jList"></div>
+    </div>
+    <div class="dnote">💾 <b>数据安全 — 务必定期备份</b>:以上全部记录与反馈只存在<b>这台浏览器</b>(清缓存 / 换设备会丢)。请定期点「备份 JSON」下载存档;「导出 CSV」可在 Excel / 表格里做趋势对比与分析;换设备用「导入 JSON」恢复。</div>
+    <div class="disclaimer">⚠️ <b>表现是底线。</b>74→65kg(0.7–0.75kg/周)偏激进,正常会前快后慢。若连续两周长课变慢、<b>间歇掉速</b>或恢复变差 → 立刻把每日热量上调 150–200kcal。跑速课优先级最高,别让减脂拖垮它。膝/腰锐痛或肿胀即停并复评。</div>
+  </div>
+</section>
+
+<footer>
+  <p class="credits">HYROX SUB 1:10 · Adaptive · Run-Speed First<br>W1 6/22 → 北京站 9/12–13 · 74kg → <b style="color:var(--volt)">65kg</b> · 4 days/week · knee &amp; back smart · no beef/lamb</p>
+  <p class="disc">本页为个性化训练参考,非医疗或专业教练诊断。设置与记录仅存于本地浏览器,换设备/清缓存会丢失,请用「复制全部记录」备份。</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  var onScroll=function(){bar.classList.toggle('scrolled',window.scrollY>40);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var START=74, GOAL=65, LOGKEY='hyroxLogV2', PLANKEY='hyroxPlanV3', WEEKS=12;
+  var targets=[73.3,72.6,71.9,71.4,70.5,69.75,69.0,68.5,67.75,67.0,66.0,65.0];
+  var WD=['周一','周二','周三','周四','周五','周六','周日'];
+  var TYPES={interval:'间歇',strength:'力量',compromised:'专项',long:'长课',tempo:'节奏跑',easy:'轻松跑',mobility:'拉伸/筋膜',rest:'恢复'};
+  var RUNTYPES={interval:1,long:1,tempo:1,easy:1,compromised:1};
+
+  var DEFAULTS={
+    startISO:'2026-06-22', curPace:340, tgtPace:300, racePace:310,
+    days:{0:'interval',1:'rest',2:'strength',3:'rest',4:'compromised',5:'rest',6:'long'}
+  };
+  var P=JSON.parse(JSON.stringify(DEFAULTS));
+
+  // ---- helpers ----
+  function fmt(s){var m=Math.floor(s/60),ss=Math.round(s%60);return m+':'+(ss<10?'0':'')+ss;}
+  function parse(str,def){var m=/^(\d+):(\d{1,2})$/.exec((str||'').trim());if(!m)return def;return (+m[1])*60+(+m[2]);}
+  function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
+  function md(d){return (d.getMonth()+1)+'/'+d.getDate();}
+  function startDate(){var p=(P.startISO||'2026-06-22').split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function weekStart(w){return addDays(startDate(),(w-1)*7);}
+
+  function phaseOf(w){
+    var b=Math.round(WEEKS/3), s=Math.round(WEEKS*2/3);   // 4, 8
+    if(w>=WEEKS) return 'taper';
+    if(w>s) return 'peak';
+    if(w===s) return 'spec-deload';
+    if(w>b) return 'spec';
+    if(w===b) return 'base-deload';
+    return 'base';
+  }
+  function isDeload(w){return phaseOf(w).indexOf('deload')>=0;}
+  function phaseTitle(w){
+    if(w===9) return '特异期 · 半程模拟';
+    if(w===11) return '特异期 · 全程模拟(峰值)';
+    var p=phaseOf(w);
+    return {base:'基础期 · 打地基','base-deload':'基础期 · 巩固周(轻)',spec:'专项期 · compromised','spec-deload':'专项期 · 减载周(轻)',peak:'特异期 · 比赛锐化',taper:'减量期 · Taper → 北京站'}[p];
+  }
+  // run-speed progression
+  function intervalPace(w){
+    if(phaseOf(w)==='taper') return P.racePace;
+    var peakEnd=WEEKS-1, prog=Math.min(1,Math.max(0,(w-1)/(peakEnd-1)));
+    var pace=Math.round(P.curPace+(P.tgtPace-P.curPace)*prog);
+    if(isDeload(w)) pace+=12;
+    return pace;
+  }
+  function intervalReps(w){
+    var p=phaseOf(w);
+    if(p==='taper') return '3×1km';
+    if(w<=2) return '4–5×800m';
+    if(p.indexOf('base')>=0) return '4×1km';
+    if(w===7) return '4×1km + 4×400m 快';
+    if(w===11) return '8×400m 锐化';
+    return (p.indexOf('spec')>=0?'5–6×1km':'5–6×1km');
+  }
+  function compPace(w){var peakEnd=WEEKS-1,prog=Math.min(1,Math.max(0,(w-1)/(peakEnd-1)));return P.racePace+Math.round(20*(1-prog));}
+  function compRounds(w){var p=phaseOf(w);if(p.indexOf('base')>=0)return 4;if(p.indexOf('spec')>=0)return (w>=6?6:5);return 5;}
+  function longKm(w){
+    var map={1:8,2:9,3:10,4:8,5:10,6:11,7:12,8:10,9:10,10:12,11:8,12:6};
+    return map[w]||10;
+  }
+  function tempoPace(){return P.racePace+60;}
+
+  function content(type,w){
+    var dl=isDeload(w), ph=phaseOf(w);
+    if(ph==='taper'){
+      if(type==='interval') return '提神：<b>3×1km @ 比赛配速 '+fmt(P.racePace)+'/km</b>,量减半,保持腿的「快」感。<i>★ 跑速</i>';
+      if(type==='strength') return '激活力量：每动作 1–2 组,不力竭。';
+      if(type==='compromised') return '收线：站点各 1 组轻量找手感 + 4 组 strides。';
+      if(type==='long'||type==='easy'||type==='tempo') return '<b>6km</b> easy @7:50 + 4 组 strides。';
+      if(type==='mobility') return '轻拉伸 + 轻筋膜刀放松(不深刮),助恢复。';
+      return '休息 / 睡眠优先,开始补碳填糖原。';
+    }
+    switch(type){
+      case 'interval':
+        var hill = (ph.indexOf('base')>=0) ? ' 护膝备选:可用 <b>6–8×15″ 上坡冲刺</b>(走回恢复)替代——低冲击练跑步力量与跑姿。' : '';
+        return '热身 10′ + 髋膝激活。主课 <b>'+intervalReps(w)+'</b> @<span class="vt">'+fmt(intervalPace(w))+'/km</span>'+(dl?'(减载·略松)':'')+',组间慢跑 2′,收 <b>4–6×100m strides</b>(找跑姿)。'+hill+' <i>★ 跑速主课(本周最重要)</i>';
+      case 'strength':
+        var t = ph.indexOf('base')>=0 ? '力量A · 动作模式+单腿稳定：Trap-bar 硬拉 3×8 · 单腿 RDL 3×8/腿 · 哑铃推举 3×10 · 坐姿划船 3×12 · <b>农夫握力 3×40m</b> · 胫前肌/提踵 + 核心(死虫/Pallof)。中立脊柱护腰。'
+              : ph.indexOf('spec')>=0 ? '力量B · 雪橇专项力量(最大时间黑洞):<b>腿举/高位深蹲 4×6</b>(护膝控深度) · <b>重雪橇 推+拉 4×15m</b> · RDL 3×6 · 墙球 4×20 · <b>农夫 2×16kg×60m(握力)</b> · 抗伸展核心。'
+              : '力量维持 · 力量耐力:雪橇推/拉中量速度组 · 墙球 100 连测 · 农夫长距离 · 轻 RDL。不留疲劳,服务跑速。';
+        return t+(dl?' <b>(减载周:组数减半、重量降 10–15%)</b>':'');
+      case 'compromised':
+        if(w===9) return '<b>半程 Hyrox 计时</b>：4×(1km 跑 + 站点)=Ski1000 / 雪橇推50m / 雪橇拉50m / 划1000。记录总时间→填基准。';
+        if(w===11) return '<b>完整 Hyrox 模拟</b>(配速可降但全程 8 跑+8 站点不停)。演练补给/转换区/墙球分组。记录总时间。';
+        return '<b>(1km @'+fmt(compPace(w))+' + 1 站点) ×'+compRounds(w)+'</b>。站点轮(低冲击优先)：Ski → 划船 → 雪橇推/拉 → 农夫 → 墙球(控深度)。';
+      case 'long':
+        var km=longKm(w), seg='';
+        if(w===5) seg=' 含中段 <b>3km @<span class="vt">'+fmt(tempoPace())+'</span></b> tempo';
+        else if(w===3) seg=' 渐进:后 3km @<span class="vt">'+fmt(tempoPace()+20)+'</span>';
+        return 'Z2 长跑 <b>'+km+'km</b> @7:30–7:45'+seg+'。<i>★ 有氧底子</i>';
+      case 'tempo':
+        return '节奏跑：热身后 <b>5–6km @'+fmt(tempoPace())+'/km</b>,稳定不冲。<i>★ 跑速</i>';
+      case 'easy':
+        return 'Z2 轻松跑 <b>30–40′</b> @7:45,能说话强度(主动恢复)。';
+      case 'mobility':
+        return '拉伸 / 活动度课 30–40′:CARs + 静态/PNF(髋/胸椎/踝/肩)+ 轻筋膜刀 8–12′(顺纤维,不追出痧)。护膝扶墙骨盆中立、护腰禁圆背强够脚尖。<i>★ 恢复</i>';
+      default:
+        return '休息 / 20′ 散步 + 髋灵活(90-90、髋桥);可轻筋膜刀放松 + 静态拉伸(不深刮、不追出痧)。';
+    }
+  }
+
+  function weekHTML(w){
+    var s=weekStart(w), open=(w===1?' open':''), peak=(w>=9?' peak':'');
+    var hasInt=false; for(var k in P.days){if(P.days[k]==='interval')hasInt=true;}
+    var days='';
+    for(var i=0;i<7;i++){
+      var ph=phaseOf(w), type, tag, train, runc='';
+      if(ph==='taper' && i>=5){ // race weekend fixed
+        type='__race'; train=true; tag='北京站';
+        var rd=md(addDays(s,i));
+        runc=' run';
+        var c = i===5 ? '<span class="vt">RACE DAY · '+rd+'</span> — 分组若在今天就开赛;否则 20′ shakeout + strides。配速策略:别一上来冲,留力后半程。'
+                      : '<span class="vt">RACE DAY · '+rd+'</span> — 分组若在今天则比;另一天作 shakeout/休息。';
+      } else {
+        type=P.days[i]||'rest';
+        train=(type!=='rest'); tag=TYPES[type];
+        if(RUNTYPES[type]) runc=' run';
+        var c=content(type,w);
+      }
+      days+='<div class="day'+(train?' train':'')+runc+'"><span class="d">'+WD[i]+'<small class="dt">'+md(addDays(s,i))+'</small></span><span class="ty">'+tag+'</span><span class="c">'+c+'</span></div>';
+    }
+    var tw=targets[w-1].toFixed(1);
+    var meta = hasInt ? '跑速 <b>'+fmt(intervalPace(w))+'</b> · '+tw+'kg' : '目标晨重 <b>'+tw+'kg</b>';
+    return '<details class="week'+peak+'"'+open+'><summary>'+
+      '<div class="wk">W<b>'+w+'</b><span class="wk-dates">'+md(s)+'–'+md(addDays(s,6))+'</span></div>'+
+      '<div class="ttl">'+phaseTitle(w)+'<small>'+(w===12?'taper 贴住比赛周':('间歇 '+(hasInt?fmt(intervalPace(w))+'/km':'—')))+'<span class="chev">›</span></small></div>'+
+      '<div class="meta">'+meta+'</div></summary>'+
+      '<div class="days">'+days+'</div></details>';
+  }
+
+  function paceCurveHTML(){
+    var max=P.curPace-P.tgtPace; if(max<=0)max=1;
+    var h='';
+    for(var w=1;w<=WEEKS;w++){
+      var pace=intervalPace(w), imp=P.curPace-pace, ratio=Math.max(0,Math.min(1,imp/max));
+      var px=Math.round(24+106*ratio);
+      h+='<div class="pbar'+(w>=9?' peak':'')+'"><div class="bar" style="height:'+px+'px"></div><div class="pl">'+fmt(pace)+'</div><div class="wl">W'+w+'</div></div>';
+    }
+    return h;
+  }
+
+  // ---- objective guard ----
+  function checkObjective(){
+    var runDays=0,intDays=0;
+    for(var k in P.days){if(RUNTYPES[P.days[k]])runDays++;if(P.days[k]==='interval')intDays++;}
+    var b=document.getElementById('objBanner');
+    if(intDays===0){
+      b.className='obj warn';
+      b.innerHTML='<div class="ic">!</div><div class="tx"><b>跑速目标受损</b><span>你没有安排「间歇」课。跑速是首要目标——强烈建议至少把一天设为<b style="color:var(--warn)">间歇</b>,否则配速很难推进到 5:00/km。</span></div>';
+    } else {
+      b.className='obj';
+      b.innerHTML='<div class="ic">★</div><div class="tx"><b>Primary Objective · 首要目标</b><span>跑速优先 · 本计划含 <b style="color:var(--volt)">'+intDays+'</b> 次间歇 + 共 <b style="color:var(--volt)">'+runDays+'</b> 个跑步日。目标 1km 配速 '+fmt(P.curPace)+' → <b style="color:var(--volt)">'+fmt(P.tgtPace)+'/km</b>。</span></div>';
+    }
+  }
+
+  // ---- render ----
+  function render(){
+    document.getElementById('weeks').innerHTML=Array.from({length:WEEKS},function(_,i){return weekHTML(i+1);}).join('');
+    document.getElementById('paceCurve').innerHTML=paceCurveHTML();
+    checkObjective();
+    buildLogTables();
+    loadLog();
+    updateProgress();
+    if(typeof runCalc==='function') runCalc();
+  }
+
+  // ---- day-grid controls ----
+  function buildDayGrid(){
+    var g=document.getElementById('dayGrid'),h='';
+    var opts=Object.keys(TYPES).map(function(k){return {k:k,v:TYPES[k]};});
+    for(var i=0;i<7;i++){
+      var sel='<select data-day="'+i+'">';
+      opts.forEach(function(o){sel+='<option value="'+o.k+'"'+(P.days[i]===o.k?' selected':'')+'>'+o.v+'</option>';});
+      sel+='</select>';
+      h+='<div class="dc"><div class="wd">'+WD[i]+'</div>'+sel+'</div>';
+    }
+    g.innerHTML=h;
+    g.querySelectorAll('select').forEach(function(s){
+      s.addEventListener('change',function(){P.days[+this.dataset.day]=this.value;savePlan();render();});
+    });
+  }
+  function fillPaceInputs(){
+    document.getElementById('p_start').value=P.startISO;
+    document.getElementById('p_cur').value=fmt(P.curPace);
+    document.getElementById('p_tgt').value=fmt(P.tgtPace);
+    document.getElementById('p_race').value=fmt(P.racePace);
+  }
+  function applyPaces(){
+    P.startISO=document.getElementById('p_start').value||DEFAULTS.startISO;
+    P.curPace=parse(document.getElementById('p_cur').value,P.curPace);
+    P.tgtPace=parse(document.getElementById('p_tgt').value,P.tgtPace);
+    P.racePace=parse(document.getElementById('p_race').value,P.racePace);
+    savePlan();fillPaceInputs();render();toast('已按新设置重算 12 周');
+  }
+
+  // ---- plan persistence ----
+  function savePlan(){try{localStorage.setItem(PLANKEY,JSON.stringify(P));}catch(e){}}
+  function loadPlan(){try{var r=localStorage.getItem(PLANKEY);if(r){var d=JSON.parse(r);P.startISO=d.startISO||P.startISO;P.curPace=d.curPace||P.curPace;P.tgtPace=d.tgtPace||P.tgtPace;P.racePace=d.racePace||P.racePace;if(d.days)P.days=d.days;}}catch(e){}}
+
+  // ---- log tables ----
+  function inNum(id,step,ph){return '<input type="number" step="'+(step||'0.1')+'" inputmode="decimal" data-log id="'+id+'" placeholder="'+(ph||'—')+'">';}
+  function inTxt(id,ph){return '<input type="text" data-log id="'+id+'" placeholder="'+(ph||'—')+'">';}
+  function sessBoxes(w){var s='';for(var i=0;i<4;i++){s+='<input type="checkbox" data-log id="w'+w+'_s'+i+'" title="第'+w+'周训练">';}return '<div class="sess">'+s+'</div>';}
+  function buildLogTables(){
+    var wb=document.getElementById('weightBody'),pb=document.getElementById('perfBody'),mb=document.getElementById('mealBody');
+    var hw='',hp='',hm='';
+    for(var w=1;w<=WEEKS;w++){
+      var s=weekStart(w), dr='<td class="dtc">'+md(s)+'–'+md(addDays(s,6))+'</td>';
+      hw+='<tr><td class="wkc">W'+w+'</td>'+dr+'<td class="tgt">'+targets[w-1].toFixed(1)+'</td><td>'+inNum('w'+w+'_wt','0.1')+'</td><td>'+inNum('w'+w+'_ws','0.5')+'</td><td>'+sessBoxes(w)+'</td><td>'+inTxt('w'+w+'_nt')+'</td></tr>';
+      hp+='<tr><td class="wkc">W'+w+'</td>'+dr+'<td>'+inTxt('p'+w+'_int','如 5×1km@5:20')+'</td><td>'+inTxt('p'+w+'_spec','轮·RPE')+'</td><td>'+inTxt('p'+w+'_long','km@配速')+'</td><td>'+inTxt('p'+w+'_hl')+'</td></tr>';
+      hm+='<tr><td class="wkc">W'+w+'</td>'+dr+'<td>'+inNum('m'+w+'_prot','1','/7')+'</td><td>'+inNum('m'+w+'_kcal','1','/7')+'</td><td>'+inNum('m'+w+'_flex','1')+'</td><td>'+inTxt('m'+w+'_en','如 精力佳')+'</td><td>'+inTxt('m'+w+'_note')+'</td></tr>';
+    }
+    wb.innerHTML=hw;pb.innerHTML=hp;mb.innerHTML=hm;
+  }
+
+  // ---- log persistence ----
+  var hint=document.getElementById('toast');
+  function toast(m){hint.textContent=m;hint.classList.add('show');setTimeout(function(){hint.classList.remove('show');},1800);}
+  var saveHint=document.getElementById('saveHint');
+  function collect(){var d={};document.querySelectorAll('[data-log]').forEach(function(el){d[el.id]=el.type==='checkbox'?el.checked:el.value;});return d;}
+  function saveLog(){try{localStorage.setItem(LOGKEY,JSON.stringify(collect()));saveHint.textContent='✓ 已自动保存 · '+new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});}catch(e){saveHint.textContent='⚠ 保存失败';}}
+  function loadLog(){var raw;try{raw=localStorage.getItem(LOGKEY);}catch(e){return;}if(!raw)return;var d=JSON.parse(raw);for(var k in d){var el=document.getElementById(k);if(!el)continue;if(el.type==='checkbox')el.checked=d[k];else el.value=d[k];}}
+
+  function updateProgress(){
+    var cw=document.getElementById('curWeight'); if(!cw)return;
+    var cur=parseFloat(cw.value);
+    var fill=document.getElementById('barFill'),lost=document.getElementById('lostTxt'),left=document.getElementById('leftTxt');
+    if(isNaN(cur)){fill.style.width='0';lost.textContent='已减 — kg';left.innerHTML='还差 <b>9.0</b> kg';return;}
+    var pct=Math.max(0,Math.min(100,(START-cur)/(START-GOAL)*100));fill.style.width=pct+'%';
+    var dl=(START-cur),lf=(cur-GOAL);
+    lost.innerHTML='已减 <b style="color:var(--volt-on-light);font-weight:800">'+(dl>=0?dl.toFixed(1):'0.0')+'</b> kg';
+    left.innerHTML= lf<=0 ? '🎉 <b>已达标 65kg</b>' : '还差 <b>'+lf.toFixed(1)+'</b> kg';
+  }
+
+  // ---- events ----
+  var t;
+  document.addEventListener('input',function(e){if(!e.target.matches('[data-log]'))return;clearTimeout(t);t=setTimeout(saveLog,400);if(e.target.id==='curWeight')updateProgress();});
+  document.addEventListener('change',function(e){if(e.target.matches('[data-log]'))saveLog();});
+  document.getElementById('applyBtn').addEventListener('click',applyPaces);
+  ['p_start','p_cur','p_tgt','p_race'].forEach(function(id){document.getElementById(id).addEventListener('change',applyPaces);});
+  document.getElementById('resetPlanBtn').addEventListener('click',function(){P=JSON.parse(JSON.stringify(DEFAULTS));savePlan();buildDayGrid();fillPaceInputs();render();toast('已恢复推荐设置');});
+  document.getElementById('exportBtn').addEventListener('click',function(){
+    var txt=JSON.stringify({plan:P,log:collect()},null,2);
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(function(){toast('已复制设置+记录到剪贴板');},function(){toast('复制失败');});}else{toast('浏览器不支持自动复制');}
+  });
+  document.getElementById('resetBtn').addEventListener('click',function(){
+    if(this.dataset.armed){try{localStorage.removeItem(LOGKEY);}catch(e){}document.querySelectorAll('[data-log]').forEach(function(el){if(el.type==='checkbox')el.checked=false;else el.value='';});updateProgress();toast('记录已清空');this.dataset.armed='';this.textContent='清空记录';}
+    else{this.dataset.armed='1';this.textContent='再点一次确认';var b=this;setTimeout(function(){b.dataset.armed='';b.textContent='清空记录';},3000);}
+  });
+
+  // ---- race-pace calculator ----
+  function runCalc(){
+    var out=document.getElementById('c_out'); if(!out)return;
+    var fin=parse(document.getElementById('c_finish').value,4200);
+    var st=parse(document.getElementById('c_stations').value,1560);
+    var rx=parse(document.getElementById('c_rox').value,180);
+    var runT=fin-st-rx;
+    if(runT<=0){out.innerHTML='⚠️ 站点+转换区时间已超过完赛目标,请检查输入。';return;}
+    var pace=runT/8;
+    var verdict, col;
+    if(pace>=P.curPace){verdict='这比你<b>当前</b>间歇配速('+fmt(P.curPace)+')还慢——目标偏保守,可设更快完赛或更激进配速。';col='var(--volt)';}
+    else if(pace>=P.tgtPace){verdict='落在你计划的进步区间内('+fmt(P.curPace)+'→'+fmt(P.tgtPace)+')。<b>达标取决于训练执行</b>,尤其是疲劳下还能跑这个配速。';col='var(--volt)';}
+    else {verdict='⚠️ 这比你的<b>峰值目标</b>('+fmt(P.tgtPace)+')还快。要么把目标配速调更快(更激进),要么把站点练得更快、缩短站点耗时。';col='var(--warn)';}
+    out.style.borderColor=col==='var(--warn)'?'var(--warn)':'rgba(var(--volt-rgb),.4)';
+    out.innerHTML='<div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;">8 段跑需要的均速</div>'+
+      '<div style="font-size:2rem;font-weight:900;letter-spacing:-.02em;color:'+col+';">'+fmt(pace)+'<span style="font-size:.9rem;font-weight:600;color:var(--muted);">/km</span></div>'+
+      '<div style="font-size:.86rem;color:var(--muted);margin-top:.5rem;">8km 跑共 '+fmt(runT)+' · 站点 '+fmt(st)+' · 转换 '+fmt(rx)+' = 完赛 <b style="color:var(--text)">'+fmt(fin)+'</b></div>'+
+      '<div style="font-size:.86rem;color:var(--text);margin-top:.7rem;line-height:1.6;">'+verdict+'</div>';
+  }
+  ['c_finish','c_stations','c_rox'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('input',runCalc);});
+
+
+  // ===== records: feedback journal + export/import (added) =====
+  function pad2(n){return (n<10?'0':'')+n;}
+  function stamp(){var d=new Date();return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())+' '+pad2(d.getHours())+':'+pad2(d.getMinutes());}
+  function getJournal(){try{return JSON.parse(localStorage.getItem(JKEY)||'[]');}catch(e){return [];}}
+  function setJournal(a){try{localStorage.setItem(JKEY,JSON.stringify(a));}catch(e){}}
+  function rEsc(s){return (''+s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function renderJournal(){var box=document.getElementById('jList');if(!box)return;var a=getJournal();if(!a.length){box.innerHTML='<p class="jempty">还没有记录。训练/复盘后写一条,带日期累积,方便日后对比。</p>';return;}box.innerHTML=a.map(function(e,i){return '<div class="jitem"><div class="jd">'+rEsc(e.date)+'<button class="jdel" data-i="'+i+'" title="删除">×</button></div><div class="jt">'+rEsc(e.text)+'</div></div>';}).join('');}
+  function addJournal(){var ta=document.getElementById('jText');if(!ta)return;var t=(ta.value||'').trim();if(!t){toast('先写点内容');return;}var a=getJournal();a.unshift({date:stamp(),text:t});setJournal(a);ta.value='';renderJournal();toast('已记录 · '+a[0].date);}
+  function download(name,text,mime){var bl=new Blob([text],{type:(mime||'text/plain')+';charset=utf-8'});var u=URL.createObjectURL(bl);var a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove();},120);}
+  function csvCell(v){v=(v==null?'':''+v);return '"'+v.replace(/"/g,'""')+'"';}
+  function csvTables(L){document.querySelectorAll('table.log').forEach(function(tb){var wrap=tb.closest('.logtbl-wrap');var ttl=(wrap&&wrap.previousElementSibling)?wrap.previousElementSibling.textContent.trim():'';if(ttl)L.push('# '+ttl);var hs=[];tb.querySelectorAll('thead th').forEach(function(th){hs.push(th.textContent.trim());});L.push(hs.map(csvCell).join(','));tb.querySelectorAll('tbody tr').forEach(function(tr){var r=[];tr.querySelectorAll('td').forEach(function(td){var inp=td.querySelector('input,select,textarea');r.push(inp?(inp.type==='checkbox'?(inp.checked?'1':'0'):inp.value):td.textContent.trim());});L.push(r.map(csvCell).join(','));});L.push('');});}
+  function csvJournal(L){L.push('# 训练反馈日志');L.push([csvCell('日期'),csvCell('内容')].join(','));getJournal().forEach(function(e){L.push([csvCell(e.date),csvCell(e.text)].join(','));});}
+  function wireRecords(){var c=document.getElementById('csvBtn');if(c)c.addEventListener('click',exportCSV);var j=document.getElementById('jsonBtn');if(j)j.addEventListener('click',backupJSON);var f=document.getElementById('importFile');if(f)f.addEventListener('change',function(){if(this.files&&this.files[0])importJSON(this.files[0]);this.value='';});var ab=document.getElementById('addJBtn');if(ab)ab.addEventListener('click',addJournal);var jl=document.getElementById('jList');if(jl)jl.addEventListener('click',function(e){var b=e.target.closest('.jdel');if(!b)return;var i=+b.dataset.i;var a=getJournal();a.splice(i,1);setJournal(a);renderJournal();});}
+
+  var JKEY=LOGKEY+':journal';
+  function buildCSV(){var L=[];csvTables(L);var cw=document.getElementById('curWeight');if(cw){L.push('# 当前体重');L.push([csvCell('当前晨重kg'),csvCell(cw.value)].join(','));L.push('');}var bc=document.querySelectorAll('.bench .bc');if(bc.length){L.push('# 模拟赛/基准');bc.forEach(function(c){var h=c.querySelector('h4'),i=c.querySelector('input');if(h&&i)L.push([csvCell(h.textContent.trim()),csvCell(i.value)].join(','));});L.push('');}csvJournal(L);return '﻿'+L.join('\r\n');}
+  function exportCSV(){download('hyrox-records-'+stamp().slice(0,10)+'.csv',buildCSV(),'text/csv');toast('已导出 CSV(可用表格软件分析)');}
+  function backupJSON(){var data={meta:{page:'schedule',exportedAt:stamp()},log:collect(),plan:P,journal:getJournal()};download('hyrox-backup-'+stamp().slice(0,10)+'.json',JSON.stringify(data,null,2),'application/json');toast('已下载 JSON 备份');}
+  function importJSON(file){var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.log){for(var k in d.log){var el=document.getElementById(k);if(!el)continue;if(el.type==='checkbox')el.checked=d.log[k];else el.value=d.log[k];}saveLog();}if(d.plan){P=d.plan;savePlan();fillPaceInputs();buildDayGrid();}if(d.journal){setJournal(d.journal);}render();renderJournal();toast('已导入并恢复');}catch(e){toast('导入失败:文件格式不对');}};r.readAsText(file);}
+  wireRecords();renderJournal();
+
+  // ---- init ----
+  loadPlan();buildDayGrid();fillPaceInputs();render();runCalc();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>PHASE 2 · 赛后多项目 + 减脂到 52kg(经多专家安全审查)</title>
+<meta name="description" content="HYROX 赛后(9/13 起)的多项目生活方式与减脂计划：65→52kg 探索性目标、EA/RED-S 防护、护膝护腰、攀岩/拳击/冲浪/跑酷/力量/蹦床混合编排与周期化饮食。经多专家对抗式安全审查。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2305060a'/%3E%3Cpath d='M14 40h36M14 40l8-16M50 40l-8-16' stroke='%23d4ff50' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  color-scheme:dark;
+  --ink:#05060a;--ink-2:#0a0c12;--paper:#f4f1ea;--text:#f5f5f7;--muted:rgba(245,245,247,.55);
+  --volt:#d4ff50;--volt-rgb:212,255,80;--volt-on-light:#5c750e;--indigo:#583cff;--warn:#ff8a5d;--alert:#ff5d5d;
+  --line:rgba(255,255,255,.1);--ease:cubic-bezier(.16,1,.3,1);
+  --sans:"PingFang SC","SF Pro Display","Hiragino Sans GB","Microsoft YaHei",-apple-system,system-ui,sans-serif;
+  --serif:"Songti SC","Noto Serif CJK SC",Georgia,serif;--mono:ui-monospace,"SF Mono",Menlo,monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--sans);background:var(--ink);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+a{color:inherit;text-decoration:none;}
+section{position:relative;padding:clamp(3rem,5.5vw,5rem) 1.5rem;}
+.wrap{max-width:1080px;margin:0 auto;}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em;text-wrap:balance;}
+h2{font-size:clamp(1.6rem,4.2vw,2.7rem);font-weight:800;}
+.plus{color:var(--volt);}
+::selection{background:var(--volt);color:var(--ink);}
+:focus-visible{outline:2px solid var(--volt);outline-offset:2px;border-radius:4px;}
+.ed{font-family:var(--serif);font-style:italic;font-weight:400;}
+.credits{font-family:var(--mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);}
+.lead{color:var(--muted);max-width:66ch;font-size:clamp(.98rem,2.1vw,1.1rem);}
+.sec-no{display:flex;align-items:center;gap:1rem;margin-bottom:1.6rem;}
+.sec-no::after{content:"";flex:1;height:1px;background:var(--line);}
+body::after{content:"";position:fixed;inset:0;z-index:5;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  mix-blend-mode:overlay;}
+
+header.bar{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 1.5rem;border-bottom:1px solid transparent;transition:border-color .4s,background .4s;}
+header.bar.scrolled{border-color:var(--line);background:rgba(5,6,10,.7);}
+@supports (backdrop-filter:blur(1px)){header.bar.scrolled{background:rgba(5,6,10,.55);backdrop-filter:blur(20px) saturate(1.5);}}
+.bar-logo{display:flex;align-items:center;gap:.55rem;font-weight:800;font-size:1rem;}
+.bar-logo svg{width:24px;height:24px;}
+.bar-nav{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end;}
+.bar-nav a{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:.34rem .75rem;text-transform:uppercase;white-space:nowrap;transition:border-color .2s,color .2s,background .2s;}
+.bar-nav a:hover{border-color:var(--volt);color:var(--volt);}
+.bar-nav a.active{background:var(--volt);color:var(--ink);border-color:var(--volt);font-weight:700;}
+@media(max-width:600px){.bar-logo span{display:none;}}
+
+.intro{padding-top:6.5rem;text-align:center;}
+.intro .glow{position:absolute;inset:0;z-index:-1;overflow:hidden;}
+.intro .glow i{position:absolute;border-radius:50%;filter:blur(120px);width:50vw;aspect-ratio:1;left:50%;top:30%;translate:-50% -50%;background:rgba(88,60,255,.13);}
+.intro h1{font-size:clamp(2rem,6vw,4.2rem);font-weight:900;letter-spacing:-.03em;text-transform:uppercase;line-height:.95;}
+.intro h1 .plus{text-shadow:0 0 12px rgba(var(--volt-rgb),.5);}
+.intro p{color:var(--muted);margin-top:1.1rem;}
+.sports{max-width:680px;margin:1.6rem auto 0;display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;}
+.sports .sp{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.4rem .85rem;color:var(--muted);}
+.sports .sp b{color:var(--volt);}
+.verbadge{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.4rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--volt);border:1px solid rgba(var(--volt-rgb),.4);border-radius:999px;padding:.4rem .9rem;}
+
+.tracker-hero{max-width:680px;margin:1.6rem auto 0;border:1px solid var(--line);border-radius:1.4rem;padding:1.6rem;background:rgba(255,255,255,.02);text-align:left;}
+.tracker-hero .row1{display:flex;flex-wrap:wrap;align-items:flex-end;gap:1rem;justify-content:space-between;}
+.tracker-hero label{display:grid;gap:.3rem;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.tracker-hero input[type=number]{font-family:var(--sans);font-size:1.5rem;font-weight:800;background:#0a0c12;border:1px solid var(--line);border-radius:.7rem;color:var(--text);padding:.45rem .8rem;width:120px;}
+.tracker-hero input:focus{outline:2px solid var(--volt);}
+.tracker-hero .goalbox{text-align:right;}
+.tracker-hero .goalbox b{font-size:1.5rem;color:var(--volt);font-weight:900;}
+.tracker-hero .goalbox span{display:block;font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);}
+.bar-track{height:16px;border-radius:999px;background:#0a0c12;border:1px solid var(--line);margin-top:1.3rem;overflow:hidden;position:relative;}
+.bar-fill{height:100%;width:0;background:linear-gradient(90deg,var(--indigo),var(--volt));border-radius:999px;transition:width .6s var(--ease);}
+.bar-mark{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--warn);}
+.bar-mark::after{content:attr(data-l);position:absolute;top:-1.3rem;left:50%;translate:-50%;font-family:var(--mono);font-size:.54rem;color:var(--warn);white-space:nowrap;}
+.bar-stat{display:flex;justify-content:space-between;margin-top:.7rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--muted);}
+.bar-stat b{color:var(--volt);}
+
+.tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:1.1rem;margin-top:.4rem;}
+table{width:100%;border-collapse:collapse;font-size:.86rem;min-width:540px;}
+thead th{text-align:left;font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--volt);padding:.8rem .95rem;border-bottom:1px solid var(--line);font-weight:600;white-space:nowrap;}
+tbody td{padding:.7rem .95rem;border-bottom:1px solid rgba(255,255,255,.06);color:var(--muted);vertical-align:top;}
+tbody tr:last-child td{border-bottom:0;}
+tbody td:first-child{color:var(--text);font-weight:600;white-space:nowrap;}
+tbody td b{color:var(--text);}
+tbody tr.hot td{color:var(--volt);font-weight:700;background:rgba(var(--volt-rgb),.05);}
+tbody tr.warn td{background:rgba(255,93,93,.06);}
+.vt{color:var(--volt);font-weight:700;}
+.vw{color:var(--warn);font-weight:700;}
+
+.grid{display:grid;gap:1.1rem;}
+.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr));}
+.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr));}
+.card{border:1px solid var(--line);border-radius:1.3rem;padding:1.5rem 1.5rem;background:rgba(255,255,255,.02);position:relative;}
+.card h3{font-size:1.1rem;margin-bottom:.2rem;display:flex;align-items:center;gap:.5rem;}
+.card .role{font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--volt);margin-bottom:.8rem;display:block;}
+.card ul{margin-top:.3rem;}
+.card ul li{font-size:.86rem;color:var(--muted);padding:.28rem 0;display:flex;gap:.55rem;align-items:flex-start;}
+.card ul li::before{content:"—";color:var(--volt);flex:none;}
+.card ul li b{color:var(--text);}
+.risk{position:absolute;top:1.2rem;right:1.3rem;font-family:var(--mono);font-size:.54rem;letter-spacing:.1em;padding:.24rem .6rem;border-radius:999px;border:1px solid var(--line);color:var(--muted);text-transform:uppercase;}
+.risk.hi{border-color:var(--alert);color:var(--alert);}
+.risk.mid{border-color:var(--warn);color:var(--warn);}
+.risk.lo{border-color:rgba(var(--volt-rgb),.5);color:var(--volt);}
+
+.weekrow{display:grid;grid-template-columns:84px 1fr;gap:1rem;border:1px solid var(--line);border-radius:1rem;padding:.95rem 1.2rem;background:rgba(255,255,255,.02);align-items:center;margin-bottom:.6rem;}
+.weekrow .dy{font-family:var(--mono);font-size:.64rem;letter-spacing:.06em;color:var(--volt);border-right:1px solid var(--line);padding-right:1rem;}
+.weekrow .dy b{display:block;font-size:1rem;color:var(--text);}
+.weekrow .ct{font-size:.88rem;color:var(--muted);}
+.weekrow .ct b{color:var(--text);}
+.weekrow .tag{display:inline-block;font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;padding:.16rem .5rem;border-radius:999px;border:1px solid var(--line);margin-right:.4rem;color:var(--muted);}
+.weekrow .tag.str{border-color:rgba(var(--volt-rgb),.5);color:var(--volt);}
+.weekrow .tag.burn{border-color:var(--indigo);color:#b9acff;}
+.weekrow .tag.fun{border-color:rgba(255,255,255,.25);}
+.weekrow .tag.risk{border-color:var(--alert);color:var(--alert);}
+.weekrow .tag.rest{border-color:rgba(255,255,255,.18);}
+@media(max-width:560px){.weekrow{grid-template-columns:1fr;}.weekrow .dy{border-right:0;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:.4rem;}.weekrow .dy b{display:inline;margin-left:.4rem;}}
+
+.callout{border-left:3px solid var(--warn);background:rgba(255,138,93,.08);padding:1.1rem 1.3rem;border-radius:0 .9rem .9rem 0;font-size:.9rem;color:var(--text);margin-top:.5rem;line-height:1.65;}
+.callout b{color:var(--warn);}
+.callout.volt{border-color:var(--volt);background:rgba(var(--volt-rgb),.06);}
+.callout.volt b{color:var(--volt);}
+.callout.alert{border-color:var(--alert);background:rgba(255,93,93,.09);}
+.callout.alert b{color:var(--alert);}
+
+.gate{border:1px solid var(--alert);border-radius:1.3rem;background:rgba(255,93,93,.07);padding:1.6rem 1.6rem;}
+.gate h3{font-size:1.15rem;color:var(--alert);margin-bottom:.7rem;display:flex;align-items:center;gap:.5rem;}
+.gate ul li{font-size:.9rem;color:var(--text);padding:.32rem 0;display:flex;gap:.6rem;align-items:flex-start;line-height:1.55;}
+.gate ul li::before{content:"●";color:var(--alert);font-size:.6rem;margin-top:.45rem;flex:none;}
+.gate ul li b{color:#fff;}
+
+.ea{border:1px solid rgba(var(--volt-rgb),.35);border-radius:1.2rem;background:rgba(var(--volt-rgb),.04);padding:1.5rem 1.5rem;margin-top:1.2rem;}
+.ea .formula{font-family:var(--mono);font-size:.92rem;color:var(--volt);background:#0a0c12;border:1px solid var(--line);border-radius:.7rem;padding:.8rem 1rem;margin:.7rem 0;text-align:center;}
+.ea .twocol{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;margin-top:1rem;}
+.ea .tc{border:1px solid var(--line);border-radius:.9rem;padding:1rem 1.1rem;background:rgba(255,255,255,.02);}
+.ea .tc .h{font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:var(--volt);margin-bottom:.5rem;}
+.ea .tc .big{font-size:1.6rem;font-weight:900;color:var(--text);letter-spacing:-.02em;}
+.ea .tc .big span{font-size:.85rem;font-weight:600;color:var(--muted);}
+.ea .tc p{font-size:.82rem;color:var(--muted);margin-top:.4rem;}
+
+/* editorial */
+.editorial{background:var(--paper);color:#111317;}
+.editorial .credits{color:rgba(17,19,23,.6);}
+.editorial h2,.editorial h3{color:#0a0a0c;}
+.editorial .lead{color:rgba(17,19,23,.7);}
+.editorial .sec-no::after{background:rgba(17,19,23,.14);}
+.editorial .tbl-wrap{border-color:rgba(17,19,23,.16);background:#fff;}
+.editorial table tbody td{color:rgba(17,19,23,.72);border-color:rgba(17,19,23,.08);}
+.editorial table tbody td:first-child{color:#0a0a0c;}
+.editorial table thead th{color:var(--volt-on-light);border-color:rgba(17,19,23,.14);}
+.editorial table tbody td b{color:#0a0a0c;}
+.editorial table tbody tr.hot td{color:var(--volt-on-light);background:rgba(92,117,14,.08);}
+.editorial .subh{font-size:1.1rem;margin:2.2rem 0 .8rem;display:flex;align-items:center;gap:.6rem;}
+.editorial .subh .n{font-family:var(--mono);font-size:.68rem;background:#0a0a0c;color:var(--volt);border-radius:7px;padding:.2rem .5rem;font-weight:700;}
+.ecard{border:1px solid rgba(17,19,23,.16);border-radius:1.1rem;background:#fff;padding:1.3rem 1.4rem;}
+.ecard h4{font-size:.98rem;color:#0a0a0c;margin-bottom:.6rem;}
+.ecard ul li{font-size:.85rem;color:rgba(17,19,23,.72);padding:.26rem 0;display:flex;gap:.5rem;}
+.ecard ul li::before{content:"—";color:var(--volt-on-light);flex:none;}
+.editorial .note{margin-top:1.4rem;font-size:.84rem;color:rgba(17,19,23,.7);}
+.editorial .note b{color:#0a0a0c;}
+.logtools{display:flex;gap:.7rem;flex-wrap:wrap;margin:1.3rem 0 .5rem;align-items:center;}
+.lbtn{font-family:var(--sans);font-weight:700;font-size:.85rem;border-radius:999px;padding:.55rem 1.2rem;cursor:pointer;border:1.5px solid #0a0a0c;background:none;color:#0a0a0c;transition:all .2s var(--ease);}
+.lbtn:hover{background:#0a0a0c;color:var(--volt);}
+.lbtn.primary{background:#0a0a0c;color:var(--volt);}
+.savehint{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--volt-on-light);}
+.logtbl-wrap{overflow-x:auto;border:1px solid rgba(17,19,23,.16);border-radius:1.1rem;background:#fff;}
+table.log{width:100%;border-collapse:collapse;font-size:.84rem;min-width:680px;}
+table.log thead th{text-align:left;font-family:var(--mono);font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(17,19,23,.6);padding:.8rem .7rem;border-bottom:1px solid rgba(17,19,23,.14);font-weight:600;white-space:nowrap;}
+table.log tbody td{padding:.5rem .7rem;border-bottom:1px solid rgba(17,19,23,.08);}
+table.log tbody tr:last-child td{border-bottom:0;}
+table.log .mc{font-weight:800;color:#0a0a0c;white-space:nowrap;}
+table.log .tgt{font-family:var(--mono);font-size:.74rem;color:var(--volt-on-light);font-weight:700;white-space:nowrap;}
+table.log input{font-family:var(--sans);font-size:.84rem;border:1px solid rgba(17,19,23,.18);border-radius:.45rem;padding:.35rem .5rem;width:100%;min-width:60px;background:#fff;color:#111317;}
+table.log input:focus{outline:2px solid var(--volt-on-light);border-color:transparent;}
+
+.oq{border:1px solid var(--line);border-radius:1.2rem;background:rgba(255,255,255,.02);padding:1.5rem 1.6rem;}
+.oq ol{margin:0;padding-left:1.2rem;}
+.oq li{font-size:.9rem;color:var(--muted);padding:.4rem 0;line-height:1.6;}
+.oq li b{color:var(--text);}
+
+footer{border-top:1px solid var(--line);padding:2.6rem 1.5rem 3.6rem;text-align:center;}
+footer .credits{line-height:2.2;}
+footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64ch;margin-inline:auto;}
+.toast{position:fixed;bottom:24px;left:50%;translate:-50% 16px;z-index:95;background:#14171f;border:1px solid var(--line);color:var(--text);padding:.7rem 1.2rem;border-radius:999px;font-size:.86rem;box-shadow:0 14px 40px rgba(0,0,0,.5);opacity:0;transition:opacity .3s,translate .35s var(--ease);pointer-events:none;}
+.toast.show{opacity:1;translate:-50% 0;}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+
+/* day-by-day blocks */
+.pblocks{display:grid;gap:.8rem;margin-top:1.2rem;}
+details.pblock{border:1px solid var(--line);border-radius:1.2rem;background:rgba(255,255,255,.02);overflow:hidden;}
+details.pblock[open]{border-color:rgba(var(--volt-rgb),.32);}
+.pblock summary{list-style:none;cursor:pointer;padding:1.1rem 1.3rem;display:grid;grid-template-columns:auto 1fr auto;gap:1rem;align-items:center;}
+.pblock summary::-webkit-details-marker{display:none;}
+.pblock .bk{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;color:var(--volt);white-space:nowrap;border-right:1px solid var(--line);padding-right:1rem;text-align:center;}
+.pblock .bt{font-size:1rem;font-weight:700;}
+.pblock .bt small{display:block;font-weight:400;font-size:.74rem;color:var(--muted);margin-top:.15rem;}
+.pblock .chev{color:var(--muted);transition:transform .3s var(--ease);}
+details.pblock[open] .chev{transform:rotate(90deg);}
+.pbody{padding:0 1.3rem 1.2rem;}
+.pfocus{font-size:.85rem;color:var(--muted);border-left:2px solid rgba(var(--volt-rgb),.4);padding-left:.8rem;margin:.4rem 0 .9rem;line-height:1.6;}
+.pcal{font-size:.8rem;color:var(--muted);background:rgba(var(--volt-rgb),.05);border:1px solid var(--line);border-radius:.7rem;padding:.7rem .9rem;margin-bottom:1rem;}
+.pcal b{color:var(--volt);}
+.pday{border-top:1px solid rgba(255,255,255,.07);padding:.85rem 0;}
+.pday .h{display:flex;gap:.55rem;align-items:baseline;flex-wrap:wrap;margin-bottom:.5rem;}
+.pday .d{font-family:var(--mono);font-size:.68rem;color:var(--volt);font-weight:700;}
+.pday .ty{font-family:var(--mono);font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:.14rem .5rem;color:var(--muted);}
+.pday .t{font-weight:700;font-size:.9rem;}
+.pday dl{display:grid;grid-template-columns:max-content 1fr;gap:.3rem .8rem;margin:0;}
+.pday dt{font-family:var(--mono);font-size:.55rem;letter-spacing:.06em;text-transform:uppercase;color:var(--volt);white-space:nowrap;padding-top:.2rem;}
+.pday dd{font-size:.84rem;color:var(--muted);margin:0;line-height:1.6;}
+.pmeta{font-size:.82rem;color:var(--muted);margin-top:1rem;border-top:1px dashed var(--line);padding-top:.8rem;line-height:1.6;}
+.pmeta b{color:var(--volt);}
+@media(max-width:560px){.pday dl{grid-template-columns:1fr;gap:.05rem;}.pday dt{margin-top:.45rem;}.pblock summary{grid-template-columns:auto 1fr;gap:.7rem;}.pblock .bk{border-right:0;padding-right:0;}}
+
+
+/* records: export/import + feedback journal */
+.logtools input[type=file]{display:none;}
+.jbox{margin-top:1rem;}
+.jbox textarea{width:100%;min-height:72px;font-family:var(--sans);font-size:.88rem;border:1px solid rgba(17,19,23,.2);border-radius:.7rem;padding:.7rem .8rem;background:#fff;color:#111317;resize:vertical;}
+.jbox textarea:focus{outline:2px solid var(--volt-on-light);border-color:transparent;}
+.jlist{margin-top:1rem;display:grid;gap:.6rem;}
+.jempty{font-size:.84rem;color:rgba(17,19,23,.55);}
+.jitem{border:1px solid rgba(17,19,23,.14);border-radius:.7rem;background:#fff;padding:.7rem .9rem;}
+.jd{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;color:var(--volt-on-light);font-weight:700;display:flex;justify-content:space-between;align-items:center;margin-bottom:.3rem;}
+.jdel{border:0;background:none;color:rgba(17,19,23,.4);font-size:1.05rem;cursor:pointer;line-height:1;padding:0 .25rem;}
+.jdel:hover{color:#c0392b;}
+.jt{font-size:.86rem;color:#111317;line-height:1.55;white-space:pre-wrap;}
+.dnote{margin-top:1.4rem;font-size:.8rem;color:rgba(17,19,23,.72);border-left:3px solid var(--volt-on-light);background:rgba(92,117,14,.06);padding:.7rem 1rem;border-radius:0 .6rem .6rem 0;line-height:1.6;}
+.dnote b{color:#0a0a0c;}
+</style>
+</head>
+<body>
+
+<header class="bar" id="bar">
+  <a class="bar-logo" href="index.html">
+    <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#0a0c12"/><path d="M14 42h36M14 42l8-18M50 42l-8-18" stroke="#d4ff50" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span>HYROX <span class="plus">SUB 1:10</span></span>
+  </a>
+  <nav class="bar-nav">
+    <a href="index.html" title="计划总览 Overview">总览</a>
+    <a href="schedule.html" title="12 周逐日日程 + 状态记录">HYROX 日程</a>
+    <a href="phase2.html" class="active" title="赛后 65→52kg 多项目">Phase 2</a>
+  </nav>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="glow" aria-hidden="true"><i></i></div>
+  <div class="wrap">
+    <p class="credits" style="margin-bottom:1.2rem;">Post-Race · 9/13 起 · 多项目生活方式</p>
+    <h1>赛后 Phase 2<br><span class="plus">65 → 52kg*</span></h1>
+    <p>六项你热爱的运动混合,慢速精减、护住膝腰、保住肌肉。<br><b style="color:var(--text)">*52kg 是探索性目标,不是必须打卡的终点</b>——先到 54–56kg 做正式复评,由身体说了算。</p>
+    <div class="sports">
+      <span class="sp">攀岩 <b>climb</b></span><span class="sp">拳击 <b>box</b></span><span class="sp">冲浪 <b>surf</b></span>
+      <span class="sp">跑酷 <b>parkour</b></span><span class="sp">力量 <b>strength</b></span><span class="sp">蹦床 <b>tramp</b></span>
+    </div>
+    <span class="verbadge">✓ 经 10 位专家对抗式安全审查</span>
+
+    <div class="tracker-hero">
+      <div class="row1">
+        <label>当前体重 (kg)<input type="number" id="curW" step="0.1" placeholder="65" inputmode="decimal"></label>
+        <div class="goalbox"><span>Phase 2 起点 65kg · 探索目标</span><b>52 kg</b></div>
+      </div>
+      <div class="bar-track"><div class="bar-fill" id="fill"></div><div class="bar-mark" id="mark56" data-l="56kg 复评" style="left:69.2%"></div></div>
+      <div class="bar-stat"><span id="lost">已减 — kg</span><span id="left">还差 <b>13.0</b> kg</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 00 医疗前置闸门 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">00 / Gate · 开始前的硬性门槛</span></div>
+    <div class="gate">
+      <h3>⛔ 这一步不可跳过</h3>
+      <p class="lead" style="color:rgba(255,255,255,.8);margin-bottom:1rem;">你属于<b style="color:#fff">高危叠加</b>:女性 + 38 岁 + 减幅 20% + 高训练量 + 含高冲击项目(跑酷/蹦床) + 膝腰伤史 + 不吃牛羊(铁/能量来源受限)。审查专家一致认为:<b style="color:#fff">这套方案不应纯自我管理。</b></p>
+      <ul>
+        <li><b>就医放行</b>:膝/腰伤先经骨科/运动医学 + 物理治疗师面诊,明确诊断与个体化禁忌(如盘源性腰痛禁屈曲+负重/过伸;半月板/ACL 史决定深蹲深度与落地阈值),才开始任何冲击进阶。</li>
+        <li><b>基线血检</b>:铁蛋白/血清铁、维 D(25-OH-D)、甲状腺(TSH/T3)、性激素(注明采血时机)、血常规、血脂。</li>
+        <li><b>基线骨密度 DEXA</b>:高冲击 + 伤史 + 计划性赤字 → 开始前就查,别等出问题。同时测体成分,用体脂率而非体重定终点。</li>
+        <li><b>月经状态闸门</b>:若当前已稀发/紊乱/停经 → <b>先暂停减脂、就医、排除妊娠</b>(37–38 岁仍可能怀孕)后再启动。</li>
+        <li><b>进食障碍自评 + 专业监督</b>:20% 减幅至 BMI 19,建议先做一次 ED 自评,并在运动医学医生 + 注册运动营养师监督下进行。</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 01 现实 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">01 / Reality · 慢就是快</span></div>
+    <h2>52kg 是<span class="plus">探索性目标</span></h2>
+    <p class="lead" style="margin-top:1.1rem;"><b style="color:var(--text)">核心结论</b>:先减到 <b style="color:var(--volt)">54–56kg</b> 做一次正式复评,由身体状态(月经、表现、血检、体成分)决定要不要继续——而不是由秤上的数字决定。诚实预期:从 65kg(体脂约 25–28%)减到 52kg,即便高蛋白 + 不停力量,<b style="color:var(--text)">大概率仍伴随 4–6kg 瘦体重流失</b>;"完整保住肌肉"的现实落点更接近 54–56kg。</p>
+
+    <h3 style="font-size:1.05rem;margin:2rem 0 .7rem;">体重 · BMI · 定位</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>体重</th><th>BMI</th><th>定位</th></tr></thead>
+        <tbody>
+          <tr><td>65kg(起点)</td><td>23.9</td><td>正常偏上</td></tr>
+          <tr class="hot"><td>56kg</td><td>20.6</td><td>正常 — 建议<b>首个复评点</b></td></tr>
+          <tr><td>54kg</td><td>19.8</td><td>正常偏瘦</td></tr>
+          <tr class="hot"><td>52kg(探索目标)</td><td>19.1</td><td>正常区下端</td></tr>
+          <tr class="warn"><td>50.4kg</td><td>18.5</td><td><span class="vw">WHO 健康硬底线 · 绝不越过</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="font-size:1.05rem;margin:2rem 0 .7rem;">安全速率与时间线(越瘦越慢)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>阶段</th><th>体重区间</th><th>速率</th><th>周减</th><th>约需周数</th></tr></thead>
+        <tbody>
+          <tr><td>过渡恢复</td><td>9/13 起 2–3 周</td><td>维持,不减</td><td>0</td><td>2–3</td></tr>
+          <tr><td>P1</td><td>65→60kg</td><td>0.4–0.5%/周</td><td>~0.3 kg</td><td>14–16</td></tr>
+          <tr><td>P2</td><td>60→56kg</td><td>0.3–0.4%/周</td><td>~0.25 kg</td><td>14–16</td></tr>
+          <tr><td>P3(最难)</td><td>56→52kg</td><td>≤0.3%/周</td><td>~0.15–0.2 kg</td><td>18–22</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="margin-top:1rem;font-size:.9rem;"><span class="ed">现实时间线 —</span> 到 52kg 约 <b style="color:var(--text)">10–14 个月</b>(含 diet break),约 2027 年中。单周 7 天均值降幅 &gt;0.6kg = 太快,下周回调热量。(原草案 0.7kg/周与 ≤500kcal 缺口自相矛盾,已据审稿下调。)</p>
+
+    <h3 style="font-size:1.05rem;margin:2.2rem 0 .7rem;">RED-S:盯<span class="plus">能量可用性(EA)</span>,不是体脂率</h3>
+    <div class="ea">
+      <p class="lead" style="color:rgba(245,245,247,.7);">RED-S(运动性能量不足)的驱动是<b style="color:var(--text)">低能量可用性 EA</b>,不是体脂率本身(高体脂也能因 EA 不足闭经)。这是本方案最该盯的事。</p>
+      <div class="formula">EA = (每日摄入 − 运动消耗) ÷ 去脂体重 FFM</div>
+      <div class="twocol">
+        <div class="tc"><div class="h">临床地板</div><div class="big">≥30 <span>kcal/kg FFM</span></div><p>低于此 = 危险区,激素/骨/恢复受损。本方案目标:训练日不破 30。</p></div>
+        <div class="tc"><div class="h">激素/骨最优</div><div class="big">≥45 <span>kcal/kg FFM</span></div><p>坦白:长期缺口下难达到 45。所以这不是"完美防护"——更需专业监督。</p></div>
+      </div>
+      <p class="lead" style="color:rgba(245,245,247,.7);margin-top:1rem;font-size:.9rem;">用<b style="color:var(--text)">当前真实 FFM(起步约 47kg)</b>反推,而非目标 FFM。这直接决定了下面的"训练日要吃够"。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 周训练 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">02 / Weekly Mix · 5 练日 + 2 天真休</span></div>
+    <h2>一周模板 <span class="plus">(缺口期版)</span></h2>
+    <p class="lead" style="margin:1rem 0 1.4rem;">持续热量缺口下恢复力下降,所以主版本是 <b style="color:var(--text)">5 练 + 2 天真休</b>(原 6 练已据审稿下调)。硬日只有 2 个(拳击 + 1 次重力量);高冲击(跑酷/蹦床)缺口期<b style="color:var(--text)">隔周只出现 1 个、永不背靠背</b>。</p>
+
+    <div class="weekrow"><div class="dy">周一<b>力量A</b></div><div class="ct"><span class="tag str">地基·保肌</span>下肢 + 后链:髋铰链/RDL,脊柱中立护腰。RPE 7–8。</div></div>
+    <div class="weekrow"><div class="dy">周二<b>拳击</b></div><div class="ct"><span class="tag burn">燃脂</span>技术/打靶,不对抗。转体由髋驱动转后脚跟,不靠腰硬拧。RPE 7–8。</div></div>
+    <div class="weekrow"><div class="dy">周三<b>高冲击</b></div><div class="ct"><span class="tag risk">高风险·隔周轮换</span>跑酷 ↔ 蹦床(每周仅 1 个,跟在最新鲜日)。<b>需医疗放行 + 达到下方 Block 才解锁。</b> RPE 6–7。</div></div>
+    <div class="weekrow"><div class="dy">周四<b>恢复</b></div><div class="ct"><span class="tag rest">主动恢复</span>专门<b>拉伸/活动度课 30–40′</b> + <b>系统筋膜刀 8–12′</b>(见下);或散步。睡眠优先。</div></div>
+    <div class="weekrow"><div class="dy">周五<b>力量B</b></div><div class="ct"><span class="tag str">地基·保肌</span>上肢 + 全身核心(抗伸展/抗旋护腰)。距周一 ≥72h。RPE 7–8。</div></div>
+    <div class="weekrow"><div class="dy">周六<b>攀岩</b></div><div class="ct"><span class="tag fun">技能·非有氧</span>顶绳为主。注:攀岩=技能/无氧间歇,<b>不算 Zone 2 有氧</b>;悬垂用核心收骨盆护腰。</div></div>
+    <div class="weekrow"><div class="dy">周日<b>有氧/冲浪</b></div><div class="ct"><span class="tag burn">护关节 Zone2</span>稳态有氧(游泳/SUP/快走)承担真正护膝腰的 Zone 2;有条件则换冲浪。</div></div>
+
+    <div class="callout volt" style="margin-top:1rem;">★ <b>编排逻辑</b> — 6 项全覆盖(力量✓ 拳击✓ 跑酷/蹦床✓ 攀岩✓ 冲浪替代✓)。若某周连续疲劳/睡眠崩 → 直接删掉周三高冲击日改纯技术,不只是"减载"。可缩到 4 天:力量×2 + 拳击/攀岩 + 1 个低冲击有氧,高冲击隔周仅 1 项。</div>
+
+    <h3 style="font-size:1.05rem;margin:2.2rem 0 .7rem;">重返冲击渐进协议(硬性前置)</h3>
+    <p class="lead" style="margin-bottom:.8rem;font-size:.9rem;">跑酷/蹦床不是一开始就能玩——按区块逐级解锁,每级要求落地/离心能力达标 + 医疗放行。</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>区块</th><th>周次(自 9/13)</th><th>可玩项目</th><th>落地冲击上限</th></tr></thead>
+        <tbody>
+          <tr><td>Block 0</td><td>W1–3</td><td>仅轻力量 + 走/骑 + prehab</td><td>无跳落地</td></tr>
+          <tr><td>Block 1</td><td>W4–8</td><td>+ 拳击技术、顶绳攀岩、游泳</td><td>落地 ≤30cm,离心达标才进阶</td></tr>
+          <tr><td>Block 2</td><td>W9–14</td><td>+ 蹦床(低量,单次 ≤15–20min)</td><td>落地 ≤40cm,≤60 次触地/课</td></tr>
+          <tr class="hot"><td>Block 3</td><td>W15+</td><td>+ 抱石(厚垫+下攀);<b>跑酷再往后推</b>(抱石稳固后才解锁)</td><td>落地 ≤50cm;跑酷解锁后 ≤20 触地/课、≤2 次/周</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout"><b>铁律</b> — ① 任何冲击项进阶前需骨科/运动医学+物理治疗师面诊;② 缺口最深阶段把高冲击降到最低,优先在补碳充足、非疲劳日;③ 一次只新增 1 项,首 4 周 ≤1 次/周。落地变响/疼痛/肿胀立即回退。</div>
+
+    <h3 style="font-size:1.05rem;margin:2.2rem 0 .7rem;">4 周中周期 + 减载(Mesocycle)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>周</th><th>定位</th><th>力量</th><th>技能/有氧量</th><th>热量</th></tr></thead>
+        <tbody>
+          <tr><td>W1</td><td>重建·技术</td><td>3×8 @RPE7</td><td>70%</td><td>缺口 350–400</td></tr>
+          <tr><td>W2</td><td>累积</td><td>3–4×6–8 @RPE7–8</td><td>90%</td><td>缺口 400–450</td></tr>
+          <tr><td>W3</td><td>峰值</td><td>4×5–6 @RPE8</td><td>100%</td><td>缺口 450–500</td></tr>
+          <tr class="hot"><td>W4</td><td>减载 + Diet Break</td><td>2×8 @RPE6</td><td>50%,高冲击转纯技术轻量</td><td>回到维持约 1 周</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="lead" style="margin-top:1rem;font-size:.9rem;">缺口期力量保 <b style="color:var(--text)">≥2 次/周</b>(尽量做到 3 次)以最大化保肌;减载周同步"饮食假期"吃回维持,稳代谢/激素(38 岁尤其重要)。每 4 周复盘:7 天均重 + 围度 + 月经 + 表现。</p>
+  </div>
+</section>
+
+<!-- 02+ 逐 Block 逐日 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">02+ / Day-by-Day · 逐 Block 逐日详解</span></div>
+    <h2>每天<span class="plus">练什么</span></h2>
+    <p class="lead" style="margin:1rem 0 .4rem;">4 个 Block 各一个「典型累积周」——点开看 7 天:热身 → 主课(组数×次数@RPE / 课程结构) → 筋膜刀+拉伸 → 营养·EA → 护伤。随 Block 进阶,落地冲击逐级解锁;减载周(W4)与进阶提示在每个 Block 末。<b style="color:var(--text)">全部经对抗式安全审查修正</b>(安全审查已把<b style="color:var(--text)">跑酷进一步推迟</b>到抱石稳固之后)。</p>
+  </div>
+  <div class="wrap"><div class="pblocks"><details class="pblock" open><summary><span class="bk">W1–3</span><span class="bt">Block 0 · 重建(无冲击)<small>重建动作模式与组织耐受:轻负荷掌握箱式深蹲/髋铰链/推拉的中立脊柱与膝随脚尖,激活后链与抗伸…</small></span><span class="chev">›</span></summary><div class="pbody"><p class="pfocus">重建动作模式与组织耐受:轻负荷掌握箱式深蹲/髋铰链/推拉的中立脊柱与膝随脚尖,激活后链与抗伸展抗旋核心,打磨拳击步伐与攀岩顶绳手感。全程零跳落地,先把"会发力、不痛、能恢复"立住,为 Block1 的低落地解锁铺路。新增三条主线管理:①每周设一天完全被动休息(周四);②全周用晨脉/睡眠/晨僵-夜痛监测门槛决定是否降量或插休;③跨日限制抓握/上肢拉负荷,避免肘肩过用。</p><div class="pcal"><b>热量 / EA</b> · 过渡:维持热量或极小缺口(周均仅 -100~200kcal)。【计算基准——修正算术矛盾】统一以当前体重约 66kg、去脂体重 FFM≈50kg(体脂~24%)为宏量与 EA 计算基准;54–56kg 仅为远期复评目标,不用于当前宏量计算,待达成后再下修克数(届时蛋白≈120–135g、脂肪≈50g)。当前阶段:蛋白 2.2–2.4 g/kg 当前体重≈145–160g、脂肪≥0.9 g/kg≈60g、其余给碳水撑训练质量。【EA 硬下限】每日(总摄入 − 运动消耗 EEE)必须 ≥1500kcal(=30kcal × 50kg FFM);任何含真实训练量的日子(含周三选A、周日)一律按训练日吃够 EA,不在其上制造缺口;周均缺口只来自周四真恢复/休息日。本阶段不追减重,先把体重稳到 54–56kg 后再谈减脂克数。</div><div class="pday"><div class="h"><span class="d">周一</span><span class="ty">力量A</span><span class="t">力量A · 下肢+后链(轻负荷建模)</span></div><dl><dt>热身</dt><dd>6–8′:髋绕环+猫驼各10、死虫 2×8(找腹内压)、徒手箱式深蹲 2×8(膝随脚尖、坐到箱)、臀桥 2×12、踝泵/弓步髋屈肌动态拉伸各侧8。</dd><dt>主课</dt><dd>力量,全程留 3–4 次余力:1)箱式深蹲(坐到略高于平行的箱、控深度)3×8@RPE6;2)髋铰链 RDL(髋后推、杠贴腿、不圆背)3×8@RPE6;3)单腿分腿蹲【W1 降级版,修正RFESS过激进】——W1 用台阶上 step-up(台高≤膝下、屈膝深度限无痛区)或反向箭步,前膝不过度前移;确认连续无晨僵/夜痛后,W2 进箱式分腿蹲限ROM、W3 才进阶到后脚抬高分腿蹲 RFESS,3×10/侧@RPE6;4)腿弯举或滑盘腿弯举 3×12@RPE6;5)死虫 3×8/侧 + 鸟狗 3×8/侧(抗伸展抗旋,慢)。组间歇 90″。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀:股四头、臀中肌、小腿三头各 2–3′(避开髌骨/膝缝/腰椎棘突与肾区,轻压不追出痧)。静态拉伸:股四、臀大肌(仰卧抱膝,膝不深屈扭转)、腘绳肌、髋屈肌各 30″×2。</dd><dt>营养·EA</dt><dd>训练日吃够 EA(≈1950–2050kcal,EEE≈400–500kcal→EA≥30):练前 1.5–2h 复合碳水+蛋白,练后 30–60′ 内 30–40g 蛋白+碳水补糖原;全天蛋白分 4 餐达 2.2–2.4g/kg当前体重(145–160g)。补水:全天≥2.0–2.5L,训练中每 15–20′补 150–200ml,出汗多时加电解质(钠 300–500mg)。</dd><dt>护伤</dt><dd>膝:深蹲坐箱控深度、膝尖不内扣、重心落中足;分腿蹲屈膝深度以无痛为界、W1 不做 RFESS 深屈,前膝不过度前移,出现髌股刺痛即退回 step-up 并减 ROM。腰:RDL 全程髋铰链+腹内压、脊柱中立,杠铃贴腿,禁屈曲+旋转下发力。监测:若晨僵&gt;30′或夜痛,本日主项各减 1 组、RPE 降到 5。</dd></dl></div><div class="pday"><div class="h"><span class="d">周二</span><span class="ty">拳击</span><span class="t">拳击 · 技术/打靶(不对抗)</span></div><dl><dt>热身</dt><dd>6′:原地交替开合(低冲击、脚不腾空)、肩绕环、颈部与手腕活动、空击直拳 2×20″ 找出拳轴。</dd><dt>主课</dt><dd>60′ 技术课,无对抗无跳绳腾空:1)步伐 3×3′(前后滑步、侧移、不双脚同时离地);2)空击+镜面 2×3′(直拳/勾拳/上勾,转髋发力、收下巴);3)打靶/打沙袋 5×3′(组合拳为主、力度 7 成、不发狠重击);4)收尾抗旋核心 Pallof 推 3×10/侧。回合间歇 1′。【抓握限额】缠手不过紧、打沙袋为主减少长时间硬握,为本周后段攀岩留前臂余量。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀:斜方肌上束、胸大肌、前臂屈肌各 2′(避开颈动脉三角与脊柱)。静态拉伸:胸大肌门框拉伸、肩后束、颈侧、前臂各 30″×2。</dd><dt>营养·EA</dt><dd>训练日 EA 吃够(≈1900–2000kcal):技术课消耗中等(EEE≈350–450kcal),练前小份碳水(香蕉/燕麦),练后正常正餐含优质蛋白(鱼/蛋/豆制品,不吃牛羊);全天碳水适中保步伐质量,蛋白不降量。补水≥2L+练中电解质。</dd><dt>护伤</dt><dd>膝:出拳转髋时后脚碾地、前膝随脚尖微屈不锁死不内扣;不做急停跳步。腰:转体出拳靠髋驱动+核心控旋,避免腰椎主动扭转代偿,保持下巴收、骨盆中立。前臂/肘:出现肘内上髁酸痛即减打靶组数。</dd></dl></div><div class="pday"><div class="h"><span class="d">周三</span><span class="ty">低冲击有氧/第二轻力量</span><span class="t">周三 · 低冲击有氧(Block0 不解锁高冲击)</span></div><dl><dt>热身</dt><dd>5–6′:动感单车低阻热身 3′ + 髋/踝活动度 + 臀激活臀桥 2×12。</dd><dt>主课</dt><dd>二选一,均无任何跳落地:A)稳态有氧 35–45′:动感单车或椭圆机,心率 Zone2(能说短句),阻力中等匀速;或游泳 1200–1500m 分段。B)第二轻全身力量 35′:六角杠/哑铃箱式硬拉 3×8@RPE6、坐姿划船 3×12、哑铃推举 3×10、Pallof 3×10/侧(去掉农夫行走避免抓握叠加)。本周累积期默认选 A 控负荷,精力好可选 B。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀:小腿三头、髂胫束外侧(避膝缝)、上背各 2′。静态拉伸:小腿、髋屈肌、下背温和猫式各 30″×2(下背不强求端范围)。</dd><dt>营养·EA</dt><dd>【修正:不再当恢复日降热量】按当日真实训练量计——选A若有氧≥40′或游泳≥1.2km(EEE≈300–450kcal),必须按训练日吃够 EA(≈1850–2000kcal),不在此日制造缺口;仅当压缩到≤25′轻量恢复骑行时才可降到≈1650。选B力量同样吃够 EA。无论哪种蛋白不降量,练中后补水500–750ml+电解质。</dd><dt>护伤</dt><dd>膝:单车座高使最低点膝微屈不锁、不内扣;椭圆/游泳为零冲击优先选项。腰:骑行保持骨盆稳定不过度前倾塌腰,核心轻收。抓握:若选B,划船与硬拉合计≤4个工作组、改对握/拉力带降前臂负荷,避免与周五/周六抓握连日叠加。</dd></dl></div><div class="pday"><div class="h"><span class="d">周四</span><span class="ty">恢复</span><span class="t">恢复 · 本周完全静息锚点(真休)</span></div><dl><dt>热身</dt><dd>3′:全身关节绕环(颈/肩/髋/踝)+ 鼻吸口呼 5 次降交感(仅在选做轻活动度时使用)。</dd><dt>主课</dt><dd>【修正:补足 W1–3 缺失的真休日】本日为本周完全静息锚点:默认完全被动休息(仅可选 8–10′ 散步 + 自助轻量筋膜刀 6–8′)。仅当晨脉处于基线、睡眠≥7h、膝腰无晨僵无夜痛、自觉精力好时,才可加做 ≤20′ 极轻活动度课:90/90 髋旋转、世界最伟大拉伸、胸椎旋转、踝背屈靠墙各 2×6–8 + 膈肌呼吸/腰方肌温和侧伸。【门槛】若晨脉较基线↑≥7bpm、HRV 显著下降、睡眠&lt;6.5h、或膝腰晨僵&gt;30′/夜痛,则严格完全休息、取消一切训练性内容,并考虑次日也降量。</dd><dt>筋膜刀·拉伸</dt><dd>本日即恢复主体:被动休息为先,筋膜刀后接静态拉伸全身大肌群各 30″,泡沫轴放松,可加 10′ 散步促循环。睡眠优先拉到 7.5–8h。</dd><dt>营养·EA</dt><dd>【周均缺口集中于此】恢复/休息日造缺口(≈1500–1600kcal):降碳水保蛋白(2.2–2.4g/kg≈145–160g)+ 脂肪≥0.9g/kg(60g)+ 高纤蔬菜增饱腹;EEE 极低,EA 仍≥30。补水≥2L,电解质照常防低钠。</dd><dt>护伤</dt><dd>膝:即便做轻活动度,拉伸到轻微牵拉即止,松弛/术后膝不强求端范围、不做深屈+扭转体式。腰:筋膜刀避开棘突与肾区,下背僵紧用活动度而非强压。本日的核心任务是让 HPA 轴与组织修复,宁可少做。</dd></dl></div><div class="pday"><div class="h"><span class="d">周五</span><span class="ty">力量B</span><span class="t">力量B · 上肢+全身核心(控抓握量)</span></div><dl><dt>热身</dt><dd>6–8′:肩胛上回旋+靠墙天使 2×10、弹力带肩外旋 2×12(肩袖预热充分)、徒手推举 2×10、死虫 2×8 建腹压。</dd><dt>主课</dt><dd>力量,留 3–4 次余力:1)哑铃卧推或上斜推 3×8@RPE6;2)高位下拉或辅助引体 3×8@RPE6;3)坐姿/单臂哑铃划船 3×10/侧@RPE6;4)哑铃过头推(站姿核心收紧)3×8@RPE6;5)【修正:为次日攀岩让路,去掉大提握农夫行走】负重行走改 suitcase carry 中性握 2×20m/侧、负荷取中等不练到握力力竭@RPE6;6)核心:平板 3×30″ + Pallof 推 3×10/侧。组间歇 90″。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀:背阔、斜方、胸大、前臂屈肌/伸肌各 2–3′(避脊柱)。静态拉伸:背阔(单臂过头侧伸)、胸大、肩后束、前臂各 30″×2;前臂额外做腕屈伸离心耐受 2×10。</dd><dt>营养·EA</dt><dd>训练日吃够 EA(≈1950–2050kcal,EEE≈400–500kcal→EA≥30):练前碳水+蛋白,练后 30–40g 蛋白补充;全天蛋白 4 餐分配,优先鱼/禽/蛋/豆。补水≥2L+训练电解质。</dd><dt>护伤</dt><dd>膝:过头推保持站姿膝微屈不锁、不内扣。腰:过头推与负重行走全程腹内压+脊柱中立、肋骨下沉不挺腰,suitcase carry 抗侧屈练腰稳定,禁负重下屈曲旋转。【跨日抓握限额】周五已削减大提握、与周六攀岩间仅隔当晚,前臂/肘为高过用风险区——出现肘内/外上髁刺痛立即下调拉与握量,必要时把周六攀岩降到纯技术 3–4 条。</dd></dl></div><div class="pday"><div class="h"><span class="d">周六</span><span class="ty">攀岩</span><span class="t">攀岩 · 极简顶绳(技术为主、下肢负荷最小化)</span></div><dl><dt>热身</dt><dd>8′:手指/前臂动态、肩胛激活、髋绕环、徒手深蹲与高抬腿(脚不腾空)、易线路热身攀 1–2 条。</dd><dt>主课</dt><dd>顶绳为主、Block0 不抱石、不跳跃下落:60–75′ 低强度容量攀,选 V0–V1 或低于极限的顶绳线路 6–8 条,每条充分休息 3–4′,重技术(脚法/重心转移/直臂省力)不冲极限;全程由确保下放、严禁跳落或脱落冲坠落地。【修正:写明具体膝禁忌】本 Block 明确禁 drop-knee(内/外挂转膝)、禁超过无痛屈膝 ROM 的高踩点、heel hook 仅极轻负荷;定位为手脚法/重心转移技术课、下肢负荷最小化。状态一般或前臂已累(承周五)则缩到 4–5 条或改纯技术练习。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀:前臂屈肌/伸肌、背阔、斜方各 2′。静态拉伸:前臂(腕屈伸各向)、手指逐根、胸大、背阔各 30″×2。</dd><dt>营养·EA</dt><dd>训练日 EA 吃够但强度偏中(≈1850–2000kcal,EEE≈350–500kcal→EA≥30):练前少量易消化碳水,练后蛋白+碳水恢复;攀岩抓握量大,重点补水≥2–2.5L 与电解质(钠/钾),防前臂痉挛。</dd><dt>护伤</dt><dd>膝:禁 drop-knee/外挂转膝,高抬脚/挂脚不超过无痛屈膝 ROM、不做深屈+扭转极限动作,落地永远靠绳下放而非跳下。腰:大动作 reach 时核心收紧避免腰椎过伸代偿,沉肩稳定肩胛保护下背。前臂/肘:承接周五负荷,若肘内侧刺痛或前臂泵感过强即停、改技术走线。</dd></dl></div><div class="pday"><div class="h"><span class="d">周日</span><span class="ty">有氧</span><span class="t">周日 · 稳态有氧(游泳/SUP/快走)</span></div><dl><dt>热身</dt><dd>5′:关节绕环 + 低强度起步(慢走或慢游 200m)。</dd><dt>主课</dt><dd>40–60′ 稳态低冲击 Zone2,三选一:1)游泳 1500–2000m 分段(自由泳/蛙泳交替,零冲击首选);2)SUP 桨板巡航 45–60′(核心稳定+上肢耐力);3)快走 60′(平路、配速能对话)。全程匀速、不冲刺、无跳跃。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀:小腿、背阔、肩袖周围各 2′。静态拉伸:小腿、髋屈肌、肩、胸各 30″×2。可热水放松。</dd><dt>营养·EA</dt><dd>【修正:默认上调、含真实训练量按训练日吃够 EA】游泳1.5–2km 或 Zone2 40–60′ EEE≈350–500kcal,默认摄入≈1900–2000kcal(EA≥30),不在此日制造缺口;仅当压缩为 30′ 平路快走最短选项(EEE 低)时才降到≈1650。碳水适度回补支撑下周但不过量,蛋白维持 2.2g/kg;长游/SUP 后补水+电解质至接近维持。</dd><dt>护伤</dt><dd>膝:游泳/SUP 为零冲击优选;快走选平整路面、鞋支撑好,膝不内扣。腰:SUP 划桨靠躯干旋转但核心控制、避免单侧腰椎过度扭转;快走保持骨盆中立不塌腰。</dd></dl></div><div class="pmeta"><b>减载周(W4)</b> Block 0 的 W4 减载 + diet break:① 力量量减约 40%——周一/周五每个主项砍到 2 组、RPE 降到 5(只留动作模式与神经记忆),去掉负重行走与部分核心;② 周三只保留低冲击有氧 25–30′ 或直接改第二真休;③ 周二拳击降到 40′ 纯步伐+空击不打靶,周六顶绳减到 3–4 条纯技术(且严守禁 drop-knee/高踩点),周日有氧缩到 30′;④ 周四完全被动休息照常(减载周更要真休满);⑤ 热量吃回维持(diet break,取消周四缺口,蛋白照旧、碳水回补,EA 全周≥30),让 HPA 轴与组织充分修复后再进 Block 1。减载周仍用晨脉/睡眠/晨僵门槛监测,任何指标偏离即追加被动休息。</div><div class="pmeta"><b>进阶 / 提示</b> 进阶(W1→W2→W3 累积):力量主项每周加 2.5–5% 负荷或每组多 1–2 次,RPE 由 6 爬到 7–8(峰值周 W3 最高 RPE8、仍留 2 次余力);拳击回合/打靶组数渐增,顶绳线路数或难度小幅上调,有氧时长或配速渐进。分腿蹲按"step-up(W1)→箱式限ROM(W2)→RFESS(W3)"三级进阶,每级以"连续无晨僵夜痛+无痛ROM"为放行门槛。全程仍 0 跳落地——Block0 不碰任何高冲击,周三严守"二选一低冲击"。<br>【EA 与营养硬规则】所有宏量与 EA 按当前体重~66kg、FFM≈50kg 计算;每日(摄入−EEE)≥1500kcal 为 EA 下限,含真实训练量的周三选A/周日一律按训练日吃够、周均缺口只来自周四真休日;蛋白 145–160g 全程不降,脂肪≥60g,碳水按强度浮动。高频训练+轻缺口下每日补水 2–2.5L、训练中每 15–20′补液并加电解质(钠 300–500mg),攀岩/长游日加量防痉挛。<br>【完全被动休息】W1–3 每周固定周四为完全静息锚点;若连续训练后晨脉↑≥7bpm/睡眠&lt;6.5h/晨僵&gt;30′,可将周三选A并入周日、再加一天被动休息。<br>【跨日抓握/上肢拉负荷限额】拳击(周二)+力量B(周五)+攀岩(周六)叠加易致肘/肩袖过用:周五已去大提握并改中性握 suitcase carry,周三选B时削减划船/硬拉至合计≤4组,周二缠手不过紧;前臂/肘做腕屈伸离心耐受,出现肘内/外上髁刺痛即降拉与握量。4 天精简版必须把攀岩与力量B 隔开≥1天。<br>【监测门槛】每日晨起记录晨脉、睡眠时长、(可选)HRV、膝/腰晨僵与夜痛;任一指标恶化即触发当日降量(主项减组/RPE降1)或插入被动休息。<br>缩到 4 天版:保留周一力量A、周五力量B、周二拳击、周日有氧(周六顶绳与力量B 二者隔开择一),把周三低冲击有氧并入周末、周四压缩为练后 15′ 自助筋膜刀+拉伸但仍保完全被动休息日。复评节点:体重稳定到 54–56kg 且膝/腰无晨僵无夜痛、动作 RPE 可控时,方可进入 Block 1 解锁 ≤30cm 落地;届时宏量克数按 54–56kg 重新下修。任何膝深屈刺痛或腰部放射痛立即停该动作并回退负荷。</div></div></details><details class="pblock"><summary><span class="bk">W4–8（典型累积周 = 中周期 W1 累积；W8 为减载 + diet break）</span><span class="bt">Block 1 · 低冲击基础（审稿修正版）<small>建立低冲击离心/落地能力（落地≤30cm）、补齐拳击技术与顶绳攀岩、用力量打底后链与单腿稳定…</small></span><span class="chev">›</span></summary><div class="pbody"><p class="pfocus">建立低冲击离心/落地能力（落地≤30cm）、补齐拳击技术与顶绳攀岩、用力量打底后链与单腿稳定。⚠️前置硬门槛（修正 issue4）：进 Block1 前必须完成 ①骨科/运动医学 + 物理治疗师面诊放行；②落地能力基线筛查（landing-stick 站稳、单腿缓冲无膝内扣/无腰代偿）。未放行或未达标 → 落地相关动作只做慢离心下台阶（3–4s），暂缓跳绳与低台离心下落，其余照常。周三无独立高冲击（游泳/拳击技术替代）。本周为累积周（W1）：量中等、RPE7 封顶、模式优先于负荷。周节奏 = 5 练（周一/二/三/五/六）+ 2 真休（周四零有氧真休、周日主动恢复或真休），落实母方案"缺口期 5 练 + 2 真休"。</p><div class="pcal"><b>热量 / EA</b> · P1 小缺口（65→60kg 起步），但缺口只放在"真休日 + 周均"，绝不压训练日 EA（修正 issue1 RED-S 红线）。【EA 红线】任何有运动消耗的日子（含周三游泳）摄入按 30×FFM（FFM≈47kg）+ 当日实际 EEE 动态定，即 EA floor≈1410+EEE，全周不破。①力量日（周一/周五，EEE≈350–500）≈1850–2150 kcal；②周三游泳（Zone2，EEE≈250–350）按训练日 ≈1700–1850，不再按休息日下沿造缺口；③周六攀岩（≤60′，EEE≈400–500）≈1900–2150；④周四真休（零有氧）= 造缺口主力 ≈1500–1600；⑤周日主动恢复（Zone1 ≤30′ 或真休）≈1550–1650。周均净缺口由周四 + 周日承担，训练日一律吃够。蛋白 2.2–2.4 g/kg 当前体重（约 143–156g），脂肪 ≥0.9 g/kg（≥59g），减脂靠减碳水/脂肪、不减蛋白。【铁/微量监测，补 missing】不吃牛羊 + 缺口 + 耐力 + 月经期女性 = 贫血/RED-S 高危：Block1 起测铁蛋白/血清铁/Hb/B12，植物铁（深绿叶、豆类、强化谷物）配维 C 提升吸收、与咖啡茶钙分开摄入；铁蛋白偏低即就医评估补铁。【补水电解质，补 missing】周三游泳与周六/周日耐力日每小时补 400–600ml + 钠钾电解质，出汗多另加。</div><div class="pday"><div class="h"><span class="d">周一</span><span class="ty">力量A</span><span class="t">下肢 + 后链（箱式 / 髋铰链 / 单腿）+ 落地打底</span></div><dl><dt>热身</dt><dd>划船机或单车 5′ 升温→髋绕环×10/侧、踝泵×15、猫驼×8、鸟狗×6/侧；空杆/PVC 髋铰链 + 箱式深蹲各 1 组×8 找模式。</dd><dt>主课</dt><dd>①箱式深蹲（坐到固定箱、控深度、膝随脚尖不内扣）3×8 @RPE7；②RDL 髋铰链 3×8 @RPE7（脊柱中立、腹内压）；③后脚抬高分腿蹲 3×8/腿 @RPE7；④低台离心下落（台高≤30cm、双脚轻落、缓冲 2s、不反弹）3×6——仅在医疗放行 + 落地基线达标后做；未达标改慢离心下台阶 3–4s 控制；⑤死虫 3×10 + Pallof press 3×12/侧（抗伸展/抗旋）。【修正 issue5】删去腿举：箱式深蹲+RDL+分腿蹲+落地已足够缺口期保肌，去掉冗余股四容量与髌股压缩；缺口周以 2–3 主项高质量优先。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：股四头肌、臀大肌、腓肠肌、髂胫束外侧（避开腘窝、膝关节缝、棘突、肾区，不追出痧）8–10′；静态拉伸：髋屈肌、臀大肌、腘绳肌、小腿各 30s×2。</dd><dt>营养·EA</dt><dd>训练日吃够，EA 拉满（≥1850，按 30×FFM+力量 EEE 动态定、区间偏上）。练前 1–1.5h 碳水+少量蛋白；练后 30–60min 30–40g 蛋白+碳水补糖原。全天蛋白拆 4 餐。</dd><dt>护伤</dt><dd>膝：箱式坐到底再起、全程膝不内扣、单腿动作占比高减峰值剪切；术后膝禁深屈+扭转，落地动作未达医疗放行/基线前不做（改慢离心下台阶）。腰：RDL/分腿蹲先吸气锁腹内压、脊柱中立，负重下绝不屈曲+旋转。</dd></dl></div><div class="pday"><div class="h"><span class="d">周二</span><span class="ty">拳击技术</span><span class="t">拳击技术 / 打靶（无对抗）</span></div><dl><dt>热身</dt><dd>【修正 issue6】W4–5 优先用原地快踏步或椭圆机 3–4′ 替代跳绳升温（落地基线筛查达标后再渐进跳绳，且&lt;10cm、前脚掌轻落、可随时回退踏步）；肩袖弹力带外旋×15、颈部各向活动、空击影子拳 2′。</dd><dt>主课</dt><dd>技术课 50–55′：步法（前后/侧向滑步）8′→基本拳分解（刺拳/直拳/勾拳/摆拳）空击 4 组×2′→打靶或打沙袋 8 回合×2′（组间 60s），强调出拳转髋、收手、不发力对抗；收尾核心 Pallof/抗旋 2 组。全程技术质量优先，心率中等。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：肩胛提肌、斜方上束、胸大肌、前臂屈肌 8′；静态拉伸：胸大肌、三角肌后束、颈侧、腕屈肌各 30s。</dd><dt>营养·EA</dt><dd>训练日吃够（中等消耗，EA 区间中段，按 30×FFM+EEE 动态定）。练后蛋白 30g；若当天偏轻可把碳水略向晚餐倾斜不额外加。</dd><dt>护伤</dt><dd>腰：出拳靠转髋/转脚跟，禁腰椎主动旋转代偿，核心持续抗旋收紧。膝：步法落地轻、膝微屈缓冲不锁死、不做爆发垫步。</dd></dl></div><div class="pday"><div class="h"><span class="d">周三</span><span class="ty">低冲击有氧</span><span class="t">游泳有氧（高冲击未解锁 → 替代，按训练日营养）</span></div><dl><dt>热身</dt><dd>陆上肩关节绕环+肩袖激活 3′；下水后自由泳慢游 200m 渐进升温。</dd><dt>主课</dt><dd>游泳 30–40′：以自由泳为主——8×50m（组间 20–30s）+ 持续游 10–15′ Zone2；蛙泳穿插≤2 组并控制蹬腿幅度。目标有氧打底、零地面冲击。（备选：拳击技术 40′ 打靶，二选一）</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：背阔肌、大圆肌、肩后侧 6–8′；静态拉伸：背阔、胸、肩、颈各 30s。</dd><dt>营养·EA</dt><dd>【修正 issue1】游泳是有真实消耗的训练日，不按休息日下沿造缺口：摄入 = 30×FFM + 游泳 EEE（≈250–350）≈1700–1850kcal，EA 不破 30 红线；蛋白维持高、碳水按消耗补；练后 30g 蛋白+碳水。补水电解质每小时 400–600ml + 钠钾，出汗多另加。</dd><dt>护伤</dt><dd>膝：蛙泳蹬腿避免膝外翻+大幅深屈，优先自由泳。腰：避免蛙泳/蝶泳的过度腰椎后伸，保持躯干水平、核心轻收。</dd></dl></div><div class="pday"><div class="h"><span class="d">周四</span><span class="ty">恢复</span><span class="t">真休日 + 活动度课 + 系统筋膜刀（零有氧 / 零冲击）</span></div><dl><dt>热身</dt><dd>无需有氧升温；以呼吸重置（仰卧腹式呼吸 2′）+ 关节自重活动开场，心率平缓。</dd><dt>主课</dt><dd>【修正 issue2 第一真休日：不做任何有氧】活动度/拉伸课 30–40′：胸椎旋转、髋关节（90/90、屈肌/臀）、踝背屈、肩关节绕活动度，每项 2–3 组慢控；穿插呼吸重置。结束系统筋膜刀 8–12′ 全身轻扫。无负重、无冲击、无心肺训练。</dd><dt>筋膜刀·拉伸</dt><dd>本日即恢复主体：筋膜刀全身系统 8–12′（小腿、股四、臀、背阔、肩、前臂，避开棘突/肾区/关节缝/急性痛点）；全身静态拉伸各 30s。</dd><dt>营养·EA</dt><dd>缺口主力日（零有氧）：约 1500–1600kcal，蛋白维持 2.2–2.4 g/kg（不减蛋白），减碳水/脂肪做缺口；多蔬菜+水，注意补铁餐配维 C。</dd><dt>护伤</dt><dd>松弛/不稳关节（如膝、下背）不强求拉到端范围，停在无痛舒适位；腰避免被动深度屈曲拉伸，以中立活动度为主。</dd></dl></div><div class="pday"><div class="h"><span class="d">周五</span><span class="ty">力量B</span><span class="t">上肢 + 全身核心（推/拉 + 抗负荷行走，握力卸载护前臂）</span></div><dl><dt>热身</dt><dd>划船机 5′；肩袖弹力带 Y-T-W 各×10、胸椎旋转×8/侧、肩胛俯卧撑×10。</dd><dt>主课</dt><dd>①平卧哑铃推举 3×8 @RPE7；②引体（可辅助）或高位下拉 3×8–10 @RPE7【修正 issue3：用助力带卸握，专注背阔不练前臂极限】；③坐姿/站姿过头推 3×10 @RPE7（核心抗伸展不塌腰）；④坐姿/单臂划船 3×10 @RPE7【用助力带卸握】；⑤农夫行走 3×30m（中重、用助力带，focus 体姿/核心、卸前臂）；⑥suitcase carry 3×20m/侧（抗侧屈，可用助力带）；⑦平板 3×40s + 鸟狗 3×8/侧。全程握力负荷下调，给周六攀岩留前臂。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：胸大肌、背阔肌、斜方、肱二/前臂 8–10′（前臂屈肌重点轻扫）；静态拉伸：胸、肩、背阔、腕屈肌各 30s。</dd><dt>营养·EA</dt><dd>训练日吃够，EA 拉满（≥1850，按 30×FFM+EEE 动态定）。练后 30–40g 蛋白+碳水；今日略增碳水支撑周末攀岩与有氧。</dd><dt>护伤</dt><dd>【修正 issue3】前臂/滑车：全部抓握动作改用助力带卸载握力，避免与周六攀岩前臂屈肌、手指滑车连日过劳。腰：过头推与行走全程腹内压锁紧、肋骨下沉不塌腰（抗伸展），suitcase carry 单边载荷训练抗侧屈保护腰椎。膝：行走步幅适中、落地轻、膝不内扣。</dd></dl></div><div class="pday"><div class="h"><span class="d">周六</span><span class="ty">攀岩</span><span class="t">顶绳攀岩（Block1 不抱石，控时长 + 禁满 crimp）</span></div><dl><dt>热身</dt><dd>全身关节活动 5′ + 前臂/手指弹力带与轻抓握激活；先爬 1–2 条最简单路线作攀岩专项热身。</dd><dt>主课</dt><dd>【修正 issue3】顶绳攀岩控时 ≤60′（由 60–75′ 收紧）：选中低难度路线（V0–热身级 / 5.8–5.10a 因人而定）多趟，技术/脚法导向——重脚法、重心转移、节省前臂；禁满 crimp（用 open-hand/half-crimp），每条充分休息 2–3′，前臂出现明显 pump 即停。Block1 仅顶绳、全程有保护、无落地冲击；不做抱石（留 Block3）。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：前臂屈肌、肱桡肌、背阔、肩后侧 8–10′；静态拉伸：前臂屈肌、肩、背、髋屈肌各 30s。</dd><dt>营养·EA</dt><dd>训练日吃够，EA 拉满（≈1900–2150，按 30×FFM+攀岩 EEE 动态定）；时长偏长途中补碳水（香蕉/能量胶）维持血糖，练后蛋白+碳水。补水电解质每小时 400–600ml + 钠钾。</dd><dt>护伤</dt><dd>膝：高抬腿/外展踩点时避免深屈+扭转（术后膝铁律），用脚法而非膝拧转换重心。腰：悬挂与转身时核心收紧抗旋，避免松腰借力。前臂/滑车：禁全力 crimp、控单次悬挂时长，与周五已卸握配合，确保前臂 48h 恢复后再上墙。</dd></dl></div><div class="pday"><div class="h"><span class="d">周日</span><span class="ty">主动恢复</span><span class="t">主动恢复（Zone1 ≤30′）/ 真休 二选一</span></div><dl><dt>热身</dt><dd>动态热身 3–5′：髋/踝/肩活动度，心率缓升（选真休则直接省略）。</dd><dt>主课</dt><dd>【修正 issue2 第二恢复日】Zone1 ≤20–30′ 低强度主动恢复（快走/SUP/慢游三选一，匀速可对话偏下），或直接完全真休。北京无浪→SUP/快走替冲浪。疲劳/睡眠/HRV 崩或 7 日均重掉太快时，优先删除本日有氧、改完全真休（本日是首要减负阀，见 notes 触发器）。</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀轻扫小腿、臀、肩 6′；全身静态拉伸各 30s 收尾一周。</dd><dt>营养·EA</dt><dd>低强度/真休日造缺口：约 1550–1650kcal（真休取下沿），蛋白维持高、碳水脂肪适度收；补足水分与蔬果，若做 SUP/快走出汗补电解质。</dd><dt>护伤</dt><dd>膝：快走不超伸、下坡走小步控制冲量。腰：SUP 保持躯干中立、靠髋发力划桨，不靠腰反复屈伸。</dd></dl></div><div class="pmeta"><b>减载周(W4)</b> W8 为减载 + diet break：力量 A/B 量降 40–50%（每动作减 1–2 组、RPE 降到 5–6，去掉低台离心下落与农夫/suitcase 高负荷，仅留模式与轻负荷激活）；拳击改纯技术空击、回合减半且不打靶发力；攀岩只爬最简单路线 30–40′ 体验级、禁 crimp；周三与周日有氧时长缩短到 20–30′ Zone1–2，周四仍零有氧真休。本周 diet break：EA 吃回维持、缺口归零（训练日与休息日都吃到维持热量），蛋白照旧。W8 评估并附医疗复查：评估单腿落地缓冲与离心控制是否达标、膝/腰有无激惹、铁蛋白/Hb 与月经状态是否稳定，三者齐备方可决定是否进 Block2 解锁蹦床。</div><div class="pmeta"><b>进阶 / 提示</b> 【进阶 W1→W3 累积→峰值】每周二选一渐进——负荷+2.5–5%、或+1组、或 RPE+0.5（峰值周可到 RPE8）；低台离心下落由 3×6 渐增触地控制质量至 3×8，落地高度严格封顶 ≤30cm 不破、不加跳起。农夫/suitcase 始终用助力带卸握以护前臂。Block1 全程无独立高冲击。<br>【医疗放行硬前置，补 issue4/missing】进 Block1 第一天前必须：①骨科/运动医学 + 物理治疗师面诊放行；②落地能力基线筛查（landing-stick 站稳 3s 无晃、单腿下蹲缓冲无膝内扣/无 Trendelenburg/无腰代偿）。未通过：周一落地动作、周二跳绳一律暂缓，改慢离心下台阶 3–4s，待复测达标再开放。<br>【W4–7 自动减量触发器，补 missing——替代失效的"疲劳→删周三高冲击"阀】每日/每周监测主观恢复(1–10)、睡眠时长与质量、晨脉/HRV、7 日均重、月经周期。命中任一即减负，按序执行：①7 日均重周降&gt;1% 或连续 2 天 HRV/睡眠崩 或主观恢复≤4 → 先删周日有氧改真休；②仍疲劳 → 力量 A/B 各减 1 组、RPE 降 0.5；③出现月经紊乱/经期延后/闭经倾向 或铁蛋白偏低 → 立即把 EA 吃回维持（迷你 diet break）、暂停缺口并就医，优先 RED-S/贫血排查。<br>【缩到 4 天版】保留 周一力量A、周二拳击、周五力量B、周六攀岩；周三低冲击有氧并入周日（或省略），恢复改为每天练后筋膜刀+短拉伸的主动恢复融入。注意：4 天版若周五力量B 紧接周六攀岩，务必周五全程助力带卸握 + 周六禁 crimp 控时，或把农夫/suitcase 移到周一，给前臂≥48h 恢复。<br>【进 Block2 门槛】Block1 末（W8 评估）单腿落地缓冲稳定、无膝内扣/无腰代偿、膝腰无激惹、铁/月经指标稳定，方可在 Block2 新增蹦床（且首4周≤1次/周、一次只加1项）。</div></div></details><details class="pblock"><summary><span class="bk">W9–14</span><span class="bt">Block 2 · 引入蹦床（低量低冲击）<small>蹦床节律性低冲击落地技术解锁（≤40cm／含一切触地累计≤60／≤1次每周·贯穿全Block…</small></span><span class="chev">›</span></summary><div class="pbody"><p class="pfocus">蹦床节律性低冲击落地技术解锁（≤40cm／含一切触地累计≤60／≤1次每周·贯穿全Block）+ 力量累积进阶 + 顶绳攀岩技术；护膝护腰前提下推进 P2 小缺口减脂，并以 EA≥30 为不可破铁律</p><div class="pcal"><b>热量 / EA</b> · P2 小缺口（EA≥30 铁律下逐日核验：训练日按单次课能耗缩放约 1800–2350kcal、低能耗周四为主缺口日约 1650–1750kcal，周均小赤字；基准体重≈63kg／FFM≈50–52kg，须实测核验）</div><div class="pday"><div class="h"><span class="d">周一</span><span class="ty">力量A·下肢+后链（蹦床前48h）</span><span class="t">下肢力量（箱式深蹲日）</span></div><dl><dt>热身</dt><dd>5–8′：风扇车/划船机5′低强度；髋绕环×10/向、猫驼×8、死虫激活×6/侧、臀桥激活×12、自重空蹲×10（找箱式轨迹）</dd><dt>主课</dt><dd>1)箱式深蹲 4×6@RPE7（坐箱控深度不超90°，膝随脚尖）2)髋铰链RDL 3×8@RPE7（由4组降为3组，控制后链离心总量）3)后脚抬高分腿蹲 3×8/腿@RPE7 4)北欧腿弯举 2–3×5–6（离心3–4s计时控制、可用弹力带辅助，RPE真实可控；优先保RDL，北欧仅作补充）5)农夫行走 3×30m（中重）6)核心：死虫 3×8/侧 + Pallof press 3×12/侧。注：本日为高冲击日（周三蹦床）前48h的下肢日，落地相关离心量已下调，周二排上肢让腿恢复</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀8′：股四头、腘绳、臀大肌/臀中肌、小腿（避开棘突/腘窝/膝关节缝）；练后静态拉伸：髋屈肌、腘绳、臀、小腿各30–40″</dd><dt>营养·EA</dt><dd>训练日略低于维持：全天≈1950–2050kcal；运动净消耗≈350kcal，EA=(摄入−EEE)/FFM≈(2000−350)/50=33≥30；练前1.5–2h碳水+蛋白，练后30′补30–40g蛋白+碳水；蛋白~130–140g(2.0–2.2g/kg)，脂肪≥0.9g/kg</dd><dt>护伤</dt><dd>膝：箱式控深度、起立膝不内扣、分腿蹲前脚踩实重心居中、禁深屈+扭转（术后膝）；腰：RDL髋主导发力、腹内压+脊柱中立，禁屈曲+旋转下负重，农夫行走躯干直立勿侧倾；北欧已减量保护腘绳/膝周张力</dd></dl></div><div class="pday"><div class="h"><span class="d">周二</span><span class="ty">力量B·上肢+全身核心（为周三蹦床让腿）</span><span class="t">上肢力量+抗伸展抗旋核心</span></div><dl><dt>热身</dt><dd>5–8′：划船机/上肢循环5′、肩袖弹力带激活、YTW、胸椎旋转×8/侧、猫驼×8</dd><dt>主课</dt><dd>1)卧推 4×6@RPE7 2)引体/高位下拉 4×8@RPE7 3)哑铃过头推（坐姿背靠）3×8@RPE7 4)单臂哑铃划船 3×10/臂 5)提握/农夫静力握 3×40″ 6)核心抗伸展抗旋：鸟狗 3×8/侧 + suitcase carry 3×30m/侧 + Pallof 3×12/侧 + 平板 3×40″。注：本日由原周五前移，使下肢在周一后获48h恢复、为周三蹦床保腿；全程下肢低负荷</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀8′：胸大肌、背阔、上斜方、三角肌、前臂（避开棘突/肩锁关节）；拉伸：胸、背阔、肩、前臂各30″</dd><dt>营养·EA</dt><dd>训练日略低于维持：≈1900–2000kcal；EEE≈300，EA≈(1950−300)/50=33≥30；练后30′补30–40g蛋白+碳水；蛋白~130–140g</dd><dt>护伤</dt><dd>腰：过头推坐姿背靠、核心收紧防塌腰（肋骨下沉），suitcase carry抗侧屈躯干不歪；膝：本日基本不参与冲击，站姿动作双脚踩实、稳定不晃，为次日蹦床保留腿部状态</dd></dl></div><div class="pday"><div class="h"><span class="d">周三</span><span class="ty">高冲击解锁·蹦床低量（含一切触地≤60）</span><span class="t">蹦床节律性低弹（引入期·建立缓冲模式）</span></div><dl><dt>热身</dt><dd>5–8′：踝泵×20、提踵×15、踝绕环、小腿/比目鱼激活、地面双脚小跳软着陆练习×15（先在硬地建立屈膝缓冲模式）</dd><dt>主课</dt><dd>蹦床低量（单次≤20′；**含一切触地的累计总和≤60次、当日必须逐次计数**；落地≤40cm；禁翻腾/坐弹/急停减速落地）。引入期(W9–12)仅做节律性低幅软着陆：直立基础弹跳 4组×10触地(=40次，高度≤40cm、屈膝缓冲、节律均匀)，组间走动充分休息；余下预算≤20次留给“双脚节律落地控制”轻量练习（非急停）。急停/减速落地本Block不在蹦床上做——须先在硬地通过急停缓冲动作验收（无痛、无代偿、膝随脚尖）达标后，最早W13–14再评估，且仍计入≤60总触地。可选低冲击有氧补时：椭圆机/划船10′Zone2（不计触地）。心率中低</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀8′：腓肠肌、比目鱼肌、胫前肌、足底（避开跟腱止点/踝关节缝）；拉伸：小腿、足底、股四头、踝背屈各30″</dd><dt>营养·EA</dt><dd>冲击日补足：≈1900–2000kcal；EEE≈250，EA≈(1950−250)/50=34≥30；练前补碳水保证落地控制质量，练后蛋白+碳水</dd><dt>护伤</dt><dd>膝：软膝着陆、屈膝缓冲不锁死、膝随脚尖，落地高度严格≤40cm、禁翻腾、**禁急停减速落地**（峰值地反力过高，术后膝禁深屈+扭转不耐受）；腰：脊柱中立不过度后仰、核心持续收紧；频率≤1次/周（贯穿整个Block含W13–14）；累计触地达60即停；前已距下肢力量48h、前一日为上肢日（腿低负荷）；膝/腰一有红灯信号（见notes）立即停</dd></dl></div><div class="pday"><div class="h"><span class="d">周四</span><span class="ty">恢复·活动度+筋膜刀（每周主缺口日）</span><span class="t">恢复日（活动度课+系统筋膜刀）</span></div><dl><dt>热身</dt><dd>轻松风扇车/快走5′低强度升温</dd><dt>主课</dt><dd>恢复课30–40′：全身活动度流（髋开合、90/90、胸椎旋转、踝背屈、肩绕环）+轻瑜伽体式+呼吸训练（鼻吸腹式）；全程无负重、无冲击、低能耗(EEE≤150)，**本日不叠加有氧**。本日为每周主要热量缺口日</dd><dt>筋膜刀·拉伸</dt><dd>系统筋膜刀8–12′：股四头、腘绳、臀、髂胫束周围、背阔、小腿（避开棘突/肾区/关节缝/急性痛点，不追出痧）；全身静态拉伸每部位30–45″</dd><dt>营养·EA</dt><dd>低EEE主缺口日：≈1650–1750kcal；因今日运动净消耗低(≤150)，EA=(1700−150)/50≈31≥30仍达标——故缺口放在此日而非低摄入叠中等有氧；蛋白维持~135–140g保肌，脂肪≥0.9g/kg，碳水适度下调。周缺口主要来自今日+训练日略低于维持</dd><dt>护伤</dt><dd>膝/腰等松弛或不稳关节拉伸不强求端范围、无痛区间内做；筋膜刀避开棘突/肾区/关节缝与急性伤区；本日同时完成高冲击（周三）后24–48h的膝/踝肿胀客观随访（围度阈值见notes）</dd></dl></div><div class="pday"><div class="h"><span class="d">周五</span><span class="ty">拳击·技术打靶（不对抗·蹦床后48h）</span><span class="t">拳击技术/打靶</span></div><dl><dt>热身</dt><dd>5–8′：肩颈/胸椎活动、肩袖弹力带激活、空击2′、步法drills（前后滑步、软膝）；跳绳改为可选且仅极轻软弹≤1′（或直接省略，避免踝-小腿离心叠加；本日距周三蹦床已48h）</dd><dt>主课</dt><dd>技术/打靶不对抗：空击2回合热身→打靶/重袋 6–8回合×3′（刺拳-直拳-勾拳组合+步法），回合间歇1′；强度Zone3–4，专注发力链与技术，全程不做实战对抗。按当日属中-中高能耗</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀8′：上斜方、胸大肌、三角肌后束、前臂屈伸肌（避开颈椎棘突/肩锁关节）；拉伸：胸、肩、颈侧、前臂各30″</dd><dt>营养·EA</dt><dd>中-中高能耗日，按消耗上浮（主加碳水）：≈2000–2200kcal；EEE≈350–450，EA=(2100−400)/50≈34≥30；练后补蛋白+碳水，蛋白~135–140g</dd><dt>护伤</dt><dd>腰：出拳转体由髋/蹬地发力带动躯干、腹内压收紧，避免单纯腰椎甩动旋转；膝：步法软膝落地、膝随脚尖，转髋时前脚不内扣；跳绳已减量保护跟腱/小腿，杜绝与蹦床落地的离心叠加</dd></dl></div><div class="pday"><div class="h"><span class="d">周六</span><span class="ty">攀岩·顶绳（不抱石·高能耗日）</span><span class="t">顶绳攀岩（技术为主）</span></div><dl><dt>热身</dt><dd>5–8′：全身活动度、肩/手指/前臂渐进热身、简单easy路线1–2条热身攀（低难度）</dd><dt>主课</dt><dd>顶绳攀岩60–90′（本Block不抱石，Block3才解锁）：中等难度路线6–8条，以脚法/重心转移/技术为主，组间充分休息；避免大力dyno/动态跳跃与跳落，下降用绳缓降。属高能耗日</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀8′：前臂屈肌/伸肌、肱二头、背阔、上斜方（避开肘关节缝）；拉伸：前臂、手指、胸、背各30″</dd><dt>营养·EA</dt><dd>高能耗日（攀岩90′，EEE≈500–700）：上浮200–400kcal、主加碳水：≈2150–2350kcal；EA=(2250−600)/50≈33≥30；长时课中途补碳水/水，练后蛋白+碳水修复；蛋白~135–140g</dd><dt>护伤</dt><dd>膝：高踩腿避免深屈+扭转（术后膝禁忌），换重心时膝随脚尖；腰：挂点/挂绳保持核心收紧勿过度后仰；手指强度渐进不过度</dd></dl></div><div class="pday"><div class="h"><span class="d">周日</span><span class="ty">稳态有氧·主动恢复（不与低摄入叠加）</span><span class="t">稳态低冲击有氧/冲浪</span></div><dl><dt>热身</dt><dd>5′关节活动+慢速起始升温</dd><dt>主课</dt><dd>稳态低冲击有氧40–60′@Zone2：游泳/SUP/快走任选（或冲浪）；心率维持谈话强度，不冲刺、不冲击</dd><dt>筋膜刀·拉伸</dt><dd>可选轻筋膜刀：小腿、背阔、肩；全身舒缓静态拉伸每部位30″</dd><dt>营养·EA</dt><dd>有氧日**不与低摄入叠加**——上调至近维持：≈1800–1900kcal；EEE≈200–300，EA=(1850−250)/50≈32≥30（修正原“1500+中等有氧”导致EA≈26的RED-S风险）；蛋白~135–140g；若冲浪时长大则按运动量再适当上调</dd><dt>护伤</dt><dd>膝：游泳避免蛙泳大力蹬夹（改自由泳/仰泳），SUP屈膝缓冲；腰：划水/起乘由髋发力、脊柱中立，低冲击保护腰椎</dd></dl></div><div class="pmeta"><b>减载周(W4)</b> 本Block跨度W9–14（6周），减载窗口明确落在 **W12**（W9–11累积3周之后），消除“每个4周第4周”与6周跨度的歧义、避免缺口期连续累积无减载窗口；W13–14为短累积/技术巩固期（2周），RPE回到7–7.5、负荷取减载前80–85%渐增，随后衔接Block3。W12减载执行：力量A/B组数砍至2–3组、RPE降到6、去掉力竭组，负荷维持上周80–85%；蹦床本周跳过或仅5–8′纯技术软弹（含一切触地≤30、高度不进阶）；拳击降为轻技术、攀岩只爬easy路线、周五可改纯活动度课。饮食执行diet break吃回维持（取消缺口，全周训练/休息日均≈2200–2300kcal、EA充分），重点补睡眠与关节恢复，为下个累积周/Block蓄能。</div><div class="pmeta"><b>进阶 / 提示</b> 【体重/EA基准】体重≈63kg（由蛋白g/kg反推，须实测核验），体脂~18%，FFM≈50–52kg。EA铁律：任一日 (摄入−运动净消耗)/FFM ≥ 30kcal/kgFFM；全周营养已逐日核验EA≥30。维持热量≈2300–2400kcal，P2小缺口=训练日略低于维持+周四主缺口日，不靠任何单日“低摄入+中等有氧”叠加制造缺口。<br>【训练日摄入随课能耗缩放】力量日EEE~300–350→1900–2050；蹦床日~250→1900–2000（补碳保落地）；拳击~350–450→2000–2200；攀岩90′~500–700→2150–2350（高能耗上浮200–400、主加碳水）；有氧日~200–300→1800–1900；周四低EEE主缺口日1650–1750。<br>【累积期周内进阶 W9→W10→W11】同动作每周+2–5%负荷或+1–2次/组，RPE 7→7.5→8；**缺口期峰值封顶RPE8（主项保1–3RIR），不上RPE8–9**（避免缺口期CNS/关节疲劳与受伤），RPE8–9留到维持/盈余期或个别孤立动作。北欧腿弯举固定2–3×5–6离心计时、后链优先保RDL（RDL 3×8）。核心每周+5–10″或升难度。<br>【蹦床铁律·贯穿全Block】含一切触地的累计总和≤60次/课、当日必逐次计数；落地≤40cm；禁翻腾/坐弹/急停减速落地；频率≤1次/周——W9–14全程（含W13–14）维持≤1次/周，不因后段放宽。急停/减速落地不在引入期做，须先硬地验收达标，最早W13–14再评估且仍计入≤60。抱石+跑酷推迟到Block3。<br>【日程抗冲击排布】下肢力量（周一）与高冲击（周三）间隔48h，中间周二为上肢日（腿低负荷）；蹦床后48h（周五）才安排含踝-小腿的拳击步法且跳绳减为可选极轻，消除原“周一下肢→周二跳绳→周三蹦床”连续三天踝-小腿/膝累积应激。<br>【停止 vs 降量判据】红灯立即停训就医：关节明显肿胀、夜间静息痛/痛醒、打软腿或交锁、锐痛定位术后膝内侧或腰椎、下肢放射麻木。黄灯降量/降冲击观察：训练后弥漫酸胀24–48h可消退、轻度晨僵、无肿胀的功能性紧张。绿灯（无痛无肿、活动度正常）方可进阶。<br>【恢复监控】每日睡眠≥7h；晨脉较基线↑&gt;10% 或 HRV↓&gt;10% 连续2日→当日降量；高冲击日后24–48h做膝/踝围度随访（晨起髌骨上缘10cm处周径），较对侧或基线 +&gt;1cm 或局部发热提示积液→暂停一切冲击直至消退。<br>【4天缩量版】保留①周一力量A ②周三蹦床 ③力量B ④周六攀岩；砍掉拳击与有氧（或拳击并入某练后10′补打），恢复改每日练后拉伸+每周1次系统筋膜刀。缩量时各练勿同时加大，优先保住落地总触地≤60与护伤铁律（膝禁深屈+扭转、腰禁屈曲+旋转下负重）。</div></div></details><details class="pblock"><summary><span class="bk">W15+（典型累积周 = 中周期 W1 累积）</span><span class="bt">Block 3 · 抱石（本Block唯一新增）+ 跑酷推迟<small>最高解锁层：本Block只新增1项=周六攀岩加【抱石】（厚垫+下攀代替跳落、中低难度），严格…</small></span><span class="chev">›</span></summary><div class="pbody"><p class="pfocus">最高解锁层：本Block只新增1项=周六攀岩加【抱石】（厚垫+下攀代替跳落、中低难度），严格执行护伤渐进的「一次只新增1项」铁律。【跑酷滚翻推迟到下个中周期】——本审稿指出周三跑酷滚翻与周六抱石同属高风险新刺激，同周引入则膝/腰/指/踝一旦出症状无法归因单一刺激，且前滚翻=胸腰段动态屈曲、与「腰禁屈曲+旋转下负重」铁律冲突。故本Block周三降级为蹦床/软着陆轮换（既有低冲击项，非新增高风险动作）。落地全程≤50cm，禁深屈+扭转，膝腰护伤铁律贯穿；攀爬线路主动规避极端高抬脚/深drop-knee。</p><div class="pcal"><b>热量 / EA</b> · P3 最慢减脂期 + 越瘦越多 diet break（接近 54–56kg 先复评）。【EA硬门控】：以实测去脂体重FFM与各课运动能耗EEE逐日核算能量可用性，每日EA≥30 kcal/kgFFM为硬门控，达不到先上调当日热量、不靠笼统宣称「EA达标」。凡含Zone2/冲浪/游泳的日子一律按「有运动日」计（不再当休息日造缺口）。训练日吃够≈1900–2050kcal保EA≥30；真正缺口只放在零/低运动日（周四），周均缺口由周四+训练日温和管理产生而非压低有氧日。蛋白2.2–2.4g/kg当前体重，脂肪≥0.9g/kg。接近54–56kg时优先保EA而非保缺口；如出现月经紊乱/疲劳/伤口愈合慢等RED-S信号，立即拉满EA并复评。</div><div class="pday"><div class="h"><span class="d">周一</span><span class="ty">力量A</span><span class="t">下肢 + 后链</span></div><dl><dt>热身</dt><dd>6–8′：划船机/动感单车2′；猫驼×10 + 鸟狗×10/侧 + 髋绕环；臀桥×15；弹力带螃蟹步×12/侧；空杆箱式深蹲×8（找膝随脚尖轨迹）</dd><dt>主课</dt><dd>① 箱式深蹲 4×6 @RPE7（坐到箱控深、膝随脚尖不内扣、起身不塌腰）② 髋铰链RDL 4×8 @RPE7（髋后推、脊柱中立、绷紧腹内压；若腰为屈曲型激惹，幅度只到无痛区间）③ 后脚抬高分腿蹲 3×8/腿 @RPE7（单腿优先护膝）④ 腿举箱式控深 3×10 @RPE7 ⑤ 核心抗伸展：死虫 3×10/侧 + Pallof press 3×12/侧</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：股四头、臀大肌、腓肠肌外侧（避开腘窝/膝关节缝/棘突）8–10′。静态拉伸：股四头、臀肌、髂腰肌、腘绳肌各30s</dd><dt>营养·EA</dt><dd>训练日吃够≈1900–2050kcal、核算EA≥30为硬门控；练后30–60′补碳水+蛋白30–40g；全天蛋白2.2–2.4g/kg≈115–125g</dd><dt>护伤</dt><dd>膝—箱式控深度、膝随脚尖不内扣、多用单腿；禁深屈+扭转。腰—RDL靠髋铰链、绷紧腹内压脊柱中立、禁屈曲旋转下负重；屈曲型腰伤RDL只走无痛幅度</dd></dl></div><div class="pday"><div class="h"><span class="d">周二</span><span class="ty">拳击</span><span class="t">技术 / 打靶（不对抗，新增项当周降量）</span></div><dl><dt>热身</dt><dd>5–8′：跳绳双脚轻跳1′（落地踝缓冲、不跺地）；颈/肩/腕绕环；猫驼+胸椎旋转×10/侧；影子步法2′</dd><dt>主课</dt><dd>50–60′ 技术课（新增抱石当周主动降量预留恢复）：影子拳 3×3′（直/勾/摆组合）；打靶或打沙袋 4–5×3′（技术脚法为主、RPE6–7、不对抗）；核心抗旋收尾：Pallof 3×12/侧 + suitcase carry 2×30m。全程脚步轻、出拳靠转髋</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：上斜方、胸大肌、前臂屈肌（避开颈动脉/锁骨上窝）8′。拉伸：肩前束、胸、腕屈肌、颈侧各30s</dd><dt>营养·EA</dt><dd>训练日吃够、核算EA≥30；练前1–2h少量碳水保专注；练后补蛋白30–40g；周均缺口不压在本日</dd><dt>护伤</dt><dd>腰—出拳靠转髋非腰段扭转、保持腹内压、禁屈曲+旋转发力。膝—步法膝微屈不锁死、不内扣</dd></dl></div><div class="pday"><div class="h"><span class="d">周三</span><span class="ty">中冲击·蹦床/软着陆</span><span class="t">蹦床弹跳 + 软着陆吸收（跑酷滚翻推迟至下中周期）</span></div><dl><dt>热身</dt><dd>8′：全身关节活动度（踝/膝/髋/脊柱/肩/颈/腕）；原地慢跑2′；深蹲到位×10；熊爬/四足爬×20步；踝膝缓冲预热</dd><dt>主课</dt><dd>低冲击为主、不引入新高风险动作：① 蹦床基础弹跳 3×2–3′（床面缓冲、软膝吸收、不做空翻/旋转、RPE5–6；蹦床为床面缓冲不计硬地冲击）② 站姿软着陆技术（软膝缓冲、髋主导吸收、台阶下落≤50cm）——【硬地触地总量≤15/课，写死门控】③ 低台精准落地（≤50cm）软膝吸收，并入上限内计数。组间充分休息保落地质量；本Block不练前滚翻（待下中周期作单一新增项再引入）。与周六抱石错开冲击负荷</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：背阔、胸椎两侧竖脊肌（避开棘突/肾区）、臀肌、小腿8–10′。拉伸：颈后、上背、髋屈肌、踝、腕各30s</dd><dt>营养·EA</dt><dd>训练日吃够、核算EA≥30；神经主导课程需充足碳水保专注与反应；练后蛋白+碳水修复</dd><dt>护伤</dt><dd>膝—落地一律软膝缓冲、膝随脚尖、严禁深屈+扭转。腰—蹦床不做空翻/扭转、落地用腹内压稳住脊柱中立；本Block无滚翻=规避胸腰段动态屈曲风险（待腰伤诊断明确屈曲耐受后再评估滚翻）</dd></dl></div><div class="pday"><div class="h"><span class="d">周四</span><span class="ty">恢复·真低活动日</span><span class="t">活动度课 + 系统筋膜刀（周均缺口主源日）</span></div><dl><dt>热身</dt><dd>5′：轻松行走 + 腹式呼吸激活 + 90/90 呼吸找肋骨下沉</dd><dt>主课</dt><dd>30–40′ 拉伸/活动度课：胸椎旋转、髋90/90过渡、踝背屈、肩CARs、深蹲坐姿放松（各2–3组）；+ 系统筋膜刀8–12′梳理全身大肌群。避开伤区/关节缝/棘突/肾区，不追出痧。本日为零/低运动真休息日，不安排有氧</dd><dt>筋膜刀·拉伸</dt><dd>本日即恢复；额外热敷腰背、泡沫轴放松下肢</dd><dt>营养·EA</dt><dd>【周均缺口集中于本日】因EEE极低，可造缺口≈1500–1600kcal且仍满足EA≥30；蛋白2.2–2.4g/kg优先、脂肪≥0.9g/kg、降碳水。注意：缺口只放零运动日，不再压在含有氧的周日</dd><dt>护伤</dt><dd>膝/腰—松动不稳关节不强求端范围；活动度避免屈曲+旋转极限位负荷</dd></dl></div><div class="pday"><div class="h"><span class="d">周五</span><span class="ty">力量B</span><span class="t">上肢 + 全身核心</span></div><dl><dt>热身</dt><dd>6–8′：划船2′；肩袖弹力带外旋+YTW×12；猫驼+死虫激活；空杆过头推×10</dd><dt>主课</dt><dd>① 卧推 4×6 @RPE7 ② 引体/辅助引体或高位下拉 4×8 @RPE7 ③ 哑铃过头推 3×8 @RPE7（收肋骨防腰代偿过伸）④ 单臂哑铃划船 3×10/侧 @RPE7 ⑤ 农夫行走 3×30m（提握、脊柱中立）⑥ 核心：鸟狗3×10/侧 + 平板/侧平板各3×30–40s + Pallof抗旋3×12/侧</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：胸大肌、三角肌、背阔、前臂（避开腋窝/锁骨上神经区）8–10′。拉伸：胸、背阔、肩后束、前臂、颈各30s</dd><dt>营养·EA</dt><dd>训练日吃够、核算EA≥30≈1900–2050kcal；练后蛋白30–40g+碳水</dd><dt>护伤</dt><dd>腰—过头推收肋骨、核心抗伸展防过伸、禁屈曲旋转下负重。膝—农夫行走膝微屈稳定不锁死</dd></dl></div><div class="pday"><div class="h"><span class="d">周六</span><span class="ty">攀岩</span><span class="t">顶绳为主 + 抱石（厚垫+下攀，本Block唯一新增项）</span></div><dl><dt>热身</dt><dd>8′：全身关节活动度；肩袖弹力带；前臂/手指渐进激活（轻握开合、不上极限）；易线路热身攀1–2条</dd><dt>主课</dt><dd>90′：① 顶绳为主 6–8条（中等难度、练技术脚法、RPE6–7）② 抱石（Block3唯一新增）厚垫保护、中低难度3–5条，强调下攀down-climbing代替跳落、不从顶点跳下 ③ 【线路选择主动规避极端高抬脚/深drop-knee，挂脚不到极限角度】④ 指力不做极限、设「无痛、不冒进」门控并记录膝反应。组间充分休息；落地一律下攀或软垫缓冲</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：前臂屈肌/伸肌、背阔、上斜方（避开肘关节缝）8–10′。拉伸：前臂、手指、背阔、胸、髋各30s</dd><dt>营养·EA</dt><dd>训练日吃够、核算EA≥30（90′攀岩+抱石EEE较高，随减脂推进逐周复评EA，接近54–56kg优先保EA）；长课中补水+少量碳水；练后蛋白补充</dd><dt>护伤</dt><dd>膝—高抬脚/挂脚避免深屈+扭转、限制极端drop-knee线路、抱石下攀不跳落护膝、记录每次膝反应。腰—攀爬保持核心张力、避免极限过度塌腰</dd></dl></div><div class="pday"><div class="h"><span class="d">周日</span><span class="ty">稳态有氧·有运动日</span><span class="t">低冲击有氧 / 冲浪（按有运动日吃够）</span></div><dl><dt>热身</dt><dd>5′：关节活动度 + 动态拉伸</dd><dt>主课</dt><dd>40–50′ 稳态 Zone2 RPE5–6、能说话强度：首选游泳（自由泳，对膝腰低冲击）或SUP/快走；或冲浪（整日则视为活动恢复）。心率维持有氧区间</dd><dt>筋膜刀·拉伸</dt><dd>筋膜刀：全身大肌群低强度轻梳（可选）。拉伸：全身大肌群各30s，重点髋/胸/肩</dd><dt>营养·EA</dt><dd>【本日含40–50′Zone2，按有运动日计、不造缺口】：把热量上调到扣除运动消耗后EA≥30（避免接近54–56kg瘦体女性反复sub-30 EA→RED-S/骨应力风险）；冲浪整日则按训练日吃够；蛋白优先</dd><dt>护伤</dt><dd>膝—游泳少用蛙泳（蹬腿外翻压膝），改自由泳护膝。腰—SUP保持髋铰链中立、不塌腰</dd></dl></div><div class="pmeta"><b>减载周(W4)</b> 减载周（中周期 W4）：力量A/B 组数砍至 2/3（4组→2–3组）、强度降到RPE5–6、去掉力竭与峰值组；周三本周只做蹦床轻弹+软着陆缓冲技术（硬地触地≤10、不加新动作）；周六攀岩只做顶绳易线、抱石暂停或仅练下攀；周二拳击降为纯技术影子拳、周日有氧缩到30′（仍按有运动日吃够、不造缺口）。配合 diet break——全周吃回维持热量（EA拉满、不造缺口）、蛋白维持、补足碳水修复神经与结缔组织。目的：卸量修复膝腰与CNS，为下个中周期蓄力。越接近54–56kg，diet break 频次越高、缺口越保守、EA门控越严。</div><div class="pmeta"><b>进阶 / 提示</b> 进阶顺序（守一次只新增1项）：本Block先把【抱石+下攀】练到稳定无痛、膝反应可控后，下个中周期再把【跑酷滚翻】作为那时的唯一新增项引入——且引入前必须先核实腰伤激惹方向：若为屈曲型/椎间盘相关则滚翻为相对禁忌，本Block及后续暂不练，仅练软膝着陆/吸收；若屈曲可耐受，则限极低量、纯软垫、全程无痛、单次≤3–4个并即时评估腰部反应，达「连贯+无痛」量化标准（连续完成无代偿、训练后24h无腰部不适）再渐增触地至30、落地仍硬上限≤50cm。蹦床版处方同守≤50cm与硬地触地上限。EA：以实测FFM+各课EEE逐日核算、每日EA≥30为硬门控，缺口只放零运动周四，含有氧的周日按有运动日吃够。可缩到4天版：保留 周一力量A + 周五力量B + 周六攀岩（技术+抱石）+ 周三中冲击（蹦床/软着陆）；砍掉周二拳击与周日有氧（有氧并入日常快走/通勤步数），周四恢复改居家自主拉伸+筋膜刀——但4天版仍须保证至少1个零运动真休息日。任何膝腰急性不适当天降级为恢复日，铁律不破：落地≤50cm、禁深屈+扭转、腰禁屈曲+旋转下负重、EA≥30。</div></div></details></div></div>
+</section>
+
+<!-- 03 项目角色 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">03 / Roles · 每项定位 + 护伤(按风险排序)</span></div>
+    <p class="lead" style="margin-bottom:1.6rem;">风险排序(高→低):<b style="color:var(--alert)">跑酷 &gt; 蹦床 &gt; 抱石</b> &gt; 冲浪 &gt; 拳击 &gt; <span class="vt">力量</span>。冲击项进阶前均需医疗放行。</p>
+    <div class="grid g2">
+      <div class="card"><span class="risk lo">低冲击</span><span class="role">地基 · 优先级最高 · 2–3次/周</span><h3>力量训练</h3><ul><li>保肌、护关节、维持代谢的不可动摇地基,<b>减脂期绝不能停</b></li><li>护膝:箱式深蹲控深度、膝随脚尖不内扣、单腿(后脚抬高分腿蹲)</li><li>护腰:髋铰链发力、腹内压+脊柱中立,<b>禁屈曲+旋转下负重</b>;大重量 RPE≤8</li></ul></div>
+      <div class="card"><span class="risk mid">中</span><span class="role">燃脂 · 趣味 · 较早纳入</span><h3>拳击</h3><ul><li>技术/空击/打靶,<b>全程不打头、不对抗</b></li><li>护腰:出拳转体由髋驱动、转后脚跟,不靠腰硬拧(这是你下背高危动作)</li><li>护膝:侧移步防膝内扣;腰旋转出现钝痛即减组</li></ul></div>
+      <div class="card"><span class="risk mid">中·非有氧</span><span class="role">趣味 · 技能</span><h3>攀岩</h3><ul><li>技能/无氧间歇,<b>不计入 Zone 2 有氧</b>;早期顶绳为主,抱石延到 Block 3</li><li>护膝:heel hook/高抬腿注意膝扭转</li><li>护腰:悬垂用核心收骨盆;手指滑车循序,禁早期满 crimp;控单次时长防前臂过劳</li></ul></div>
+      <div class="card"><span class="risk mid">中·环境风险</span><span class="role">平衡 · 背部耐力 · 季节性</span><h3>冲浪</h3><ul><li>北京无海需异地/室内造浪,频次低 → 靠岸上 prehab 维持模式</li><li>护腰:<b>划水量封顶</b>(俯卧腰过伸是下背直接威胁);pop-up 用屈髋穿腿而非挺腰</li><li><b>环境安全</b>:有人陪同/有救生员水域、了解离岸流、leash 与撞板防护,<b>绝不单独下水</b></li></ul></div>
+      <div class="card"><span class="risk hi">高·Block2 起</span><span class="role">趣味 · 协调</span><h3>蹦床</h3><ul><li><b>实为高轴向冲击,非"低冲击"</b>(已修正乐观定性)。<b>禁翻腾</b></li><li>护膝:落地膝微屈对齐脚尖</li><li>护腰:核心绷紧防腰塌,坏落地脊柱压缩是主伤源。单次 ≤15–20min</li></ul></div>
+      <div class="card"><span class="risk hi">最高·最后解锁</span><span class="role">爆发 · 落地</span><h3>跑酷</h3><ul><li>落地/滚翻技能;<b>滚翻先在垫上站姿前滚翻练起</b>,不从高处下,禁带旋转的屈曲落地</li><li>护膝:落地"轻、静、屈髋主导",膝不内扣</li><li>封顶:≤20 触地/次、≤2 次/周、48h 间隔;落地变响立即停</li></ul></div>
+    </div>
+
+    <h3 style="font-size:1.05rem;margin:2.2rem 0 .8rem;">Prehab + 热身/收操(3–4 次/周 × 10–15min)</h3>
+    <div class="grid g3">
+      <div class="card"><span class="role">护膝</span><ul><li>西班牙深蹲、终末伸膝(TKE)</li><li>慢离心下台阶(3–4 秒下)</li><li>靠墙静蹲 3×30–45s</li></ul></div>
+      <div class="card"><span class="role">臀中(控膝外翻)</span><ul><li>侧桥+外展、侧向弹力带走</li><li>Copenhagen 内收</li><li>单腿平衡 3×30s</li></ul></div>
+      <div class="card"><span class="role">护腰抗伸展+抗旋</span><ul><li>死虫、平板、hollow hold</li><li>Pallof press、鸟狗</li><li>suitcase carry 3×20m</li></ul></div>
+    </div>
+    <p class="lead" style="margin-top:1rem;font-size:.88rem;"><span class="ed">每节课 —</span> 课前 5–8min 动态热身(臀桥/蚌式/鸟狗激活 + 髋踝活动度 + 渐进);课后 5min 泡沫轴 + 静态拉伸。落地能力(慢离心下台阶 + landing stick 刹停)是所有冲击项的前置,达标再放跳跃量。</p>
+  </div>
+</section>
+
+<!-- 03+ 恢复:筋膜刀 + 拉伸 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">03+ / Recovery · 筋膜刀(IASTM)+ 拉伸课程</span></div>
+    <h2>软组织 <span class="plus">+</span> 柔韧</h2>
+    <p class="lead" style="margin:1rem 0 1.2rem;">定位先说清:这两项是<b style="color:var(--text)">活动度 / 主观舒适度的辅助</b>,证据等级有限、效果短暂——<b style="color:var(--text)">不替代力量训练、不治结构性损伤、不宣称预防受伤</b>(筋膜刀也并非"松解粘连/加速代谢")。降损主要靠规范热身、渐进加量与力量。</p>
+
+    <div class="callout"><b>因膝/腰伤史(硬前置)</b> — 开始前先取得医生/康复治疗师放行;<b>自我筋膜刀前至少跟物理治疗师面授 1 次</b>(学 30–45° 角度、压力分级、避让骨突/关节缝/血管/神经)。临床医嘱与本页冲突时一律听医嘱。</div>
+
+    <div class="grid g2" style="margin-top:1.4rem;">
+      <div class="card"><span class="role">练后 / 恢复日</span><h3>筋膜刀 / IASTM</h3><ul>
+        <li><b>剂量</b>:单次 8–12′、单块 60–120s;每块周 2–3 次,不连续两天深刮</li>
+        <li><b>手法</b>:必用润滑介质禁干刮;工具 30–45°;顺纤维为主、横向处理热点</li>
+        <li><b>终点</b>:轻微温热 + 可快速消退淡红即停。<b>★ 不追求出痧/淤青</b>——痧点=皮下微出血=过度</li>
+        <li>练前仅 30–60s 轻刮唤醒,不深刮</li></ul></div>
+      <div class="card"><span class="role">分时机</span><h3>拉伸课程</h3><ul>
+        <li><b>练前</b>:动态激活 5–8′(若做静态,单块 &lt;60s)</li>
+        <li><b>练后</b>:静态 30–45s ×3–5 部位,针对当天肌群</li>
+        <li><b>每周课</b>:1 次活动度课 30–40′(CARs + 静态/PNF + 瑜伽/普拉提)放周四</li>
+        <li>护膝扶墙骨盆中立;护腰禁圆背强够脚尖、扭转来自胸椎;<b>松/不稳关节不强求端范围</b></li></ul></div>
+    </div>
+
+    <div class="tbl-wrap" style="margin-top:1.4rem;">
+      <table>
+        <thead><tr><th>筋膜刀目标</th><th>触发运动</th><th>手法 / 注意</th></tr></thead>
+        <tbody>
+          <tr><td>前臂屈/伸肌</td><td>攀岩、拳击</td><td>顺纤维,肘部肌腱处轻横刮</td></tr>
+          <tr><td>股四头(含股内侧肌腹)</td><td>跑、跳、蹬腿</td><td>仅肌腹;<b>护膝靠力量训练,刮拭不能强化或改追踪</b></td></tr>
+          <tr><td>TFL + 股外侧</td><td>跑、跑酷</td><td>刮肌腹,<b>不在 IT 带条索上硬磨</b></td></tr>
+          <tr><td>小腿 + 足底</td><td>蹦床、跑酷、冲浪、跑</td><td>顺纤维;足底尖端点刮</td></tr>
+          <tr><td>腰段竖脊肌 + 臀</td><td>拳击转体、攀岩、力量</td><td><b>只刮两侧肌腹,避开棘突与肾区</b></td></tr>
+          <tr><td>背阔 / 胸 / 肩后</td><td>攀岩、拳击、冲浪划水</td><td>顺纤维长扫,改善肩胸活动度</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="callout alert" style="margin-top:1.4rem;"><b>绝对禁刮</b> — 急性伤 72h 内、肿胀发炎、开放伤/皮疹/感染、静脉曲张、凝血障碍或服抗凝药、骨突/脊柱棘突/关节缝/肾区/大血管区、孕腰腹。膝:不直刮髌骨/髌韧带止点/关节缝,IT 带改刮 TFL+臀中。腰:竖脊肌只刮肌腹、避棘突肾区。<b>瑜伽/普拉提扭转来自胸椎、腰骨盆 brace 支撑;术后膝(ACL/MCL/半月板)避免深屈+扭转体位</b>(鸽式改支撑式)。出现放射麻木/刺痛/关节锐痛立即停。</div>
+
+    <p class="lead" style="margin-top:1.4rem;font-size:.88rem;"><span class="ed">嵌入 Phase 2 —</span> 每次课后:轻刮当天受力肌 ~60s + 静态拉伸 5–8′。<b>周四(主动恢复)</b>:系统筋膜刀 10–12′ + 专门拉伸/活动度课 30–40′。若设第二个完全休息日,则仅睡前 5′ 放松拉伸(可选)。</p>
+  </div>
+</section>
+
+<!-- 04 饮食 -->
+<section class="editorial">
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">04 / Nutrition · EA 防护版(无牛羊)</span></div>
+    <h2>训练日吃够 · <span style="color:var(--volt-on-light)">休息日造缺口</span></h2>
+    <p class="lead" style="margin-top:1rem;">最重要的修正:<b>缺口主要从休息日和周均实现,训练日要吃够</b>——否则大训练量日 EA 跌破 30 红线,正好砸在最该保护的日子。月经周期是免费的生物标志物:变长/变稀/停经 = 能量不足红灯,立即上调热量并暂停减脂。</p>
+
+    <h3 class="subh"><span class="n">1</span>训练日 vs 休息日(两档,不是一个固定值)</h3>
+    <div class="grid g2">
+      <div class="ecard"><h4>训练日 ~1850–2150 kcal</h4><ul><li>摄入 = (≥30 × 当前 FFM≈47kg) + 当日运动消耗(400–700)</li><li>大训练量日(攀岩/拳击/高冲击)<b>务必吃到上沿</b></li><li>保 EA≥30 不破线</li></ul></div>
+      <div class="ecard"><h4>休息日 ~1500–1600 kcal</h4><ul><li>无显著运动消耗,EA≈32–34 仍达标</li><li>做缺口主力</li><li>绝对热量地板 <b>1500 kcal</b>,不再往下压</li></ul></div>
+    </div>
+    <p class="note">周均落在 ~1700–1850 kcal,缺口 350–450/日 ≈ 0.3–0.4 kg/周。</p>
+
+    <h3 class="subh"><span class="n">2</span>分阶段热量 / 宏量(随体重重算)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>阶段</th><th>体重</th><th>训练日</th><th>休息日</th><th>蛋白</th><th>脂肪</th><th>碳水</th></tr></thead>
+        <tbody>
+          <tr><td>P1</td><td>65→60kg</td><td>~2050</td><td>~1600</td><td><b>145–155g</b>(2.2–2.4 g/kg)</td><td>60–65g(≥0.9)</td><td>训练日多/休息日少</td></tr>
+          <tr><td>P2</td><td>60→56kg</td><td>~1950</td><td>~1550</td><td>135–145g</td><td>55–60g(≥0.9)</td><td>同上</td></tr>
+          <tr><td>P3</td><td>56→52kg</td><td>~1850</td><td>~1500</td><td>125–135g</td><td>52–58g(≥1.0)</td><td>同上</td></tr>
+          <tr class="hot"><td>反向期(52kg后)</td><td>维持/修复</td><td colspan="2">缓升至 ~1950–2050,每周 +50–75g 碳水</td><td>保持</td><td>保持</td><td>逐步加</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>蛋白上调</b>:赤字期偏瘦女运动员保肌需 ~2.2–2.4 g/kg 当前体重,随体重下降保持绝对克数,每餐 30–40g 分 4 餐。<b>脂肪</b>:常态 ≥0.9–1.0 g/kg,绝不长期低于 0.8(护雌激素/月经/脂溶维生素),<b>优先压碳水而非压脂肪</b>。到地板仍停滞 → 先 diet break,不再压。</p>
+
+    <h3 class="subh"><span class="n">3</span>Diet Break(越瘦越频繁)</h3>
+    <div class="grid g3">
+      <div class="ecard"><h4>P1 结束</h4><ul><li>7–10 天</li><li>维持 ~2100</li></ul></div>
+      <div class="ecard"><h4>P2 结束</h4><ul><li>10–14 天</li><li>维持 ~2000</li></ul></div>
+      <div class="ecard"><h4>P3 每 6–7 周</h4><ul><li>7–10 天</li><li>维持 ~1950</li></ul></div>
+    </div>
+    <p class="note">每段减脂 ≤6–8 周,到点<b>必须 break</b>(恢复瘦素/甲状腺、保肌、心理减压)。</p>
+
+    <h3 class="subh"><span class="n">4</span>围训练供能(高糖原日 = 攀岩/拳击/跑酷)</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>时点</th><th>安排</th></tr></thead>
+        <tbody>
+          <tr><td>训练前 1–2h</td><td>碳水 1–1.5 g/kg(60–90g,燕麦/米饭/水果)+ 少量蛋白</td></tr>
+          <tr><td>&gt;90min 课程内</td><td>每小时 30–45g 碳水 + 电解质</td></tr>
+          <tr><td>训练后 0–1h</td><td>碳水 0.8–1 g/kg(50–65g)+ 蛋白 25–30g(乳清最便捷)</td></tr>
+          <tr><td>力量日</td><td>重点蛋白分配 + 肌酸;碳水放训练前后</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 class="subh"><span class="n">5</span>女性微量营养 + 循证补剂</h3>
+    <div class="grid g2">
+      <div class="ecard"><h4>铁(高风险:不吃牛羊 + 月经失铁)</h4><ul><li>查血清铁蛋白 ferritin(目标 &gt;40–50 ng/mL)</li><li>富铁:鸭血/动物肝、蛤蜊、瘦猪肉、蛋黄、深绿叶菜 + 维C 促吸收</li><li>偏低再补元素铁 ~30–60mg <b>隔天服</b>(吸收更好);与咖啡因/钙错峰</li></ul></div>
+      <div class="ecard"><h4>骨 / 激素 / 恢复</h4><ul><li>钙 1000–1200mg/天;维 D 查 25(OH)D(&gt;30),常规 1000–2000 IU</li><li>肌酸单水合物 3–5g/天(保肌、女性安全)</li><li>Omega-3 1–2g;负重前 30–60min 胶原 15g + 维C(护膝/肌腱/手指)</li></ul></div>
+    </div>
+    <p class="note">训练前咖啡因 ~3mg/kg 可选(与睡眠、补铁错峰);高汗日补电解质;每日纤维 25–30g、水 ≥2.5L、步数 8–10k。</p>
+
+    <h3 class="subh"><span class="n">6</span>无牛羊蛋白源</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>类别</th><th>食材</th><th>附加价值</th></tr></thead>
+        <tbody>
+          <tr><td>禽</td><td>鸡胸/鸡腿、火鸡</td><td>高蛋白低脂</td></tr>
+          <tr><td>鱼虾</td><td>三文鱼、鳕鱼、金枪鱼、虾</td><td>三文鱼=Omega-3+维D</td></tr>
+          <tr><td>蛋</td><td>全蛋/蛋白</td><td>完整氨基酸</td></tr>
+          <tr><td>瘦猪</td><td>里脊</td><td>红肉铁来源(替代牛羊)</td></tr>
+          <tr><td>乳</td><td>希腊酸奶、低脂奶酪、牛奶、乳清</td><td>钙+亮氨酸</td></tr>
+          <tr><td>豆</td><td>豆腐、豆干、纳豆、毛豆、鹰嘴豆</td><td>植物蛋白+铁/纤维</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 05 红旗 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">05 / Red Flags · 红旗与停训/停减</span></div>
+    <h2>身体反应 <span class="plus">优先于数字</span></h2>
+    <div class="grid g2" style="margin-top:1.4rem;">
+      <div class="card"><span class="role" style="color:var(--warn)">减脂 / 停减红线</span><h3>出现即回维持热量、暂停缺口、复评</h3><ul>
+        <li><b>月经周期变化(最重要金丝雀)</b>:任何延迟/变稀/停经 → 立即停赤字、就医(先排除妊娠)</li>
+        <li>表现连续 2–3 周下滑(力量/配速/握力)</li>
+        <li>静息心率上升、睡眠变差、情绪低落、性欲下降</li>
+        <li>反复小伤、骨痛/落地处疼痛(应力性骨折征兆)</li>
+        <li>7 天均重周降幅 &gt;0.6kg = 太快</li></ul></div>
+      <div class="card"><span class="role" style="color:var(--alert)">立即停该项 · 就医</span><h3>膝 / 下背急性信号</h3><ul>
+        <li><b>膝</b>:锐痛、关节肿胀/积液、打软腿/不稳、绞锁卡顿、夜间痛、无法负重</li>
+        <li><b>下背</b>:放射到腿的痛/麻/刺(神经根)、双腿症状</li>
+        <li><b style="color:var(--alert)">大小便失控/会阴麻木(马尾综合征 → 急诊)</b></li>
+        <li>夜间痛进行性加重、晨僵 &gt;30–60min 且渐重</li></ul></div>
+    </div>
+    <div class="callout alert" style="margin-top:1.2rem;"><b>系统降级规则(非仅"提前减载")</b> — 出现停经 / 骨痛 / 连续 HRV·睡眠·晨脉崩 / 伤痛升级时:① 先终止热量缺口、回维持 → ② 再删减高冲击日(跑酷/蹦床) → ③ 必要时整体降到 4 练日,并就医/转诊。监测面板并列:月经、性欲、情绪、伤痛/骨痛、HRV/睡眠/晨脉、EA。<br><span style="color:var(--muted);font-size:.84rem;">(HRV/睡眠/晨脉用手环或晨起手动测脉搏即可;关键是看趋势,不是绝对值。)</span></div>
+  </div>
+</section>
+
+<!-- 06 记录 -->
+<section class="editorial" style="padding-top:0;">
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">06 / Milestones · 里程碑记录(自动保存)</span></div>
+    <p class="lead">每月称一次、记体脂与状态。<b>体脂% 和月经那两列最重要</b>——它们替 RED-S 红线把关,也决定终点该不该从 52 调整。</p>
+    <div class="logtools">
+      <button class="lbtn primary" id="exportBtn">复制记录</button>
+      <button class="lbtn" id="csvBtn">导出 CSV</button>
+      <button class="lbtn" id="jsonBtn">备份 JSON</button>
+      <label class="lbtn" for="importFile">导入 JSON</label><input type="file" id="importFile" accept="application/json,.json">
+      <button class="lbtn" id="resetBtn">清空</button>
+      <span class="savehint" id="saveHint">✓ 已自动保存</span>
+    </div>
+    <div class="logtbl-wrap">
+      <table class="log">
+        <thead><tr><th>里程碑</th><th>目标体重</th><th>实际体重</th><th>体脂 %</th><th>月经 / 睡眠</th><th>表现 / 备注</th></tr></thead>
+        <tbody id="logBody"></tbody>
+      </table>
+    </div>
+    <h3 style="color:#0a0a0c;font-size:1.12rem;font-weight:800;margin:2.2rem 0 .6rem;">★ 训练反馈日志(按日期累积)</h3>
+    <p class="lead" style="margin:0 0 .4rem;color:rgba(17,19,23,.7);">每次训练/复盘后写一条——RPE、睡眠、月经、伤痛、当天感受。<b>自动盖日期、累积保存</b>,日后可逐条对比分析。</p>
+    <div class="jbox">
+      <textarea id="jText" placeholder="例:攀岩 V3 完成;拳击 6 回合 RPE7;腰无不适;睡 8h;蛋白达标。"></textarea>
+      <div style="margin-top:.6rem;"><button class="lbtn primary" id="addJBtn">+ 添加记录(盖日期)</button></div>
+      <div class="jlist" id="jList"></div>
+    </div>
+    <div class="dnote">💾 <b>数据安全 — 务必定期备份</b>:以上全部记录与反馈只存在<b>这台浏览器</b>(清缓存 / 换设备会丢)。请定期点「备份 JSON」下载存档;「导出 CSV」可在 Excel / 表格里做趋势对比与分析;换设备用「导入 JSON」恢复。</div>
+
+  </div>
+</section>
+
+<!-- 07 待确认 -->
+<section>
+  <div class="wrap">
+    <div class="sec-no"><span class="credits">07 / Open Questions · 给我这些,我再精修</span></div>
+    <div class="oq">
+      <ol>
+        <li><b>每周实际能练几天?</b> 默认缺口期 5 练 + 2 真休;若只能 4 天,我给 4 天版。</li>
+        <li><b>当前月经是否规律?</b> 最近一次是否准时、经量正常?这是启动减脂的硬门槛。</li>
+        <li><b>能否做基线体成分(DEXA/InBody)?</b> 用以设体脂下限,把终点从"52kg"校准为体成分目标。</li>
+        <li><b>膝/腰的具体诊断?</b>(半月板/ACL/髌股 vs 椎间盘/小关节/肌筋膜)——决定深蹲深度、落地阈值与禁忌。</li>
+        <li><b>北京冲浪/造浪条件?</b> 常去的室内冲浪馆或可出行海域?暖季能否安排 SUP(怀柔/密云/金海湖)?</li>
+        <li><b>器械与场地?</b> 杠铃/深蹲架/可调哑铃 + 攀岩馆/蹦床馆/拳击场地的可及性。</li>
+        <li><b>能否建立医生 + 注册运动营养师监督?</b> 本方案因高危叠加,不建议纯自我管理。</li>
+        <li><b>赛后是否还会报名 HYROX 或其他比赛?</b> 若是,减脂期与备赛期需相位分离,避免大缺口撞专项强度。</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p class="credits">PHASE 2 · Post-Race Multi-Sport + Fat Loss · 经多专家对抗式安全审查<br>9/13 起 · 65kg → <b style="color:var(--volt)">52kg(探索 · 56kg 复评)</b> · 攀岩/拳击/冲浪/跑酷/力量/蹦床 · knee &amp; back smart · no beef/lamb</p>
+  <p class="disc">本页为个性化训练参考,<b>非医疗诊断</b>。52kg 是偏瘦的探索性目标,务必先完成「00 医疗前置」,在运动医学医生 + 注册运动营养师监督下进行,并以体成分/月经/血检/表现而非体重秤为终点判据。膝/腰伤史,高风险项目(跑酷/蹦床)须经医疗放行后循序渐进。记录数据仅存本地浏览器。</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  var onScroll=function(){bar.classList.toggle('scrolled',window.scrollY>40);};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  var START=65, GOAL=52, KEY='hyroxPhase2V2';
+  var miles=[
+    {n:'起点·过渡',t:65},{n:'P1中',t:62},{n:'P1末·diet break',t:60},
+    {n:'复评① 体成分/月经',t:56},{n:'P2/P3·diet break',t:54},{n:'探索目标·需复评放行',t:52}
+  ];
+  var body=document.getElementById('logBody');
+  miles.forEach(function(m,i){
+    var tr=document.createElement('tr');
+    tr.innerHTML='<td class="mc">'+m.n+'</td><td class="tgt">'+m.t.toFixed(0)+'kg</td>'+
+      '<td><input type="number" step="0.1" inputmode="decimal" data-k id="m'+i+'_w" placeholder="—"></td>'+
+      '<td><input type="number" step="0.1" inputmode="decimal" data-k id="m'+i+'_bf" placeholder="—"></td>'+
+      '<td><input type="text" data-k id="m'+i+'_s" placeholder="如 准时/睡好"></td>'+
+      '<td><input type="text" data-k id="m'+i+'_p" placeholder="如 引体+1/抱石V3"></td>';
+    body.appendChild(tr);
+  });
+
+  var hint=document.getElementById('toast');
+  function toast(m){hint.textContent=m;hint.classList.add('show');setTimeout(function(){hint.classList.remove('show');},1800);}
+  var saveHint=document.getElementById('saveHint');
+  function collect(){var d={};var cw=document.getElementById('curW');d.curW=cw.value;document.querySelectorAll('[data-k]').forEach(function(el){d[el.id]=el.value;});return d;}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(collect()));saveHint.textContent='✓ 已保存 · '+new Date().toLocaleTimeString('zh-CN',{hour:'2-digit',minute:'2-digit'});}catch(e){saveHint.textContent='⚠ 保存失败';}}
+  function load(){var raw;try{raw=localStorage.getItem(KEY);}catch(e){return;}if(!raw)return;var d=JSON.parse(raw);for(var k in d){var el=document.getElementById(k);if(el)el.value=d[k];}}
+
+  function prog(){
+    var cur=parseFloat(document.getElementById('curW').value);
+    var fill=document.getElementById('fill'),lo=document.getElementById('lost'),lf=document.getElementById('left');
+    if(isNaN(cur)){fill.style.width='0';lo.textContent='已减 — kg';lf.innerHTML='还差 <b>13.0</b> kg';return;}
+    var pct=Math.max(0,Math.min(100,(START-cur)/(START-GOAL)*100));fill.style.width=pct+'%';
+    var dl=START-cur,rem=cur-GOAL;
+    lo.innerHTML='已减 <b style="color:var(--volt-on-light);font-weight:800">'+(dl>=0?dl.toFixed(1):'0.0')+'</b> kg';
+    if(cur<=56 && cur>GOAL) lf.innerHTML='⚠ <b>到复评区,先体检再决定是否继续</b>';
+    else lf.innerHTML= rem<=0 ? '到 52kg · 务必先复评放行' : '还差 <b>'+rem.toFixed(1)+'</b> kg';
+  }
+
+  var t;
+  document.addEventListener('input',function(e){if(e.target.id==='curW'||e.target.matches('[data-k]')){clearTimeout(t);t=setTimeout(save,400);if(e.target.id==='curW')prog();}});
+  document.getElementById('exportBtn').addEventListener('click',function(){var txt=JSON.stringify(collect(),null,2);if(navigator.clipboard){navigator.clipboard.writeText(txt).then(function(){toast('已复制记录');},function(){toast('复制失败');});}else toast('不支持自动复制');});
+  document.getElementById('resetBtn').addEventListener('click',function(){if(this.dataset.a){try{localStorage.removeItem(KEY);}catch(e){}document.getElementById('curW').value='';document.querySelectorAll('[data-k]').forEach(function(el){el.value='';});prog();toast('已清空');this.dataset.a='';this.textContent='清空';}else{this.dataset.a='1';this.textContent='再点确认';var b=this;setTimeout(function(){b.dataset.a='';b.textContent='清空';},3000);}});
+
+
+  // ===== records: feedback journal + export/import (added) =====
+  function pad2(n){return (n<10?'0':'')+n;}
+  function stamp(){var d=new Date();return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate())+' '+pad2(d.getHours())+':'+pad2(d.getMinutes());}
+  function getJournal(){try{return JSON.parse(localStorage.getItem(JKEY)||'[]');}catch(e){return [];}}
+  function setJournal(a){try{localStorage.setItem(JKEY,JSON.stringify(a));}catch(e){}}
+  function rEsc(s){return (''+s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+  function renderJournal(){var box=document.getElementById('jList');if(!box)return;var a=getJournal();if(!a.length){box.innerHTML='<p class="jempty">还没有记录。训练/复盘后写一条,带日期累积,方便日后对比。</p>';return;}box.innerHTML=a.map(function(e,i){return '<div class="jitem"><div class="jd">'+rEsc(e.date)+'<button class="jdel" data-i="'+i+'" title="删除">×</button></div><div class="jt">'+rEsc(e.text)+'</div></div>';}).join('');}
+  function addJournal(){var ta=document.getElementById('jText');if(!ta)return;var t=(ta.value||'').trim();if(!t){toast('先写点内容');return;}var a=getJournal();a.unshift({date:stamp(),text:t});setJournal(a);ta.value='';renderJournal();toast('已记录 · '+a[0].date);}
+  function download(name,text,mime){var bl=new Blob([text],{type:(mime||'text/plain')+';charset=utf-8'});var u=URL.createObjectURL(bl);var a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(u);a.remove();},120);}
+  function csvCell(v){v=(v==null?'':''+v);return '"'+v.replace(/"/g,'""')+'"';}
+  function csvTables(L){document.querySelectorAll('table.log').forEach(function(tb){var wrap=tb.closest('.logtbl-wrap');var ttl=(wrap&&wrap.previousElementSibling)?wrap.previousElementSibling.textContent.trim():'';if(ttl)L.push('# '+ttl);var hs=[];tb.querySelectorAll('thead th').forEach(function(th){hs.push(th.textContent.trim());});L.push(hs.map(csvCell).join(','));tb.querySelectorAll('tbody tr').forEach(function(tr){var r=[];tr.querySelectorAll('td').forEach(function(td){var inp=td.querySelector('input,select,textarea');r.push(inp?(inp.type==='checkbox'?(inp.checked?'1':'0'):inp.value):td.textContent.trim());});L.push(r.map(csvCell).join(','));});L.push('');});}
+  function csvJournal(L){L.push('# 训练反馈日志');L.push([csvCell('日期'),csvCell('内容')].join(','));getJournal().forEach(function(e){L.push([csvCell(e.date),csvCell(e.text)].join(','));});}
+  function wireRecords(){var c=document.getElementById('csvBtn');if(c)c.addEventListener('click',exportCSV);var j=document.getElementById('jsonBtn');if(j)j.addEventListener('click',backupJSON);var f=document.getElementById('importFile');if(f)f.addEventListener('change',function(){if(this.files&&this.files[0])importJSON(this.files[0]);this.value='';});var ab=document.getElementById('addJBtn');if(ab)ab.addEventListener('click',addJournal);var jl=document.getElementById('jList');if(jl)jl.addEventListener('click',function(e){var b=e.target.closest('.jdel');if(!b)return;var i=+b.dataset.i;var a=getJournal();a.splice(i,1);setJournal(a);renderJournal();});}
+
+  var JKEY=KEY+':journal';
+  function buildCSV(){var L=[];var cw=document.getElementById('curW');if(cw){L.push('# 当前体重');L.push([csvCell('当前体重kg'),csvCell(cw.value)].join(','));L.push('');}csvTables(L);csvJournal(L);return '﻿'+L.join('\r\n');}
+  function exportCSV(){download('phase2-records-'+stamp().slice(0,10)+'.csv',buildCSV(),'text/csv');toast('已导出 CSV(可用表格软件分析)');}
+  function backupJSON(){var data={meta:{page:'phase2',exportedAt:stamp()},log:collect(),journal:getJournal()};download('phase2-backup-'+stamp().slice(0,10)+'.json',JSON.stringify(data,null,2),'application/json');toast('已下载 JSON 备份');}
+  function importJSON(file){var r=new FileReader();r.onload=function(){try{var d=JSON.parse(r.result);if(d.log){for(var k in d.log){var el=document.getElementById(k);if(el)el.value=d.log[k];}save();}if(d.journal){setJournal(d.journal);}prog();renderJournal();toast('已导入并恢复');}catch(e){toast('导入失败:文件格式不对');}};r.readAsText(file);}
+  wireRecords();renderJournal();
+
+  load();prog();
+})();
+</script>
+</body>
+</html>
