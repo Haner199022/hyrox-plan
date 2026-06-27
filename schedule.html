@@ -250,6 +250,10 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
 .dwkfoot input{border:1px solid rgba(17,19,23,.18);border-radius:.4rem;padding:.26rem .45rem;font-size:.8rem;width:78px;color:#111317;background:#fff;}
 .dwkfoot .sum{font-family:var(--mono);font-size:.68rem;color:var(--volt-on-light);font-weight:700;}
 @media(max-width:560px){.drow{grid-template-columns:1fr;gap:.2rem;}}
+
+/* per-day diet line */
+.day .c .meal{display:block;margin-top:.5rem;padding:.45rem .65rem;background:rgba(var(--volt-rgb),.06);border-left:2px solid rgba(var(--volt-rgb),.5);border-radius:0 .5rem .5rem 0;font-size:.79rem;color:var(--muted);line-height:1.55;}
+.day .c .meal b{color:var(--volt);}
 </style>
 </head>
 <body>
@@ -332,6 +336,7 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
 <section>
   <div class="wrap">
     <div class="sec-no"><span class="credits">B / The Schedule · 逐周逐日(自动生成)</span></div>
+    <p class="lead" style="margin:0 0 1rem;font-size:.86rem;">每天底部 <b style="color:var(--volt)">🥪 饮食</b> = 当天该吃什么(默认 <b style="color:var(--text)">白面包+照烧鸡·双肉·不加酱</b>,按 训练/休息/长课/比赛周 自动调整;完整核算见下方营养区)。</p>
     <div class="weeks" id="weeks"></div>
   </div>
 </section>
@@ -698,6 +703,14 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
     }
   }
 
+  function mealFor(type,w,isRace){
+    var ph=phaseOf(w);
+    if(isRace) return '<b>比赛日</b>:赛前 2–3h 白面包+照烧鸡(好消化、不加酱);赛后乳清+香蕉+正餐补。';
+    if(ph==='taper') return '<b>比赛周·补碳</b>:白面包+照烧鸡(双肉)+满菜·不加酱;多加香蕉/米饭填糖原。';
+    if(type==='rest'||type==='mobility') return '<b>休息日</b> ~1550/蛋白135:赛百味<b>沙拉碗</b>(双倍香烤鸡)+满菜·不加酱·去面包(低碳)。';
+    if(type==='long'||type==='compromised') return '<b>训练日·高碳</b> ~1750/蛋白140:午餐升 <b>Footlong</b> 白面包+照烧鸡+满菜·不加酱;练后乳清+香蕉。';
+    return '<b>训练日</b> ~1750/蛋白140:白面包+照烧鸡<b>双肉</b>+满菜·不加酱 ×2 餐;练后乳清+香蕉。';
+  }
   function weekHTML(w){
     var s=weekStart(w), open=(w===1?' open':''), peak=(w>=9?' peak':'');
     var hasInt=false; for(var k in P.days){if(P.days[k]==='interval')hasInt=true;}
@@ -716,7 +729,8 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
         if(RUNTYPES[type]) runc=' run';
         var c=content(type,w);
       }
-      days+='<div class="day'+(train?' train':'')+runc+'"><span class="d">'+WD[i]+'<small class="dt">'+md(addDays(s,i))+'</small></span><span class="ty">'+tag+'</span><span class="c">'+c+'</span></div>';
+      var meal=mealFor(type,w,type==='__race');
+      days+='<div class="day'+(train?' train':'')+runc+'"><span class="d">'+WD[i]+'<small class="dt">'+md(addDays(s,i))+'</small></span><span class="ty">'+tag+'</span><span class="c">'+c+'<span class="meal">🥪 '+meal+'</span></span></div>';
     }
     var tw=targets[w-1].toFixed(1);
     var meta = hasInt ? '跑速 <b>'+fmt(intervalPace(w))+'</b> · '+tw+'kg' : '目标晨重 <b>'+tw+'kg</b>';
