@@ -436,8 +436,8 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
   document.getElementById('dCsv').addEventListener('click',function(){var ks=Object.keys(DENT).sort();var L=['﻿'+['日期','完成','晨重kg','体脂%','感受/备注'].map(dCc).join(',')];ks.forEach(function(d){var e=DENT[d];L.push([d,e.done?'1':'',e.w||'',e.bf||'',e.note||''].map(dCc).join(','));});dDl('journey-daily-'+diso(new Date())+'.csv',L.join('\r\n'),'text/csv');dToast('已导出打卡 CSV');});
   document.getElementById('dJson').addEventListener('click',function(){dDl('journey-daily-'+diso(new Date())+'.json',JSON.stringify({settings:DS,entries:DENT},null,2),'application/json');dToast('已下载 JSON 备份');});
   document.getElementById('dImport').addEventListener('change',function(){var f=this.files&&this.files[0];if(!f){return;}var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o.entries)DENT=o.entries;if(o.settings)DS=o.settings;dSaveS();dSaveE();dInit();dRender();dToast('已导入恢复');}catch(e){dToast('导入失败');}};r.readAsText(f);this.value='';});
-  function dInit(){var sel=document.getElementById('dPhase');sel.innerHTML=PDATA.map(function(p){return '<option value="'+p.key+'"'+(DS.phase===p.key?' selected':'')+'>'+dEsc(p.name)+'</option>';}).join('');if(!DS.phase)DS.phase=PDATA[0].key;if(DS.start){document.getElementById('dStart').value=DS.start;}else{DS.start=diso(dMon(new Date()));document.getElementById('dStart').value=DS.start;}}
-  dLoad(); dInit(); if(DS.offset===undefined){DS.offset=Math.round((dMon(new Date())-dBaseMon())/(7*86400000));dSaveS();} dRender();
+  function dInit(){var sel=document.getElementById('dPhase');sel.innerHTML=PDATA.map(function(p){return '<option value="'+p.key+'"'+(DS.phase===p.key?' selected':'')+'>'+dEsc(p.name)+'</option>';}).join('');if(!DS.phase)DS.phase=PDATA[0].key;if(DS.start){document.getElementById('dStart').value=DS.start;}else{DS.start='2026-06-29';document.getElementById('dStart').value=DS.start;}}
+  dLoad(); dInit(); if(DS.offset===undefined){DS.offset=0;dSaveS();} dRender();
 })();
 </script>
 </body>
