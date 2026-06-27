@@ -243,7 +243,7 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
 <section class="intro">
   <div class="glow" aria-hidden="true"><i></i></div>
   <div class="wrap">
-    <p class="credits" style="margin-bottom:1.2rem;">Adaptive Plan · Run-Speed First · 北京站 9/12–13</p>
+    <p class="credits" style="margin-bottom:1.2rem;">Adaptive Plan · Run-Speed First · W1 6/29 起</p>
     <h1>跑速优先<br><span class="plus">自适应日程</span></h1>
     <p>改动「每周训练项」或「配速」——下方 12 周日程、配速、日期会<b style="color:var(--text)">立即自动重算</b>。</p>
 
@@ -253,9 +253,9 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
     </div>
 
     <div class="datebar">
-      <span class="dchip">W1 起 <b>6/22 周一</b></span>
-      <span class="dchip hot">北京站 <b>9/12–13(W12)</b></span>
-      <span class="dchip">今天 6/26 = <b>W1 周五</b></span>
+      <span class="dchip">W1 起 <b>6/29 周一</b></span>
+      <span class="dchip">12 周 <b>6/29 → 9/20</b></span>
+      <span class="dchip hot">比赛日 <b>W12 · 自定</b></span>
     </div>
 
     <div class="tracker-hero">
@@ -537,9 +537,9 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
 
     <h3 class="subh"><span class="n">4</span>模拟赛 / 基准</h3>
     <div class="bench">
-      <div class="bc"><span class="credits">起点 · W1 6/22 周</span><h4>第 0 周基线</h4><input type="text" id="b_base" data-log placeholder="1km TT 配速 / 体重 / 腰围"></div>
-      <div class="bc"><span class="credits">半程 · W9 8/21(周五)</span><h4>半程模拟成绩</h4><input type="text" id="b_half" data-log placeholder="半程总时间 + 感受"></div>
-      <div class="bc"><span class="credits">全程 · W11 9/4(周五)</span><h4>全程模拟成绩</h4><input type="text" id="b_full" data-log placeholder="全程总时间 → 对照 1:10"></div>
+      <div class="bc"><span class="credits">起点 · W1 6/29 周</span><h4>第 0 周基线</h4><input type="text" id="b_base" data-log placeholder="1km TT 配速 / 体重 / 腰围"></div>
+      <div class="bc"><span class="credits">半程 · W9 8/28(周五)</span><h4>半程模拟成绩</h4><input type="text" id="b_half" data-log placeholder="半程总时间 + 感受"></div>
+      <div class="bc"><span class="credits">全程 · W11 9/11(周五)</span><h4>全程模拟成绩</h4><input type="text" id="b_full" data-log placeholder="全程总时间 → 对照 1:10"></div>
       <div class="bc"><span class="credits">弱项</span><h4>最需要补的站点</h4><input type="text" id="b_weak" data-log placeholder="如：墙球后段掉速"></div>
     </div>
 
@@ -556,7 +556,7 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
 </section>
 
 <footer>
-  <p class="credits">HYROX SUB 1:10 · Adaptive · Run-Speed First<br>W1 6/22 → 北京站 9/12–13 · 74kg → <b style="color:var(--volt)">65kg</b> · 4 days/week · knee &amp; back smart · no beef/lamb</p>
+  <p class="credits">HYROX SUB 1:10 · Adaptive · Run-Speed First<br>W1 6/29 → 9/20 · 74kg → <b style="color:var(--volt)">65kg</b> · 4 days/week · knee &amp; back smart · no beef/lamb</p>
   <p class="disc">本页为个性化训练参考,非医疗或专业教练诊断。设置与记录仅存于本地浏览器,换设备/清缓存会丢失,请用「复制全部记录」备份。</p>
 </footer>
 
@@ -575,7 +575,7 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
   var RUNTYPES={interval:1,long:1,tempo:1,easy:1,compromised:1};
 
   var DEFAULTS={
-    startISO:'2026-06-22', curPace:340, tgtPace:300, racePace:310,
+    startISO:'2026-06-29', curPace:340, tgtPace:300, racePace:310,
     days:{0:'interval',1:'rest',2:'strength',3:'rest',4:'compromised',5:'rest',6:'long'}
   };
   var P=JSON.parse(JSON.stringify(DEFAULTS));
@@ -585,7 +585,7 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
   function parse(str,def){var m=/^(\d+):(\d{1,2})$/.exec((str||'').trim());if(!m)return def;return (+m[1])*60+(+m[2]);}
   function addDays(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
   function md(d){return (d.getMonth()+1)+'/'+d.getDate();}
-  function startDate(){var p=(P.startISO||'2026-06-22').split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function startDate(){var p=(P.startISO||'2026-06-29').split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
   function weekStart(w){return addDays(startDate(),(w-1)*7);}
 
   function phaseOf(w){
@@ -602,7 +602,7 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
     if(w===9) return '特异期 · 半程模拟';
     if(w===11) return '特异期 · 全程模拟(峰值)';
     var p=phaseOf(w);
-    return {base:'基础期 · 打地基','base-deload':'基础期 · 巩固周(轻)',spec:'专项期 · compromised','spec-deload':'专项期 · 减载周(轻)',peak:'特异期 · 比赛锐化',taper:'减量期 · Taper → 北京站'}[p];
+    return {base:'基础期 · 打地基','base-deload':'基础期 · 巩固周(轻)',spec:'专项期 · compromised','spec-deload':'专项期 · 减载周(轻)',peak:'特异期 · 比赛锐化',taper:'减量期 · Taper → 比赛周'}[p];
   }
   // run-speed progression
   function intervalPace(w){
@@ -675,11 +675,11 @@ footer .disc{margin-top:1.1rem;font-size:.7rem;color:var(--muted);max-width:60ch
     for(var i=0;i<7;i++){
       var ph=phaseOf(w), type, tag, train, runc='';
       if(ph==='taper' && i>=5){ // race weekend fixed
-        type='__race'; train=true; tag='北京站';
+        type='__race'; train=true; tag='比赛';
         var rd=md(addDays(s,i));
         runc=' run';
-        var c = i===5 ? '<span class="vt">RACE DAY · '+rd+'</span> — 分组若在今天就开赛;否则 20′ shakeout + strides。配速策略:别一上来冲,留力后半程。'
-                      : '<span class="vt">RACE DAY · '+rd+'</span> — 分组若在今天则比;另一天作 shakeout/休息。';
+        var c = i===5 ? '<span class="vt">RACE DAY · '+rd+'</span> — 比赛日按你的实际安排;非比赛日则 20′ shakeout + strides。配速:别一上来冲,留力后半程。'
+                      : '<span class="vt">RACE DAY · '+rd+'</span> — 若你的比赛在今天则比;另一天作 shakeout/休息。';
       } else {
         type=P.days[i]||'rest';
         train=(type!=='rest'); tag=TYPES[type];
