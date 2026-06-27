@@ -610,7 +610,7 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
   var START=74, GOAL=65, LOGKEY='hyroxLogV2', PLANKEY='hyroxPlanV3', WEEKS=12;
   var targets=[73.3,72.6,71.9,71.4,70.5,69.75,69.0,68.5,67.75,67.0,66.0,65.0];
   var WD=['周一','周二','周三','周四','周五','周六','周日'];
-  var TYPES={interval:'间歇',strength:'力量',compromised:'专项',long:'长课',tempo:'节奏跑',easy:'轻松跑',mobility:'拉伸/筋膜',rest:'恢复'};
+  var TYPES={interval:'间歇',strength:'力量',boxing:'拳击',climbing:'攀岩',compromised:'专项',long:'长课',tempo:'节奏跑',easy:'轻松跑',mobility:'拉伸/筋膜',rest:'恢复'};
   var RUNTYPES={interval:1,long:1,tempo:1,easy:1,compromised:1};
 
   var DEFAULTS={
@@ -686,7 +686,7 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
         var t = ph.indexOf('base')>=0 ? '力量A · 动作模式+单腿稳定：Trap-bar 硬拉 3×8 · 单腿 RDL 3×8/腿 · 哑铃推举 3×10 · 坐姿划船 3×12 · <b>农夫握力 3×40m</b> · 胫前肌/提踵 + 核心(死虫/Pallof)。中立脊柱护腰。'
               : ph.indexOf('spec')>=0 ? '力量B · 雪橇专项力量(最大时间黑洞):<b>腿举/高位深蹲 4×6</b>(护膝控深度) · <b>重雪橇 推+拉 4×15m</b> · RDL 3×6 · 墙球 4×20 · <b>农夫 2×16kg×60m(握力)</b> · 抗伸展核心。'
               : '力量维持 · 力量耐力:雪橇推/拉中量速度组 · 墙球 100 连测 · 农夫长距离 · 轻 RDL。不留疲劳,服务跑速。';
-        return t+(dl?' <b>(减载周:组数减半、重量降 10–15%)</b>':'')+' <a class="exlink" href="exercises.html" target="_blank" rel="noopener">📖 力量动作图解</a>';
+        return t+(dl?' <b>(减载周:组数减半、重量降 10–15%)</b>':'')+' <i>枯燥?做成 A1/A2 超级组循环,或练后加 10′ 沙袋/拳击。</i><a class="exlink" href="exercises.html" target="_blank" rel="noopener">📖 力量动作图解</a>';
       case 'compromised':
         if(w===9) return '<b>半程 Hyrox 计时</b>：4×(1km 跑 + 站点)=Ski1000 / 雪橇推50m / 雪橇拉50m / 划1000。记录总时间→填基准。';
         if(w===11) return '<b>完整 Hyrox 模拟</b>(配速可降但全程 8 跑+8 站点不停)。演练补给/转换区/墙球分组。记录总时间。';
@@ -700,6 +700,10 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
         return '节奏跑：热身后 <b>5–6km @'+fmt(tempoPace())+'/km</b>,稳定不冲。<i>★ 跑速</i>';
       case 'easy':
         return 'Z2 轻松跑 <b>30–40′</b> @7:45,能说话强度(主动恢复)。';
+      case 'boxing':
+        return '拳击 · 趣味条件训练(把"练得爽"补进来):技术/打靶/沙袋 <b>3′×8–10 回合</b> RPE7–8;转体由髋驱动护腰、步法贴地不跳。<i>注:拳击=条件训练,替不了雪橇腿力与护膝腰的力量,每周仍保 ≥1 次硬拉/深蹲/核心。</i>';
+      case 'climbing':
+        return '攀岩 · 上肢/握力/核心力量(可顶替力量日的<b>上肢部分</b>,且不伤膝):顶绳/抱石 <b>60–90′</b> 技能+短抱石间歇;<b>握力直接帮雪橇拉/农夫</b>。<i>注:偏上肢,髋铰链/深蹲仍要每周练到,别全替。</i>';
       case 'mobility':
         return '拉伸 / 活动度课 30–40′:CARs + 静态/PNF(髋/胸椎/踝/肩)+ 轻筋膜刀 8–12′(顺纤维,不追出痧)。护膝扶墙骨盆中立、护腰禁圆背强够脚尖。<i>★ 恢复</i>';
       default:
