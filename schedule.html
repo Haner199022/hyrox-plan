@@ -254,6 +254,9 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
 /* per-day diet line */
 .day .c .meal{display:block;margin-top:.5rem;padding:.45rem .65rem;background:rgba(var(--volt-rgb),.06);border-left:2px solid rgba(var(--volt-rgb),.5);border-radius:0 .5rem .5rem 0;font-size:.79rem;color:var(--muted);line-height:1.55;}
 .day .c .meal b{color:var(--volt);}
+
+.day .c .exlink{display:inline-block;margin-top:.4rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;color:var(--volt);border:1px solid rgba(var(--volt-rgb),.4);border-radius:999px;padding:.14rem .55rem;text-decoration:none;}
+.day .c .exlink:hover{background:rgba(var(--volt-rgb),.12);}
 </style>
 </head>
 <body>
@@ -337,6 +340,7 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
   <div class="wrap">
     <div class="sec-no"><span class="credits">B / The Schedule · 逐周逐日(自动生成)</span></div>
     <p class="lead" style="margin:0 0 1rem;font-size:.86rem;">每天底部 <b style="color:var(--volt)">🥪 饮食</b> = 当天该吃什么(默认 <b style="color:var(--text)">白面包+照烧鸡·双肉·不加酱</b>,按 训练/休息/长课/比赛周 自动调整;完整核算见下方营养区)。</p>
+    <p class="lead" style="margin:0 0 1rem;font-size:.86rem;">不懂的动作?<a href="exercises.html" style="color:var(--volt);font-weight:700;">📖 动作库</a> 有每个动作的<b>图解 / 拆解 / 目标肌群 / 发力感</b>(可搜名字,<b>力量动作都在</b>);力量日 / 专项日里也有直达链接。</p>
     <div class="weeks" id="weeks"></div>
   </div>
 </section>
@@ -682,11 +686,11 @@ details.dwk[open]{border-color:rgba(92,117,14,.45);}
         var t = ph.indexOf('base')>=0 ? '力量A · 动作模式+单腿稳定：Trap-bar 硬拉 3×8 · 单腿 RDL 3×8/腿 · 哑铃推举 3×10 · 坐姿划船 3×12 · <b>农夫握力 3×40m</b> · 胫前肌/提踵 + 核心(死虫/Pallof)。中立脊柱护腰。'
               : ph.indexOf('spec')>=0 ? '力量B · 雪橇专项力量(最大时间黑洞):<b>腿举/高位深蹲 4×6</b>(护膝控深度) · <b>重雪橇 推+拉 4×15m</b> · RDL 3×6 · 墙球 4×20 · <b>农夫 2×16kg×60m(握力)</b> · 抗伸展核心。'
               : '力量维持 · 力量耐力:雪橇推/拉中量速度组 · 墙球 100 连测 · 农夫长距离 · 轻 RDL。不留疲劳,服务跑速。';
-        return t+(dl?' <b>(减载周:组数减半、重量降 10–15%)</b>':'');
+        return t+(dl?' <b>(减载周:组数减半、重量降 10–15%)</b>':'')+' <a class="exlink" href="exercises.html" target="_blank" rel="noopener">📖 力量动作图解</a>';
       case 'compromised':
         if(w===9) return '<b>半程 Hyrox 计时</b>：4×(1km 跑 + 站点)=Ski1000 / 雪橇推50m / 雪橇拉50m / 划1000。记录总时间→填基准。';
         if(w===11) return '<b>完整 Hyrox 模拟</b>(配速可降但全程 8 跑+8 站点不停)。演练补给/转换区/墙球分组。记录总时间。';
-        return '<b>(1km @'+fmt(compPace(w))+' + 1 站点) ×'+compRounds(w)+'</b>。站点轮(低冲击优先)：Ski → 划船 → 雪橇推/拉 → 农夫 → 墙球(控深度)。';
+        return '<b>(1km @'+fmt(compPace(w))+' + 1 站点) ×'+compRounds(w)+'</b>。站点轮(低冲击优先)：Ski → 划船 → 雪橇推/拉 → 农夫 → 墙球(控深度)。 <a class="exlink" href="exercises.html" target="_blank" rel="noopener">📖 站点图解</a>';
       case 'long':
         var km=longKm(w), seg='';
         if(w===5) seg=' 含中段 <b>3km @<span class="vt">'+fmt(tempoPace())+'</span></b> tempo';
