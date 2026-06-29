@@ -195,6 +195,10 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
 .dynset{margin-top:1rem;border-top:1px dashed var(--line);padding-top:.6rem;}
 .dynset summary{cursor:pointer;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
 .dynset summary:hover{color:var(--volt);}
+/* schedule auto-reflow */
+.dday.adj{border-color:rgba(255,138,93,.45);background:rgba(255,138,93,.06);}
+.dday .adjchip{font-family:var(--mono);font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;background:var(--warn);color:var(--ink);border-radius:999px;padding:.1rem .4rem;margin-left:.4rem;vertical-align:middle;}
+.dday .adjnote{font-size:.74rem;color:var(--warn);margin:.35rem 0 0;line-height:1.5;}
 </style>
 </head>
 <body>
@@ -500,14 +504,17 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
   function dRender(){
     var ph=dPhaseObj(), off=DS.offset||0, ws=dAdd(dBaseMon(),off*7);
     document.getElementById('dWeekLabel').textContent='第 '+(off+1)+' 周 · '+dmd(ws)+'–'+dmd(dAdd(ws,6))+' · '+ph.name;
-    var box=document.getElementById('dDays'); var html=''; var done=0, train=0;
+    var box=document.getElementById('dDays'); var html=''; var done=0, train=0; var reflowed=false;
     for(var i=0;i<7;i++){
       var date=dAdd(ws,i), id=diso(date), day=ph.days[i]||{d:WD[i],tag:'',t:'',x:''}, e=DENT[id]||{};
+      var adj=(typeof dAdjustDay==='function')?dAdjustDay(day,date):null; if(adj)reflowed=true;
       var rest=dIsRest(day.tag); if(!rest)train++; if(!rest&&e.done)done++;
       var note=(e.note||'').replace(/"/g,'&quot;');
-      html+='<div class="dday'+(e.done?' done':'')+(rest?' rest':'')+'">'+
+      var sTag=adj?adj.tag:day.tag, sT=adj?adj.t:day.t;
+      html+='<div class="dday'+(e.done?' done':'')+(rest?' rest':'')+(adj?' adj':'')+'">'+
         '<div class="dd">'+WD[i]+'<b>'+dmd(date)+'</b></div>'+
-        '<div class="dc"><div class="sess"><span class="ty">'+dEsc(day.tag)+'</span>'+dEsc(day.t)+'<span class="dx" data-x="1">详情▾</span></div>'+
+        '<div class="dc"><div class="sess"><span class="ty">'+dEsc(sTag)+'</span>'+dEsc(sT)+(adj?'<span class="adjchip">调整后</span>':'')+'<span class="dx" data-x="1">详情▾</span></div>'+
+        (adj?'<div class="adjnote">'+dEsc(adj.note)+'</div>':'')+
         '<div class="det">'+dEsc(day.x)+'</div>'+
         '<div class="drow">'+
           '<label><input type="checkbox" data-d="'+id+'" data-k="done"'+(e.done?' checked':'')+'>完成</label>'+
@@ -517,7 +524,7 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
         '</div></div></div>';
     }
     box.innerHTML=html;
-    document.getElementById('dWeekSum').textContent='训练完成 '+done+'/'+train;
+    document.getElementById('dWeekSum').textContent='训练完成 '+done+'/'+train+(reflowed?' · 已按今日状态重排':'');
   }
   var dBox=document.getElementById('dDays');
   dBox.addEventListener('input',function(ev){var t=ev.target,d=t.dataset.d,k=t.dataset.k;if(!d)return;var e=DENT[d]||{};e[k]=(t.type==='checkbox'?t.checked:t.value);DENT[d]=e;dSaveE();if(k==='done')dRender();});
@@ -577,7 +584,7 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
     var store=arLoad(),ks=Object.keys(store).sort().reverse().slice(0,7),box=document.getElementById('arRecent');
     box.innerHTML=ks.length?ks.map(function(k){var e=store[k],lp=arLP(e);return '<div class="r"><span>'+k+' · '+(e.act||((e.tier||'?')+'强度'))+'</span><span><b>LP '+lp+'</b>'+(arHard(e)?' <span class="hd">硬日</span>':'')+'</span></div>';}).join(''):'<div class="r" style="color:var(--muted)">还没记最近的负荷——先把 6/27(HYROX)、6/28(登山)记进去,看今天建议。</div>';
   }
-  function arAdd(){var d=document.getElementById('arDate').value;if(!d){return;}var store=arLoad();store[d]={type:document.getElementById('arType').value,tier:document.getElementById('arTier').value,rpe:document.getElementById('arRpe').value,dur:document.getElementById('arDur').value,act:document.getElementById('arAct').value};arSave(store);['arType','arTier','arRpe','arDur','arAct'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=(id==='arTier'?'':'');});arRecent();arPanel();if(typeof dynRender==='function')dynRender();}
+  function arAdd(){var d=document.getElementById('arDate').value;if(!d){return;}var store=arLoad();store[d]={type:document.getElementById('arType').value,tier:document.getElementById('arTier').value,rpe:document.getElementById('arRpe').value,dur:document.getElementById('arDur').value,act:document.getElementById('arAct').value};arSave(store);['arType','arTier','arRpe','arDur','arAct'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=(id==='arTier'?'':'');});arRecent();arPanel();if(typeof dynRender==='function')dynRender();if(typeof dRender==='function')dRender();}
   var _ard=document.getElementById('arDate');if(_ard&&!_ard.value)_ard.value=arISO(new Date());
   var _arb=document.getElementById('arAddBtn');if(_arb)_arb.addEventListener('click',arAdd);
   ['arRed','arMed','arSore'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',arPanel);});
@@ -625,6 +632,21 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
     return {n:n,cur:cur,ratePerWk:ratePerWk,status:status,adj:adj,weeksToTgt:weeksToTgt,tgt:p.targetKg};
   }
   function dynFlags(){return {red:(document.getElementById('arRed')||{}).checked,med:(document.getElementById('arMed')||{}).checked,sore:+((document.getElementById('arSore')||{}).value||0)};}
+  function dAdjState(){var fl=dynFlags();return arRec(arISO(new Date()),fl).key;}
+  function dAdjustDay(day,date){
+    if(dIsRest(day.tag))return null;
+    var todayMid=new Date();todayMid.setHours(0,0,0,0);
+    var dMid=new Date(date);dMid.setHours(0,0,0,0);
+    var weekEnd=dAdd(dMon(new Date()),6);weekEnd.setHours(0,0,0,0);
+    if(dMid.getTime()<todayMid.getTime()||dMid.getTime()>weekEnd.getTime())return null;
+    var k=dAdjState();if(k==='on_plan')return null;
+    var isToday=(dMid.getTime()===todayMid.getTime()),tag,t,note;
+    if(k==='medical_referral'){tag='就医分诊';t='停该部位负重与冲击，先就医/物理治疗评估';note='未明确诊断前不自行恢复该部位训练；其余部位可低强度活动。';}
+    else if(k==='fullrest_deload'){if(isToday){tag='全休';t='今日全休（可 10–15min 散步/轻拉伸）';note='本周整体量降 40–50%、强度封顶 RPE6、停冲击与大重量，直到不累再回升。';}else{tag='减载';t=day.t;note='本周 deload：量降 40–50% · RPE 封顶 6 · 停高冲击与大重量（原：'+day.t+'）';}}
+    else if(k==='active_recovery'){if(isToday){tag='主动恢复';t='30–40min 轻有氧（散步/慢游/骑行 RPE≤4）+ 拉伸，可轻技术抱石';note='今日不补强度。';}else{tag='减量·低冲击';t=day.t;note='量降 30–40% · 去高冲击 · 力量 RPE6–7 不冲重量（原：'+day.t+'）';}}
+    else{tag='减量·低冲击';t=day.t;note='量降 30–40% · 高冲击（跑/跑酷/蹦床）→泳/划/单车/技术攀岩 · 力量 RPE6–7 · 护膝背（原：'+day.t+'）';}
+    return {tag:tag,t:t,note:note};
+  }
   function dynRender(){
     var box=document.getElementById('dynCards');if(!box)return;
     var p=dynProfile(),we=dynWeekEnergy(),tr=dynTrajectory(),actK=dynActK(diso(new Date())),protTarget=Math.round(p.protPerKg*p.targetKg);
@@ -661,7 +683,7 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
     var ml=document.getElementById('dynMeals');if(ml)ml.addEventListener('click',function(ev){var mi=ev.target.dataset?ev.target.dataset.mi:null;if(mi==null)return;var o=dynLoad();o.meals=o.meals||[];o.meals.splice(+mi,1);dynSave(o);dynMealsRender();dynRender();});
     var ps=document.getElementById('pSave');if(ps)ps.addEventListener('click',function(){var o=dynLoad();o.profile=o.profile||{};o.profile.targetKg=+document.getElementById('pTgt').value||59;var rr=+document.getElementById('pRate').value;o.profile.rateKgWk=isNaN(rr)?0.5:rr;o.profile.floorKcal=+document.getElementById('pFloor').value||1450;o.profile.protPerKg=+document.getElementById('pProt').value||1.8;o.profile.age=+document.getElementById('pAge').value||38;dynSave(o);dynFillProfile();dynRender();dToast('参数已更新，已重算');});
     if(typeof dBox!=='undefined'&&dBox)dBox.addEventListener('input',function(ev){var k=ev.target&&ev.target.dataset?ev.target.dataset.k:null;if(k==='w'||k==='bf')dynRender();});
-    ['arRed','arMed','arSore'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',dynRender);});
+    ['arRed','arMed','arSore'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',function(){dynRender();if(typeof dRender==='function')dRender();});});
     dynFillProfile();dynMealsRender();dynRender();
   })();
 })();
