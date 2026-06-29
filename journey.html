@@ -145,6 +145,31 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
 .lbtn{font-family:var(--sans);font-weight:700;font-size:.82rem;border-radius:999px;padding:.5rem 1.1rem;cursor:pointer;border:1.5px solid var(--line);background:none;color:var(--text);}
 .lbtn:hover{border-color:var(--volt);color:var(--volt);}
 .dnote2{margin-top:1rem;font-size:.8rem;color:var(--muted);border-left:3px solid var(--volt);background:rgba(var(--volt-rgb),.05);padding:.6rem .9rem;border-radius:0 .6rem .6rem 0;}
+
+/* autoregulation module */
+.armod{border:1px solid var(--line);border-radius:1.2rem;background:rgba(255,255,255,.02);padding:1.3rem 1.4rem;margin:.6rem 0 1.4rem;}
+.armod h3{font-size:1.1rem;margin-bottom:.3rem;}
+.armod>.sub{font-size:.85rem;color:var(--muted);margin-bottom:1rem;}
+.arform{display:flex;gap:.7rem;flex-wrap:wrap;align-items:flex-end;}
+.arform label{display:grid;gap:.25rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.arform input,.arform select{font-family:var(--sans);font-size:.85rem;background:#0a0c12;border:1px solid var(--line);border-radius:.5rem;color:var(--text);padding:.4rem .5rem;}
+.arform input[type=text]{min-width:160px;}.arform input[type=number]{width:70px;}
+#arAddBtn{font-family:var(--sans);font-weight:700;font-size:.8rem;background:var(--volt);color:var(--ink);border:0;border-radius:999px;padding:.5rem 1rem;cursor:pointer;}
+.arrecent{margin:.8rem 0;display:grid;gap:.2rem;}
+.arrecent .r{font-size:.78rem;color:var(--muted);display:flex;justify-content:space-between;gap:.6rem;border-bottom:1px solid rgba(255,255,255,.06);padding:.25rem 0;}
+.arrecent .r b{color:var(--text);}.arrecent .r .hd{color:var(--warn);font-family:var(--mono);font-size:.58rem;}
+.arflags{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin:.7rem 0;font-size:.78rem;color:var(--muted);}
+.arflags label{display:flex;align-items:center;gap:.3rem;}
+.arflags input[type=checkbox]{width:16px;height:16px;accent-color:var(--warn);}
+.arflags select{background:#0a0c12;border:1px solid var(--line);border-radius:.4rem;color:var(--text);padding:.2rem .4rem;font-size:.78rem;}
+.arpanel{margin-top:1rem;border-radius:1rem;padding:1.1rem 1.2rem;border:1px solid var(--line);}
+.arpanel .lab{font-family:var(--mono);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;}
+.arpanel h4{font-size:1.15rem;margin:.3rem 0 .6rem;}
+.arpanel .row{font-size:.85rem;color:var(--muted);margin:.4rem 0;line-height:1.55;}.arpanel .row b{color:var(--text);}
+.arpanel.green{border-color:rgba(var(--volt-rgb),.5);background:rgba(var(--volt-rgb),.06);}.arpanel.green .lab,.arpanel.green h4{color:var(--volt);}
+.arpanel.yellow{border-color:#e0c44d;background:rgba(224,196,77,.08);}.arpanel.yellow .lab,.arpanel.yellow h4{color:#e0c44d;}
+.arpanel.orange{border-color:var(--warn);background:rgba(255,138,93,.08);}.arpanel.orange .lab,.arpanel.orange h4{color:var(--warn);}
+.arpanel.red{border-color:var(--alert);background:rgba(255,93,93,.08);}.arpanel.red .lab,.arpanel.red h4{color:var(--alert);}
 </style>
 </head>
 <body>
@@ -223,6 +248,25 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
     <div class="sec-no"><span class="credits">02+ / Daily · 逐日打卡(自动保存)</span></div>
     <h2>每天<span class="plus">打卡</span></h2>
     <p class="lead">设「计划开始日期」+ 选当前阶段,下面逐日列出当天该练什么——勾<b style="color:var(--text)">完成</b>、记晨重/体脂/感受。按周翻看,数据自动存本地、可导出 CSV/JSON。</p>
+    <div class="armod">
+      <h3>🧭 今日自适应建议 <span style="font-family:var(--mono);font-size:.6rem;color:var(--volt);">实时</span></h3>
+      <p class="sub">记最近几天的<b style="color:var(--text)">实际负荷</b>(强度×时长×RPE),系统按近 2–3 天给<b style="color:var(--text)">今天</b>的训练+饮食调整。你的临时安排(HYROX/登山)直接记进去,不用重置计划。</p>
+      <div class="arform">
+        <label>日期<input type="date" id="arDate"></label>
+        <label>强度<select id="arTier"><option value="">—</option><option>轻</option><option>中</option><option>大</option></select></label>
+        <label>RPE 1-10<input type="number" id="arRpe" min="1" max="10"></label>
+        <label>时长 min<input type="number" id="arDur"></label>
+        <label>实际做了什么<input type="text" id="arAct" placeholder="如 HYROX 1h / 登山10km+700m"></label>
+        <button id="arAddBtn">记录这天</button>
+      </div>
+      <div id="arRecent" class="arrecent"></div>
+      <div class="arflags"><span style="color:var(--text);font-weight:600;">今天:</span>
+        <label><input type="checkbox" id="arRed">红旗(痛经/锐痛/异常疲劳/睡极差)</label>
+        <label><input type="checkbox" id="arMed">医疗(放射麻痛/无力/膝交锁打软/急性肿胀)</label>
+        <label>膝/背<select id="arSore"><option value="0">无不适</option><option value="1">轻紧</option><option value="2">明显酸痛</option><option value="3">痛</option></select></label>
+      </div>
+      <div id="arPanel" class="arpanel"></div>
+    </div>
     <div class="dctl">
       <label>计划开始日期<input type="date" id="dStart"></label>
       <label>当前阶段<select id="dPhase"></select></label>
@@ -439,6 +483,54 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
   document.getElementById('dImport').addEventListener('change',function(){var f=this.files&&this.files[0];if(!f){return;}var r=new FileReader();r.onload=function(){try{var o=JSON.parse(r.result);if(o.entries)DENT=o.entries;if(o.settings)DS=o.settings;dSaveS();dSaveE();dInit();dRender();dToast('已导入恢复');}catch(e){dToast('导入失败');}};r.readAsText(f);this.value='';});
   function dInit(){var sel=document.getElementById('dPhase');sel.innerHTML=PDATA.map(function(p){return '<option value="'+p.key+'"'+(DS.phase===p.key?' selected':'')+'>'+dEsc(p.name)+'</option>';}).join('');if(!DS.phase)DS.phase=PDATA[0].key;if(DS.start){document.getElementById('dStart').value=DS.start;}else{DS.start='2026-06-29';document.getElementById('dStart').value=DS.start;}}
   dLoad(); dInit(); if(DS.offset===undefined){DS.offset=0;dSaveS();} dRender();
+
+  // ===== autoregulation =====
+  var ARKEY='journeyLoad:v1';
+  function arLoad(){try{return JSON.parse(localStorage.getItem(ARKEY)||'{}');}catch(e){return {};}}
+  function arSave(d){try{localStorage.setItem(ARKEY,JSON.stringify(d));}catch(e){}}
+  function arP(n){return (n<10?'0':'')+n;}
+  function arISO(d){return d.getFullYear()+'-'+arP(d.getMonth()+1)+'-'+arP(d.getDate());}
+  function arPar(s){var p=(s||'').split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
+  function arAddD(d,n){var x=new Date(d);x.setDate(x.getDate()+n);return x;}
+  function arLP(e){if(!e||!e.tier)return 0;var I={'轻':1,'中':2,'大':3}[e.tier]||0;var du=+e.dur||0;var T=du<30?0.5:du<60?1:du<90?1.5:2;var rp=+e.rpe||0;var R=rp<=4?0.8:rp<=6?1:rp<=8?1.3:1.6;var lp=I*T*R;if(e.tier==='大')lp=Math.max(lp,4);return Math.round(lp*10)/10;}
+  function arHard(e){if(!e)return false;return arLP(e)>=4||e.tier==='大'||(+e.rpe>=8);}
+  var AR_ST={
+   on_plan:{c:'green',l:'按计划',t:'照原计划,可正常上中/大强度(攀岩/拳击/力量/HYROX 等)。',d:'标准减脂 ~1850–1950 kcal:蛋白 110–120g 均分、碳水 200–220g 围训练、脂肪 55–60g。'},
+   deload_lowimpact:{c:'yellow',l:'减量 · 低冲击',t:'总量降 30–40%、去高冲击(跑/跑酷/蹦床→游泳/划船/单车/技术攀岩),力量 RPE6–7 不冲重量,45–60min,护膝背。',d:'~1700–1800 kcal:蛋白不降 ~110–115g,碳水降到 150–170g 留训练窗口,脂肪 50–55g。'},
+   active_recovery:{c:'orange',l:'主动恢复',t:'今日不安排训练刺激:30–40min 轻有氧(散步/慢游/骑行 RPE≤4)+ 拉伸放松,可轻技术抱石。绝不补强度。',d:'回到近维持 ~2000–2150 kcal(不造缺口):蛋白拉满 125–135g + 睡前慢蛋白,碳水保 200–220g 补糖原,脂肪 60–70g 抗炎(三文鱼/牛油果),补电解质。'},
+   fullrest_deload:{c:'red',l:'全休 + 本周 deload',t:'今日全休(可 10–15min 散步/轻拉伸);本周量降 40–50%、强度封顶 RPE6、停冲击与大重量,直到不累再回升。',d:'热量回维持 ~2000–2150 kcal(diet break,别加缺口):蛋白高位 110–120g,碳水够吃 130–150g,脂肪偏抗炎;经期加铁+维C。'},
+   medical_referral:{c:'red',l:'就医分诊 · 暂停该部位',t:'停止该部位负重与冲击,立即就医/物理治疗评估;未明确诊断前不自行恢复训练。',d:'热量回维持、蛋白保高位护肌、脂肪偏抗炎,减油炸酒精糖,足量补水。伤情待查期不减脂。'}
+  };
+  function arRec(today,fl){
+    var store=arLoad(),t=arPar(today),lps=[],hd=[];
+    for(var i=1;i<=3;i++){var e=store[arISO(arAddD(t,-i))];lps.push(e?arLP(e):0);hd.push(e?arHard(e):false);}
+    var sum=Math.round((lps[0]+lps[1]+lps[2])*10)/10,y=lps[0],cc=0;
+    for(var j=0;j<3;j++){if(hd[j])cc++;else break;}
+    var so=fl.sore||0,key;
+    if(fl.med)key='medical_referral';
+    else if(fl.red||cc>=3||sum>=15||so>=3)key='fullrest_deload';
+    else if(cc>=2||sum>=11||y>=7||so>=2)key='active_recovery';
+    else if(hd[0]||(sum>=7&&sum<=10)||so===1)key='deload_lowimpact';
+    else key='on_plan';
+    return {key:key,sum:sum,cc:cc,y:y};
+  }
+  function arPanel(){
+    var fl={red:document.getElementById('arRed').checked,med:document.getElementById('arMed').checked,sore:+document.getElementById('arSore').value};
+    var today=arISO(new Date()),r=arRec(today,fl),st=AR_ST[r.key],p=document.getElementById('arPanel');
+    p.className='arpanel '+st.c;
+    p.innerHTML='<div class="lab">今日建议 · '+today+'</div><h4>'+st.l+'</h4>'+
+      '<div class="row"><b>训练:</b>'+st.t+'</div><div class="row"><b>饮食:</b>'+st.d+'</div>'+
+      '<div class="row" style="font-size:.76rem;opacity:.85;">依据:近3天负荷 sumLP3='+r.sum+' · 连续硬日='+r.cc+' · 昨日LP='+r.y+(fl.med?' · ⚠就医旗':'')+(fl.red?' · ⚠红旗':'')+'</div>';
+  }
+  function arRecent(){
+    var store=arLoad(),ks=Object.keys(store).sort().reverse().slice(0,7),box=document.getElementById('arRecent');
+    box.innerHTML=ks.length?ks.map(function(k){var e=store[k],lp=arLP(e);return '<div class="r"><span>'+k+' · '+(e.act||((e.tier||'?')+'强度'))+'</span><span><b>LP '+lp+'</b>'+(arHard(e)?' <span class="hd">硬日</span>':'')+'</span></div>';}).join(''):'<div class="r" style="color:var(--muted)">还没记最近的负荷——先把 6/27(HYROX)、6/28(登山)记进去,看今天建议。</div>';
+  }
+  function arAdd(){var d=document.getElementById('arDate').value;if(!d){return;}var store=arLoad();store[d]={tier:document.getElementById('arTier').value,rpe:document.getElementById('arRpe').value,dur:document.getElementById('arDur').value,act:document.getElementById('arAct').value};arSave(store);['arTier','arRpe','arDur','arAct'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=(id==='arTier'?'':'');});arRecent();arPanel();}
+  var _ard=document.getElementById('arDate');if(_ard&&!_ard.value)_ard.value=arISO(new Date());
+  var _arb=document.getElementById('arAddBtn');if(_arb)_arb.addEventListener('click',arAdd);
+  ['arRed','arMed','arSore'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',arPanel);});
+  arRecent();arPanel();
 })();
 </script>
 </body>
