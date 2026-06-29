@@ -170,6 +170,31 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
 .arpanel.yellow{border-color:#e0c44d;background:rgba(224,196,77,.08);}.arpanel.yellow .lab,.arpanel.yellow h4{color:#e0c44d;}
 .arpanel.orange{border-color:var(--warn);background:rgba(255,138,93,.08);}.arpanel.orange .lab,.arpanel.orange h4{color:var(--warn);}
 .arpanel.red{border-color:var(--alert);background:rgba(255,93,93,.08);}.arpanel.red .lab,.arpanel.red h4{color:var(--alert);}
+
+/* dynamic engine */
+.dynmod{border:1px solid rgba(var(--volt-rgb),.28);border-radius:1.2rem;background:rgba(var(--volt-rgb),.03);padding:1.3rem 1.4rem;margin:.6rem 0 1.2rem;}
+.dynmod h3{font-size:1.1rem;margin-bottom:.3rem;}
+.dynmod>.sub{font-size:.84rem;color:var(--muted);margin-bottom:1rem;line-height:1.6;}
+.dynform{display:flex;gap:.7rem;flex-wrap:wrap;align-items:flex-end;}
+.dynform label{display:grid;gap:.25rem;font-family:var(--mono);font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);}
+.dynform label.ck{display:flex;align-items:center;gap:.35rem;align-self:center;text-transform:none;letter-spacing:0;font-family:var(--sans);font-size:.78rem;color:var(--text);}
+.dynform input,.dynform select{font-family:var(--sans);font-size:.85rem;background:#0a0c12;border:1px solid var(--line);border-radius:.5rem;color:var(--text);padding:.4rem .5rem;}
+.dynform input[type=text]{min-width:200px;}.dynform input[type=number]{width:96px;}
+.dynform input[type=checkbox]{width:16px;height:16px;accent-color:var(--volt);}
+#mAddBtn{font-family:var(--sans);font-weight:700;font-size:.8rem;background:var(--volt);color:var(--ink);border:0;border-radius:999px;padding:.5rem 1rem;cursor:pointer;}
+.dyncards{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(216px,1fr));margin-top:1rem;}
+.dyncard{border:1px solid var(--line);border-radius:1rem;background:rgba(255,255,255,.02);padding:1rem 1.1rem;}
+.dyncard .lab{font-family:var(--mono);font-size:.56rem;letter-spacing:.13em;text-transform:uppercase;color:var(--volt);}
+.dyncard .big{font-size:1.5rem;font-weight:800;margin:.22rem 0;}
+.dyncard .big small{font-size:.78rem;font-weight:600;color:var(--muted);}
+.dyncard .ln{font-size:.78rem;color:var(--muted);line-height:1.5;margin:.2rem 0;}
+.dyncard .ln b{color:var(--text);}
+.dyncard .tag{display:inline-block;font-family:var(--mono);font-size:.56rem;letter-spacing:.06em;border:1px solid var(--line);border-radius:999px;padding:.06rem .45rem;color:var(--text);}
+.dyncard.warn{border-color:var(--warn);background:rgba(255,138,93,.07);}.dyncard.warn .lab{color:var(--warn);}
+.arrecent .r .dx{cursor:pointer;color:var(--muted);margin-left:.3rem;}.arrecent .r .dx:hover{color:var(--alert);}
+.dynset{margin-top:1rem;border-top:1px dashed var(--line);padding-top:.6rem;}
+.dynset summary{cursor:pointer;font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.dynset summary:hover{color:var(--volt);}
 </style>
 </head>
 <body>
@@ -248,11 +273,37 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
     <div class="sec-no"><span class="credits">02+ / Daily · 逐日打卡(自动保存)</span></div>
     <h2>每天<span class="plus">打卡</span></h2>
     <p class="lead">设「计划开始日期」+ 选当前阶段,下面逐日列出当天该练什么——勾<b style="color:var(--text)">完成</b>、记晨重/体脂/感受。按周翻看,数据自动存本地、可导出 CSV/JSON。</p>
+    <div class="dynmod">
+      <h3>📊 今日 · 本周 动态总览 <span style="font-family:var(--mono);font-size:.6rem;color:var(--volt);">实时重算</span></h3>
+      <p class="sub">把你的<b style="color:var(--text)">实际</b>当变量：晨重（下方逐日记）、活动（下方「实际负荷」记，选类型自动算消耗）、饮食（这里快记）。系统据此重算<b style="color:var(--text)">体重轨迹 + 今日热量 + 本周能量 + 训练档位</b>并重排。社交餐/临时骑行徒步都摊进整周，绝不把任何一天压到下限以下。</p>
+      <div class="dynform">
+        <label>日期<input type="date" id="mDate"></label>
+        <label>热量 kcal<input type="number" id="mKcal" inputmode="numeric" placeholder="如 650"></label>
+        <label>蛋白 g<input type="number" id="mProt" inputmode="numeric" placeholder="可选"></label>
+        <label class="ck"><input type="checkbox" id="mSocial">社交餐</label>
+        <label>备注<input type="text" id="mNote" placeholder="如 赛百味白面包照烧鸡双肉不加酱 / 朋友聚餐"></label>
+        <button id="mAddBtn">记一餐</button>
+      </div>
+      <div id="dynMeals" class="arrecent"></div>
+      <div id="dynCards" class="dyncards"></div>
+      <details class="dynset"><summary>⚙ 参数（可调，改完自动重算）</summary>
+        <div class="dynform" style="margin-top:.7rem;">
+          <label>目标体重 kg<input type="number" step="0.1" id="pTgt"></label>
+          <label>周减重率 kg<input type="number" step="0.1" id="pRate"></label>
+          <label>热量下限<input type="number" id="pFloor"></label>
+          <label>蛋白 g/kg目标<input type="number" step="0.1" id="pProt"></label>
+          <label>年龄<input type="number" id="pAge"></label>
+          <button id="pSave" class="lbtn" style="border-color:rgba(var(--volt-rgb),.5);">保存参数</button>
+        </div>
+        <p class="sub" style="margin:.6rem 0 0;font-size:.72rem;">默认 目标 59kg / 0.5kg每周 / 下限 1450kcal / 蛋白 1.8×目标体重。下限是健康红线——任何重算都不会突破。15% 体脂只作监督下短暂峰值。</p>
+      </details>
+    </div>
     <div class="armod">
       <h3>🧭 今日自适应建议 <span style="font-family:var(--mono);font-size:.6rem;color:var(--volt);">实时</span></h3>
       <p class="sub">记最近几天的<b style="color:var(--text)">实际负荷</b>(强度×时长×RPE),系统按近 2–3 天给<b style="color:var(--text)">今天</b>的训练+饮食调整。你的临时安排(HYROX/登山)直接记进去,不用重置计划。</p>
       <div class="arform">
         <label>日期<input type="date" id="arDate"></label>
+        <label>类型<select id="arType"><option value="">—</option><option>跑步</option><option>骑行</option><option>徒步</option><option>登山</option><option>攀岩</option><option>拳击</option><option>冲浪</option><option>跑酷</option><option>力量</option><option>蹦床</option><option>HYROX</option><option>游泳</option><option>其他</option></select></label>
         <label>强度<select id="arTier"><option value="">—</option><option>轻</option><option>中</option><option>大</option></select></label>
         <label>RPE 1-10<input type="number" id="arRpe" min="1" max="10"></label>
         <label>时长 min<input type="number" id="arDur"></label>
@@ -526,11 +577,93 @@ footer .disc{margin-top:1.1rem;font-size:.72rem;color:var(--muted);max-width:64c
     var store=arLoad(),ks=Object.keys(store).sort().reverse().slice(0,7),box=document.getElementById('arRecent');
     box.innerHTML=ks.length?ks.map(function(k){var e=store[k],lp=arLP(e);return '<div class="r"><span>'+k+' · '+(e.act||((e.tier||'?')+'强度'))+'</span><span><b>LP '+lp+'</b>'+(arHard(e)?' <span class="hd">硬日</span>':'')+'</span></div>';}).join(''):'<div class="r" style="color:var(--muted)">还没记最近的负荷——先把 6/27(HYROX)、6/28(登山)记进去,看今天建议。</div>';
   }
-  function arAdd(){var d=document.getElementById('arDate').value;if(!d){return;}var store=arLoad();store[d]={tier:document.getElementById('arTier').value,rpe:document.getElementById('arRpe').value,dur:document.getElementById('arDur').value,act:document.getElementById('arAct').value};arSave(store);['arTier','arRpe','arDur','arAct'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=(id==='arTier'?'':'');});arRecent();arPanel();}
+  function arAdd(){var d=document.getElementById('arDate').value;if(!d){return;}var store=arLoad();store[d]={type:document.getElementById('arType').value,tier:document.getElementById('arTier').value,rpe:document.getElementById('arRpe').value,dur:document.getElementById('arDur').value,act:document.getElementById('arAct').value};arSave(store);['arType','arTier','arRpe','arDur','arAct'].forEach(function(id){var el=document.getElementById(id);if(el)el.value=(id==='arTier'?'':'');});arRecent();arPanel();if(typeof dynRender==='function')dynRender();}
   var _ard=document.getElementById('arDate');if(_ard&&!_ard.value)_ard.value=arISO(new Date());
   var _arb=document.getElementById('arAddBtn');if(_arb)_arb.addEventListener('click',arAdd);
   ['arRed','arMed','arSore'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',arPanel);});
   arRecent();arPanel();
+
+  // ===== dynamic engine (today + week overview) =====
+  var DYNK='journeyDyn:v1';
+  function dynLoad(){try{return JSON.parse(localStorage.getItem(DYNK)||'{}');}catch(e){return {};}}
+  function dynSave(o){try{localStorage.setItem(DYNK,JSON.stringify(o));}catch(e){}}
+  function dynProfile(){var p=(dynLoad().profile)||{};return {age:+p.age||38,cm:+p.cm||165,targetKg:+p.targetKg||59,rateKgWk:(p.rateKgWk!=null&&!isNaN(+p.rateKgWk)?+p.rateKgWk:0.5),floorKcal:+p.floorKcal||1450,protPerKg:(p.protPerKg!=null&&!isNaN(+p.protPerKg)?+p.protPerKg:1.8)};}
+  var DYNMET={'跑步':9.5,'骑行':8,'徒步':6.5,'登山':7.5,'攀岩':7.5,'拳击':10,'冲浪':5,'跑酷':8,'力量':5,'蹦床':4,'HYROX':10,'游泳':7,'其他':6};
+  function dynTierAdj(t){return t==='轻'?-1.5:(t==='大'?1.5:0);}
+  function dynKcal(type,min,tier,kg){var m=(DYNMET[type]||6)+dynTierAdj(tier);if(m<3)m=3;return Math.round(m*3.5*kg/200*(+min||0));}
+  function dynLatestKg(){var ks=Object.keys(DENT).filter(function(k){return DENT[k]&&DENT[k].w&&!isNaN(+DENT[k].w);}).sort();if(ks.length)return +DENT[ks[ks.length-1]].w;var tw=document.getElementById('tw');if(tw&&+tw.value)return +tw.value;return 74;}
+  function dynBMR(kg){var p=dynProfile();return Math.round(10*kg+6.25*p.cm-5*p.age-161);}
+  function dynActK(iso){var e=arLoad()[iso];if(!e)return 0;return dynKcal(e.type||'其他',e.dur,e.tier,dynLatestKg());}
+  function dynTDEEfor(iso){return Math.round(dynBMR(dynLatestKg())*1.3+dynActK(iso));}
+  function dynMealsAll(){return dynLoad().meals||[];}
+  function dynIntake(iso){return dynMealsAll().filter(function(m){return m.d===iso;}).reduce(function(s,m){return s+(+m.kcal||0);},0);}
+  function dynWeekDates(ref){var mon=dMon(ref||new Date()),a=[];for(var i=0;i<7;i++)a.push(diso(dAdd(mon,i)));return a;}
+  function dynWeekEnergy(){
+    var p=dynProfile(),now=new Date(),wk=dynWeekDates(now),todayIso=diso(now),ti=wk.indexOf(todayIso);if(ti<0)ti=0;
+    var weekTarget=p.rateKgWk*7700,perDayBase=weekTarget/7,deficitSoFar=0;
+    for(var i=0;i<ti;i++){var iso=wk[i],intk=dynIntake(iso);if(intk>0)deficitSoFar+=(dynTDEEfor(iso)-intk);else deficitSoFar+=perDayBase;}
+    var remaining=7-ti;if(remaining<1)remaining=1;
+    var tdeeToday=dynTDEEfor(todayIso),intakeToday=dynIntake(todayIso);
+    var remNeeded=weekTarget-deficitSoFar,perDay=remNeeded/remaining,target=Math.round(tdeeToday-perDay),floored=false;
+    if(target<p.floorKcal){target=p.floorKcal;floored=true;}
+    if(target>tdeeToday)target=tdeeToday;
+    return {weekTarget:Math.round(weekTarget),deficitSoFar:Math.round(deficitSoFar),remaining:remaining,tdeeToday:tdeeToday,target:target,floored:floored,intakeToday:Math.round(intakeToday),remPerDay:Math.round(perDay)};
+  }
+  function dynTrajectory(){
+    var pts=[];Object.keys(DENT).forEach(function(k){if(DENT[k]&&DENT[k].w&&!isNaN(+DENT[k].w))pts.push({t:dParse(k).getTime(),kg:+DENT[k].w});});
+    pts.sort(function(a,b){return a.t-b.t;});
+    var cur=pts.length?pts[pts.length-1].kg:dynLatestKg();
+    if(pts.length<2)return {n:pts.length,cur:cur,tgt:dynProfile().targetKg};
+    var last=pts[pts.length-1].t,win=pts.filter(function(q){return q.t>=last-14*86400000;});if(win.length<2)win=pts.slice(-2);
+    var n=win.length,t0=win[0].t,sx=0,sy=0,sxy=0,sxx=0;
+    win.forEach(function(q){var x=(q.t-t0)/86400000,y=q.kg;sx+=x;sy+=y;sxy+=x*y;sxx+=x*x;});
+    var dn=n*sxx-sx*sx,slope=dn!==0?(n*sxy-sx*sy)/dn:0,ratePerWk=slope*7,p=dynProfile(),tgtRate=-p.rateKgWk,status,adj;
+    if(ratePerWk<=tgtRate*1.25){status='偏快';adj=120;}
+    else if(ratePerWk<=tgtRate*0.55){status='在轨';adj=0;}
+    else {status='偏慢';adj=-120;}
+    var weeksToTgt=ratePerWk<-0.02?(cur-p.targetKg)/(-ratePerWk):null;
+    return {n:n,cur:cur,ratePerWk:ratePerWk,status:status,adj:adj,weeksToTgt:weeksToTgt,tgt:p.targetKg};
+  }
+  function dynFlags(){return {red:(document.getElementById('arRed')||{}).checked,med:(document.getElementById('arMed')||{}).checked,sore:+((document.getElementById('arSore')||{}).value||0)};}
+  function dynRender(){
+    var box=document.getElementById('dynCards');if(!box)return;
+    var p=dynProfile(),we=dynWeekEnergy(),tr=dynTrajectory(),actK=dynActK(diso(new Date())),protTarget=Math.round(p.protPerKg*p.targetKg);
+    var ar=arRec(arISO(new Date()),dynFlags()),st=AR_ST[ar.key];
+    var h='';
+    h+='<div class="dyncard"><div class="lab">体重轨迹</div><div class="big">'+(+tr.cur).toFixed(1)+'<small> kg</small></div>'+
+      (tr.n>=2?('<div class="ln">近期速率 <b>'+tr.ratePerWk.toFixed(2)+' kg/周</b> · <span class="tag">'+tr.status+'</span></div>'+
+        (tr.weeksToTgt!=null?'<div class="ln">按此速率约 <b>'+Math.ceil(tr.weeksToTgt)+' 周</b> 进 '+tr.tgt+'kg 区（以体脂%为锚）</div>':'<div class="ln">目标区 <b>'+tr.tgt+'kg</b> · 17–20% 体脂</div>')+
+        (tr.adj!==0?'<div class="ln" style="font-size:.72rem;">'+(tr.adj>0?'掉得偏快→今日可上调 ~'+tr.adj+' kcal，护肌防 RED-S':'掉得偏慢→可下调 ~'+(-tr.adj)+' kcal，但不破下限')+'</div>':''))
+      :'<div class="ln">多记几天晨重即可拟合趋势（现 '+tr.n+' 条）</div>')+'</div>';
+    h+='<div class="dyncard"><div class="lab">今日能量</div><div class="big">'+we.target+'<small> kcal 建议</small></div>'+
+      '<div class="ln">TDEE 今日 <b>'+we.tdeeToday+'</b> = 基础×1.3 + 活动 '+actK+'</div>'+
+      '<div class="ln">已记摄入 <b>'+we.intakeToday+'</b> · 蛋白 <b>≥'+protTarget+'g</b></div>'+
+      (we.floored?'<div class="ln" style="color:var(--volt);">✓ 已到健康下限 '+p.floorKcal+' kcal：缺口靠活动而非少吃来扩大（主要在训练日）。</div>':'')+'</div>';
+    h+='<div class="dyncard"><div class="lab">本周能量</div><div class="big">'+we.deficitSoFar+'<small> kcal 累计缺口</small></div>'+
+      '<div class="ln">本周目标缺口 <b>'+we.weekTarget+'</b> ≈ '+p.rateKgWk+'kg</div>'+
+      '<div class="ln">剩 '+we.remaining+' 天 · 每天约缺 <b>'+we.remPerDay+'</b></div>'+
+      '<div class="ln" style="font-size:.72rem;">社交餐/额外活动会摊到本周剩余几天，任何一天都不低于 '+p.floorKcal+'。</div></div>';
+    h+='<div class="dyncard"><div class="lab">今日训练</div><div class="big" style="font-size:1.15rem;color:var(--volt);">'+st.l+'</div>'+
+      '<div class="ln">近3天负荷 sumLP3=<b>'+ar.sum+'</b>（含临时活动）</div>'+
+      '<div class="ln" style="font-size:.72rem;">完整训练+饮食档位见下方「今日自适应建议」。</div></div>';
+    box.innerHTML=h;
+  }
+  function dynMealsRender(){
+    var o=dynLoad(),all=o.meals||[],ms=all.slice().sort(function(a,b){return a.d<b.d?1:(a.d>b.d?-1:0);}).slice(0,8),box=document.getElementById('dynMeals');
+    if(!box)return;
+    box.innerHTML=ms.length?ms.map(function(m){var gi=all.indexOf(m);return '<div class="r"><span>'+m.d+' '+(m.social?'🍽 ':'')+dEsc(m.note||'')+'</span><span><b>'+(+m.kcal||0)+' kcal</b>'+(m.protein?' · '+m.protein+'g':'')+' <span class="dx" data-mi="'+gi+'">✕</span></span></div>';}).join(''):'<div class="r" style="color:var(--muted)">还没记饮食——记几餐后，本周能量与今日目标自动重算。</div>';
+  }
+  function dynMealAdd(){var d=document.getElementById('mDate').value;if(!d){return;}var o=dynLoad();o.meals=o.meals||[];o.meals.push({d:d,kcal:+document.getElementById('mKcal').value||0,protein:+document.getElementById('mProt').value||0,social:document.getElementById('mSocial').checked,note:document.getElementById('mNote').value});dynSave(o);['mKcal','mProt','mNote'].forEach(function(id){var el=document.getElementById(id);if(el)el.value='';});document.getElementById('mSocial').checked=false;dynMealsRender();dynRender();dToast('已记一餐，已重算');}
+  function dynFillProfile(){var p=dynProfile();var s=function(id,v){var el=document.getElementById(id);if(el)el.value=v;};s('pTgt',p.targetKg);s('pRate',p.rateKgWk);s('pFloor',p.floorKcal);s('pProt',p.protPerKg);s('pAge',p.age);}
+  (function(){
+    var md=document.getElementById('mDate');if(md&&!md.value)md.value=diso(new Date());
+    var mb=document.getElementById('mAddBtn');if(mb)mb.addEventListener('click',dynMealAdd);
+    var ml=document.getElementById('dynMeals');if(ml)ml.addEventListener('click',function(ev){var mi=ev.target.dataset?ev.target.dataset.mi:null;if(mi==null)return;var o=dynLoad();o.meals=o.meals||[];o.meals.splice(+mi,1);dynSave(o);dynMealsRender();dynRender();});
+    var ps=document.getElementById('pSave');if(ps)ps.addEventListener('click',function(){var o=dynLoad();o.profile=o.profile||{};o.profile.targetKg=+document.getElementById('pTgt').value||59;var rr=+document.getElementById('pRate').value;o.profile.rateKgWk=isNaN(rr)?0.5:rr;o.profile.floorKcal=+document.getElementById('pFloor').value||1450;o.profile.protPerKg=+document.getElementById('pProt').value||1.8;o.profile.age=+document.getElementById('pAge').value||38;dynSave(o);dynFillProfile();dynRender();dToast('参数已更新，已重算');});
+    if(typeof dBox!=='undefined'&&dBox)dBox.addEventListener('input',function(ev){var k=ev.target&&ev.target.dataset?ev.target.dataset.k:null;if(k==='w'||k==='bf')dynRender();});
+    ['arRed','arMed','arSore'].forEach(function(id){var el=document.getElementById(id);if(el)el.addEventListener('change',dynRender);});
+    dynFillProfile();dynMealsRender();dynRender();
+  })();
 })();
 </script>
 </body>
