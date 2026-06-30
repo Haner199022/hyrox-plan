@@ -416,6 +416,7 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="assets/core.js"></script>
 <script>
 (function(){
   var bar=document.getElementById('bar');
@@ -632,8 +633,8 @@
   }
 
   // ---- plan persistence ----
-  function savePlan(){try{localStorage.setItem(PLANKEY,JSON.stringify(P));}catch(e){}}
-  function loadPlan(){try{var r=localStorage.getItem(PLANKEY);if(r){var d=JSON.parse(r);P.startISO=d.startISO||P.startISO;P.curPace=d.curPace||P.curPace;P.tgtPace=d.tgtPace||P.tgtPace;P.racePace=d.racePace||P.racePace;if(d.days)P.days=d.days;}}catch(e){}}
+  function savePlan(){try{if(window.HX&&HX.store){var s=HX.store.get();s.settings=s.settings||{};s.settings.hyrox={startISO:P.startISO,curPace:P.curPace,tgtPace:P.tgtPace,racePace:P.racePace,days:P.days};HX.store.save();}}catch(e){}try{localStorage.setItem(PLANKEY,JSON.stringify(P));}catch(e){}}
+  function loadPlan(){var d=null;try{if(window.HX&&HX.store){var h=(HX.store.get().settings||{}).hyrox;if(h&&(h.curPace||h.startISO||h.days))d=h;}}catch(e){}if(!d){try{var r=localStorage.getItem(PLANKEY);if(r)d=JSON.parse(r);}catch(e){}}if(d){P.startISO=d.startISO||P.startISO;P.curPace=d.curPace||P.curPace;P.tgtPace=d.tgtPace||P.tgtPace;P.racePace=d.racePace||P.racePace;if(d.days)P.days=d.days;}}
 
   // ---- log tables ----
   function inNum(id,step,ph){return '<input type="number" step="'+(step||'0.1')+'" inputmode="decimal" data-log id="'+id+'" placeholder="'+(ph||'—')+'">';}
@@ -782,7 +783,6 @@
   loadPlan();buildDayGrid();fillPaceInputs();render();runCalc();
 })();
 </script>
-<script src="assets/core.js"></script>
 <script>HX.initChrome();HX.mountDaily();HX.mountEngine();HX.mountExport();</script>
 </body>
 </html>
